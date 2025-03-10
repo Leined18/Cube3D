@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/03/05 13:02:52 by danpalac         ###   ########.fr        #
+#    Updated: 2025/03/10 13:53:38 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,20 +56,24 @@ MOVE_UP     = \033[1A
 
 #==========NAMES===============================================================#
 
-NAME		:= libtetris.a
-EXE			:= tetris
+NAME		:= cube3d
+NAME_LIB	:= libcube.a
 LIBFT_LIB	:= libft.a
+MLX_LIB		:= libmlx42.a
 
 #==========DIRECTORIES=======================================================#
 
 INC 			:= inc/
 SRC_DIR 		:= src/
 OBJ_DIR 		:= obj/
+MLX_DIR			:= submodules/mlx/
 LIBFT_DIR		:= submodules/libft/
+MEMTRACK_DIR	:= submodules/memtrack/
 LIB_DIR			:= submodules/lib/
 SRC_DIR			:= src/
 
 LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
+MLX				:= $(MLX_DIR)/build/$(MLX_LIB)
 INCLUDES		:= $(INC)/*.h
 
 #==========COMMANDS============================================================#
@@ -80,8 +84,8 @@ RM			:= rm -rf
 AR			:= ar rcs
 LIB			:= ranlib
 MKDIR 		:= mkdir -p
-IFLAGS		:= -I$(INC) -I$(LIBFT_DIR)$(INC) -I$(LIB_DIR)
-LFLAGS		:= -L$(LIBFT_DIR)
+IFLAGS		:= -I$(INC) -I$(LIB_DIR) -I$(MLX_DIR)include/MLX42/
+LFLAGS		:= -L$(LIB_DIR) -lft -lmt -L$(MLX_DIR)build/ -lmlx42 
 
 #==========FILES==============================================================#
 
@@ -97,36 +101,34 @@ all: $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
 	@$(MKDIR) $(dir $@)	
-	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@
+	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@ 
 
-$(NAME): $(LIBFT) $(OBJS)
-	@$(AR) $(NAME) $(OBJS)
+$(LIB_DIR):
+	@make -sC $(LIBFT_DIR)
+	@make -sC $(MEMTRACK_DIR)
+	@cmake $(MLX_DIR) -B build
+
+$(NAME): $(OBJS) $(LIB_DIR) 
+	@$(AR) $(NAME_LIB) $(OBJS)
+	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) -o $(NAME)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
-	@mkdir -p $(LIB_DIR)
-	@$(MKDIR) $(LIB_DIR) 
-	@make -s $(EXE)
 
-$(EXE): main.c
-	@$(CC) $(CFLAGS) $(LFLAGS) -L. main.c $(NAME) $(IFLAGS) -lft -o $(EXE)
-	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(EXE)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
-	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
-
-$(LIBFT):
-	@make -sC $(LIBFT_DIR)
+clean_submodules:
+	@make fclean -sC $(LIBFT_DIR)
+	@make fclean -sC $(MEMTRACK_DIR)
 	
-clean:
+clean: clean_submodules
 	@if [ -d "$(OBJ_DIR)" ]; then \
 		$(RM) $(OBJ_DIR) $(LIB_DIR); \
 		echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"; \
 	fi
-	@make clean -sC $(LIBFT_DIR)
 
 fclean: clean
-	@$(RM) -rf $(NAME) $(EXE)
+	@$(RM) -rf $(NAME) $(NAME_LIB) build
 	@make fclean -sC $(LIBFT_DIR)
 
 re: fclean all
 
 .SILENT: all clean fclean
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

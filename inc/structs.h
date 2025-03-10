@@ -6,14 +6,14 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/05 12:49:18 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/10 13:00:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MTSTRUCTS_H
 # define MTSTRUCTS_H
 
-# include "tetris.h"
+# include "cube3d.h"
 
 
 #endif
