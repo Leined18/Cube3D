@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/03/10 13:53:38 by danpalac         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #==========COLOURS=============================================================#
 
 # Basic Colors
@@ -54,81 +42,55 @@ DEF_COLOR   = \033[0;39m
 CLEAR_LINE  = \033[2K
 MOVE_UP     = \033[1A
 
-#==========NAMES===============================================================#
-
+# Variables básicas
 NAME		:= cube3d
-NAME_LIB	:= libcube.a
-LIBFT_LIB	:= libft.a
-MLX_LIB		:= libmlx42.a
-
-#==========DIRECTORIES=======================================================#
-
-INC 			:= inc/
-SRC_DIR 		:= src/
-OBJ_DIR 		:= obj/
-MLX_DIR			:= submodules/mlx/
-LIBFT_DIR		:= submodules/libft/
-MEMTRACK_DIR	:= submodules/memtrack/
-LIB_DIR			:= submodules/lib/
-SRC_DIR			:= src/
-
-LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
-MLX				:= $(MLX_DIR)/build/$(MLX_LIB)
-INCLUDES		:= $(INC)/*.h
-
-#==========COMMANDS============================================================#
-
 CC			:= gcc
 CFLAGS		:= -Wall -Wextra -Werror -g3 -fsanitize=address
 RM			:= rm -rf
-AR			:= ar rcs
-LIB			:= ranlib
-MKDIR 		:= mkdir -p
-IFLAGS		:= -I$(INC) -I$(LIB_DIR) -I$(MLX_DIR)include/MLX42/
-LFLAGS		:= -L$(LIB_DIR) -lft -lmt -L$(MLX_DIR)build/ -lmlx42 
+MKDIR		:= mkdir -p
 
-#==========FILES==============================================================#
+SUBMODULES	:= submodules/
+LIB			:= submodules/lib/
+SRC_DIR 	:= src/
+OBJ_DIR 	:= obj/
+INC_DIR		:= inc/
+
+IFLAGS		:= -I$(INC_DIR) -I$(LIB)/inc
+LFLAGS		:= -L$(LIB)
 
 # Variables de fuentes y objetos
-SRCS      := $(shell find $(SRC_DIR) -type f -name "*.c")
-OBJS      := $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
-DEPS      := $(patsubst $(OBJ_DIR)%.o, $(OBJ_DIR)%.d, $(OBJS))
+SRCS		:= $(shell find $(SRC_DIR) -type f -name "*.c")
+OBJS		:= $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
-#==========RULES==============================================================#
 
--include $(DEPS)
+# Regla principal
 all: $(NAME)
 
+# Compilación de objetos
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
-	@$(MKDIR) $(dir $@)	
-	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@ 
+	@$(MKDIR) $(dir $@)
+	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@
 
-$(LIB_DIR):
-	@make -sC $(LIBFT_DIR)
-	@make -sC $(MEMTRACK_DIR)
-	@cmake $(MLX_DIR) -B build
+$(LIB):
+	@make -sC $(SUBMODULES)
 
-$(NAME): $(OBJS) $(LIB_DIR) 
-	@$(AR) $(NAME_LIB) $(OBJS)
-	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) -o $(NAME)
-	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
+# Compilación final del ejecutable
+$(NAME): $(LIB) $(OBJS) 
+	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) $(OBJS) -o $(NAME)
+	@echo "$(BOLD_BLUE)[$(BOLD_MAGENTA)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] ready!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
 
-clean_submodules:
-	@make fclean -sC $(LIBFT_DIR)
-	@make fclean -sC $(MEMTRACK_DIR)
-	
-clean: clean_submodules
+# Limpieza
+clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
-		$(RM) $(OBJ_DIR) $(LIB_DIR); \
+		$(RM) $(OBJ_DIR); \
 		echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"; \
 	fi
+	@make fclean -sC $(SUBMODULES)
 
 fclean: clean
-	@$(RM) -rf $(NAME) $(NAME_LIB) build
-	@make fclean -sC $(LIBFT_DIR)
+	@$(RM) $(NAME)
 
 re: fclean all
 
-.SILENT: all clean fclean
-.PHONY: all clean fclean re
+.SILENT: all clean fclean re
