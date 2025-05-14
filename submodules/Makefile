@@ -4,7 +4,7 @@ MLX42 := mlx42/libmlx42.a
 
 LIB_DIR := lib/
 
-all: $(LIBFT) $(MEMTRACK) $(MLX42)
+all: $(LIBFT) $(MEMTRACK)
 
 $(LIBFT):
 	@make -sC libft
@@ -18,7 +18,6 @@ $(MLX42):
 clean:
 	@make fclean -sC libft/
 	@make fclean -sC memtrack/
-	@make fclean -sC mlx42/
 
 fclean: clean
 	@rm -rf $(LIB_DIR)
