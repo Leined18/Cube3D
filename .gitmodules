@@ -4,6 +4,3 @@
 [submodule "submodules/libft"]
 	path = submodules/libft
 	url = git@github.com:Leined18/Libft.git
-[submodule "submodules/mlx"]
-	path = submodules/mlx
-	url = git@github.com:codam-coding-college/MLX42.git
