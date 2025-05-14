@@ -34,7 +34,8 @@
     "vector": "c",
     "cube3d.h": "c",
     "methods.h": "c",
-    "structs.h": "c"
+    "structs.h": "c",
+    "mlx.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

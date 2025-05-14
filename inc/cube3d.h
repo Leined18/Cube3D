@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/12 12:59:59 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/14 22:34:25 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 
 # include "libft.h"
 # include "methods.h"
+# include "mlx.h"
 # include "mt.h"
 # include "structs.h"
 # include "utils.h"
-# include <stdio.h>
-# include <stdlib.h>
 
-# define VISITED -1
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/12 12:59:20 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/14 22:43:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ int	main(void)
 	//mlx = mlx_init(800, 600, "Cube3D", true);
 	//if (!mlx)
 		//return (1);
-	handle();
+	if (handle() == 0)
+	{
+		printf("Error\n");
+		return (1);
+	}
 	//mlx_loop(mlx);
 	return (0);
 }

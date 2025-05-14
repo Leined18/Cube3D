@@ -55,8 +55,8 @@ SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
 INC_DIR		:= inc/
 
-IFLAGS		:= -I$(INC_DIR) -I$(LIB)/inc
-LFLAGS		:= -L$(LIB)
+IFLAGS		:= -I$(INC_DIR) -I$(LIB)$(INC_DIR)
+LDFLAGS 	= -L$(LIB) -lmlx -lmlx_Linux -lft -lmt -lX11 -lXext -lm -lbsd
 
 # Variables de fuentes y objetos
 SRCS		:= $(shell find $(SRC_DIR) -type f -name "*.c")
@@ -69,14 +69,14 @@ all: $(NAME)
 # Compilación de objetos
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
 	@$(MKDIR) $(dir $@)
-	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@
+	@$(CC) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -MP -MMD -c $< -o $@
 
 $(LIB):
 	@make -sC $(SUBMODULES)
 
 # Compilación final del ejecutable
 $(NAME): $(LIB) $(OBJS) 
-	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 	@echo "$(BOLD_BLUE)[$(BOLD_MAGENTA)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] ready!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
 

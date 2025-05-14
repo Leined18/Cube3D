@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/10 13:00:48 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/14 22:34:43 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MTSTRUCTS_H
-# define MTSTRUCTS_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
 # include "cube3d.h"
 
