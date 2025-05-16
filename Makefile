@@ -56,7 +56,7 @@ OBJ_DIR 	:= obj/
 INC_DIR		:= inc/
 
 IFLAGS		:= -I$(INC_DIR) -I$(LIB)$(INC_DIR)
-LDFLAGS 	= -L$(LIB) -lmlx -lmlx_Linux -lft -lmt -lX11 -lXext -lm -lbsd
+LDFLAGS 	= -L$(LIB) -lmlx42 -lft -lmt -lX11 -lXext -ldl -lglfw -pthread -lm -lbsd
 
 # Variables de fuentes y objetos
 SRCS		:= $(shell find $(SRC_DIR) -type f -name "*.c")

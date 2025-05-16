@@ -12,24 +12,27 @@
 
 #include "cube3d.h"
 
+void loop(void *param)
+{
+	mlx_t *mlx;
+
+	mlx = (mlx_t *)param;
+	mlx_loop(mlx);
+}
+
+
 int	handle(void)
 {
-	void *mlx;
-	void *win;
+	mlx_t *mlx;
 
-	mlx = mlx_init();
+	mlx = mlx_init(1920, 1080, "Cube3D", true);
 	if (!mlx)
-		return (0);
-	win = mlx_new_window(mlx, 800, 600, "Cube3D");
-	if (!win)
 	{
-		mlx_destroy_display(mlx);
-		free(mlx);
-		return (0);
+		ft_putstr_fd("Error: mlx_init failed\n", 2);
+		return (1);
 	}
+	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
+	mlx_set_setting(MLX_MAXIMIZED, 1);
 	mlx_loop(mlx);
-	mlx_destroy_window(mlx, win);
-	mlx_destroy_display(mlx);
-	free(mlx);
 	return (1);
 }

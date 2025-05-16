@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include "methods.h"
-# include "mlx.h"
+# include "MLX42.h"
 # include "mt.h"
 # include "structs.h"
 # include "utils.h"

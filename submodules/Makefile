@@ -1,6 +1,10 @@
 LIBFT := libft/libft.a
 MEMTRACK := memtrack/libmt.a
-MLX42 := mlx/libmlx.a
+MLX42 := MLX42/build/libmlx42.a
+
+MLX42_DIR := MLX42
+MLX42_INC := MLX42/include
+
 
 LIB_DIR := lib/
 
@@ -13,15 +17,14 @@ $(MEMTRACK):
 	@make -sC memtrack
 
 $(MLX42):
-	@make -sC mlx
-	cp mlx/libmlx.a $(LIB_DIR)
-	cp mlx/libmlx_Linux.a $(LIB_DIR)
-	cp mlx/*.h $(LIB_DIR)inc/
+	@cmake $(MLX42_DIR) -B $(MLX42_DIR)/build && make -sC $(MLX42_DIR)/build -j4
+	@cp MLX42/build/libmlx42.a $(LIB_DIR)
+	@cp $(MLX42_INC)/*/*.h $(LIB_DIR)inc/
 
 clean:
 	@make fclean -sC libft/
 	@make fclean -sC memtrack/
-	@make clean -sC mlx/
+	@rm -rf $(MLX42_DIR)/build
 
 fclean: clean
 	@rm -rf $(LIB_DIR)
