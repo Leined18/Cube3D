@@ -12,27 +12,15 @@
 
 #include "cube3d.h"
 
-void loop(void *param)
+void	handle_exit(void *param)
 {
-	mlx_t *mlx;
-
-	mlx = (mlx_t *)param;
-	mlx_loop(mlx);
-}
-
-
-int	handle(void)
-{
-	mlx_t *mlx;
-
-	mlx = mlx_init(1920, 1080, "Cube3D", true);
-	if (!mlx)
+	t_game	*game;
+	game = (t_game *)param;
+	if (!game)
+		return ;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 	{
-		ft_putstr_fd("Error: mlx_init failed\n", 2);
-		return (1);
+		cleanup(&game);
+		ft_successful("Game exited successfully\n", 1);
 	}
-	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	mlx_set_setting(MLX_MAXIMIZED, 1);
-	mlx_loop(mlx);
-	return (1);
 }

@@ -17,7 +17,7 @@
 # include "methods.h"
 # include "MLX42.h"
 # include "mt.h"
-# include "structs.h"
+# include "types.h"
 # include "utils.h"
 
 

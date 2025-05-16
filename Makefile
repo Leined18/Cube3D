@@ -44,19 +44,19 @@ MOVE_UP     = \033[1A
 
 # Variables básicas
 NAME		:= cube3d
-CC			:= gcc
-CFLAGS		:= -Wall -Wextra -Werror -g3 -fsanitize=address
+CC			:= cc
+CFLAGS		:= -Wall -Wextra -Werror -g3 -fsanitize=address -O3
 RM			:= rm -rf
 MKDIR		:= mkdir -p
 
 SUBMODULES	:= submodules/
-LIB			:= submodules/lib/
+LIB			:= submodules/lib
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
 INC_DIR		:= inc/
 
-IFLAGS		:= -I$(INC_DIR) -I$(LIB)$(INC_DIR)
-LDFLAGS 	= -L$(LIB) -lmlx42 -lft -lmt -lX11 -lXext -ldl -lglfw -pthread -lm -lbsd
+IFLAGS		:= -I$(INC_DIR) -I$(LIB)/$(INC_DIR)
+LDFLAGS 	= -L$(LIB) -lmt -lft -lmlx42 -lX11 -lXext -ldl -lglfw -pthread -lm -lbsd
 
 # Variables de fuentes y objetos
 SRCS		:= $(shell find $(SRC_DIR) -type f -name "*.c")
@@ -69,7 +69,7 @@ all: $(NAME)
 # Compilación de objetos
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
 	@$(MKDIR) $(dir $@)
-	@$(CC) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -MP -MMD -c $< -o $@
+	@$(CC) $(CFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@
 
 $(LIB):
 	@make -sC $(SUBMODULES)

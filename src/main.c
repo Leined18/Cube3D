@@ -12,21 +12,19 @@
 
 #include "cube3d.h"
 
-int	main(void)
+
+int	main(int argc, char **argv)
 {
-	t_mt *s;
+	t_game	*game;
 
-	(void)s;
-	//mlx_t	*mlx;
-
-	//mlx = mlx_init(800, 600, "Cube3D", true);
-	//if (!mlx)
-		//return (1);
-	if (handle() == 0)
-	{
-		printf("Error\n");
-		return (1);
-	}
-	//mlx_loop(mlx);
-	return (0);
+	game = NULL;
+	if (argc < 2)
+		ft_error("Error: No map file provided\n", 1);
+	if (!setup(&game, argv[1]))
+		ft_error("Error: Failed to setup game\n", 1);
+	ft_successful("Game setup successful\n",0);
+	if (!mlx_loop_hook(game->mlx, handle_exit, game))
+		ft_error("Error: Failed to set up loop\n", 1);
+	mlx_loop(game->mlx);
+	return (cleanup(&game), 0);
 }
