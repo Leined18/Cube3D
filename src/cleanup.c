@@ -25,7 +25,7 @@ void cleanup_objs(t_backup **backup)
     t_backup *backup_copy;
 
     backup_copy = *backup;
-	ft_backup_free(&backup_copy);
+	ft_backup_clear(&backup_copy);
 }
 
 

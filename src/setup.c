@@ -13,7 +13,6 @@ t_render *create_render(t_game *game)
     render->fov = 60;
     render->angle = 0;
     render->data_count = 0;
-    render->objs = game->objs;
     render->backup = game->backup;
     return (render);
 }
@@ -27,7 +26,6 @@ t_map *create_map(t_game *game)
         return (NULL);
     map->width = 0;
     map->height = 0;
-    map->objs = game->objs;
     map->backup = game->backup;
     return (map);
 }
@@ -44,7 +42,6 @@ t_player *create_player(t_game *game)
     player->pos.y = 0;
     player->pos.z = 0;
     player->angle = 0;
-    player->objs = game->objs;
     player->backup = game->backup;
     return (player);
 }
