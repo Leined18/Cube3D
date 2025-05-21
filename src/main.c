@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 22:43:12 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:47:32 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(int argc, char **argv)
 	if (!setup(&game, argv[1]))
 		ft_error("Error: Failed to setup game\n", 1);
 	ft_successful("Game setup successful\n",0);
-	if (!mlx_loop_hook(game->mlx, handle_exit, game))
-		ft_error("Error: Failed to set up loop\n", 1);
-	mlx_loop(game->mlx);
+	//if (!mlx_loop_hook(game->mlx, handle_exit, game))
+	//	ft_error("Error: Failed to set up loop\n", 1);
+	//mlx_loop(game->mlx);
 	return (cleanup(&game), 0);
 }

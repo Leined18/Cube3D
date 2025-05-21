@@ -20,7 +20,7 @@ void cleanup_render(t_render **render)
 	free_null((void **)render);
 }
 
-void cleanup_objs(t_backup **backup)
+void cleanup_backup(t_backup **backup)
 {
     t_backup *backup_copy;
 
@@ -39,6 +39,7 @@ void cleanup(t_game **game)
 		cleanup_player(&(*game)->player);
 	if ((*game)->render)
 		cleanup_render(&(*game)->render);
-	if ((*game)->objs)
-		cleanup_objs(&(*game)->backup);
+	if ((*game)->backup)
+		cleanup_backup(&(*game)->backup);
+	free_null((void **)game);
 }

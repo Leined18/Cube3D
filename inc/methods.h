@@ -11,5 +11,6 @@ void    cleanup(t_game **game);
 // ==================== Game Setup ====================
 int     setup(t_game **game, char *map);
 void	handle_exit(void *param);
+void    *c_game(t_args *args);
 
 #endif
