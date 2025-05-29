@@ -17,7 +17,10 @@ sudo apt update && sudo apt install -y \
   libbsd-dev \
   libxrandr-dev \
   libxi-dev \
-  libgl1-mesa-dev
+  libgl1-mesa-dev \
+  libglfw3 \
+  libglfw3-dev
+
 ```
 
 > 💡 *Nota*: Estas dependencias son necesarias para compilar y ejecutar la librería MiniLibX (MLX) en Linux.
