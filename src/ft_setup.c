@@ -62,8 +62,6 @@ int	ft_setup(t_game **game, char *map_file)
     (*game)->player = ft_create_player();
     (*game)->render = ft_create_render();
     (*game)->mlx = ft_create_mlx();
-	if (!(*game))
-		return (ft_cleanup(game), 0);
 	if (!(*game)->map || !(*game)->player || !(*game)->render 
 		|| !(*game)->mlx || !(*game)->backup)
 		return (ft_cleanup(game), 0);

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 13:28:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:49:15 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_map
     
     t_cords     player_pos;
     t_offset    player_offset;
-    int		    width;
+    int		    *width;
     int		    height;
     t_mt        *objs;
 }	t_map;
