@@ -6,13 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:59:15 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 23:15:50 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:50:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	handle_exit(void *param)
+void	ft_handle_exit(void *param)
 {
 	t_game	*game;
 	game = (t_game *)param;
@@ -20,7 +20,7 @@ void	handle_exit(void *param)
 		return ;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 	{
-		cleanup(&game);
+		ft_cleanup(&game);
 		ft_successful("Game exited successfully\n", 1);
 	}
 }

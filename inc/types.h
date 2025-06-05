@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/20 11:40:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:28:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@
 # include "mt.h"
 # include "utils.h"
 
+typedef struct s_cords
+{
+    float	x;
+    float	y;
+    float	z;
+}	t_cords;
+
+typedef struct s_offset
+{
+    float	x;
+    float	y;
+}	t_offset;
+
 typedef struct s_player
 {
     char       *name;
@@ -27,16 +40,18 @@ typedef struct s_player
     t_offset   offset;
     int	       angle;
     t_mt       *objs;
-    t_backup   *backup;
 }	t_player;
 
 typedef struct s_map
 {
-    char	**map;
-    int		width;
-    int		height;
-    t_mt    *objs;
-    t_backup *backup;
+    char	**map_2d;
+    char	*path;
+    
+    t_cords     player_pos;
+    t_offset    player_offset;
+    int		    width;
+    int		    height;
+    t_mt        *objs;
 }	t_map;
 
 typedef struct s_render
@@ -47,7 +62,6 @@ typedef struct s_render
     int		angle;
     int		data_count;
     t_mt    *objs;
-    t_backup *backup;
 }	t_render;
 
 typedef struct s_game
@@ -57,7 +71,7 @@ typedef struct s_game
     t_player	*player;
     t_render    *render;
     t_mt		*objs;
-    t_backup    *backup;
+    t_backup	*backup;
 } t_game;
 
 

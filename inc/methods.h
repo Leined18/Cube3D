@@ -6,11 +6,23 @@
 # include "types.h"
 
 // ==================== Memory Management ====================
-void    cleanup(t_game **game);
+void    ft_cleanup(t_game **game);
+void    ft_cleanup_player(t_player **player);
+void    ft_cleanup_render(t_render **render);
+void    ft_cleanup_map(t_map **map);
 
-// ==================== Game Setup ====================
-int     setup(t_game **game, char *map);
-void	handle_exit(void *param);
-void    *c_game(t_args *args);
+// ==================== Render Management ====================
+
+
+// ==================== Player Management ====================
+
+// ===================== Map Management ====================
+
+t_map   *ft_create_map(const char *path);
+
+// ==================== Game Setup ===================  
+
+int     ft_setup(t_game **game, char *map);
+void	ft_handle_exit(void *param);
 
 #endif

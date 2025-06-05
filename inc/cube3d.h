@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 22:34:25 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:34:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include "mt.h"
 # include "types.h"
 # include "utils.h"
+
+# define TITLE "Cube3D"
 
 
 #endif
