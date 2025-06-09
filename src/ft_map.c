@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:03 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 14:16:20 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 10:53:17 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ t_map *ft_create_map(const char *path)
     map->map_2d = ft_load_map(path, &map->width, &map->height);
     if (!map->map_2d)
         return (free(map->path), free(map), NULL);
+    ft_mtnew("map_width")->data = map->width;
+    ft_mtnew("map_height")->data = &map->height;
     ft_mtnew("map")->data = map;
     return (map);
 }

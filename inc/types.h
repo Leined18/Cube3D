@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 13:49:15 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 10:47:49 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ typedef struct s_map
     t_offset    player_offset;
     int		    *width;
     int		    height;
-    t_mt        *objs;
+    bool		minimap_bool;
+	mlx_image_t	*minimap_img;
+    t_track     *objects;
 }	t_map;
 
 typedef struct s_render
@@ -61,7 +63,9 @@ typedef struct s_render
     int		fov;
     int		angle;
     int		data_count;
-    t_mt    *objs;
+	int 	*data;
+	int		fps;
+    t_track *objects;
 }	t_render;
 
 typedef struct s_game

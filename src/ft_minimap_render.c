@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   ft_minimap_render.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 10:46:49 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 10:26:26 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 11:04:50 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#include "cube3d.h"
 
-# include "libft.h"
-# include "methods.h"
-# include "MLX42.h"
-# include "mt.h"
-# include "types.h"
-# include "utils.h"
+void ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player)
+{
+    if (!mlx || !map || !player)
+        return;
+    mlx_delete_image(mlx, map->minimap_img);
+    ft_draw_minimap(mlx, map, player);
+}
 
-# define TITLE "Cube3D"
-# define TILE_SIZE 64
-# define FPS 60
-
-
-#endif

@@ -4,14 +4,23 @@
 t_render *ft_create_render(void)
 {
     t_render	*render;
+    int *width;
+    int height;
 
     render = ft_calloc(1, sizeof(t_render));
     if (!render)
         return (NULL);
-    render->width = 1920;
-    render->height = 1080;
+    width = (int *)ft_mtget("map_width")->data;
+    if (!width)
+        return (free(render), NULL);
+    height = *(int *)ft_mtget("map_height")->data;
+    if (height <= 0 || !width)
+        return (free(render), NULL);
+    render->width = width[0] * TILE_SIZE; // Adjust width based on TILE_SIZE
+    render->height = height * TILE_SIZE; // Adjust height based on TILE_SIZE
     render->fov = 60;
     render->angle = 0;
+    render->fps = FPS; // Set frames per second
     ft_mtnew("render")->data = render;
     return (render);
 }
