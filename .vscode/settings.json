@@ -5,7 +5,14 @@
     "methods.h": "c",
     "structs.h": "c",
     "mt.h": "c",
-    "libft.h": "c"
+    "libft.h": "c",
+    "array": "c",
+    "string": "c",
+    "string_view": "c",
+    "ranges": "c",
+    "random": "c",
+    "cub3d.h": "c",
+    "system_error": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

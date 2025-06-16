@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minimap_render.c                                :+:      :+:    :+:   */
+/*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 10:26:26 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 11:04:50 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/29 10:13:20 by mvidal-h          #+#    #+#             */
+/*   Updated: 2025/05/29 10:13:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-void ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player)
+int	dir_ok(char *dir)
 {
-    if (!mlx || !map || !player)
-        return;
-    mlx_delete_image(mlx, map->minimap_img);
-    ft_draw_minimap(mlx, map, player);
+	if (strlen(dir) == 1 
+		&& (dir[0] == 'N' 
+			|| dir[0] == 'S' 
+			|| dir[0] == 'E' 
+			|| dir[0] == 'W'))
+		return (1);
+	return (0);
 }
-

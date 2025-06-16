@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 15:35:30 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/29 10:13:20 by mvidal-h          #+#    #+#             */
+/*   Updated: 2025/06/16 14:45:45 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#include "cube3d.h"
 
-# include "libft.h"
-# include "methods.h"
-# include "MLX42.h"
-# include "mt.h"
-# include "types.h"
-# include "utils.h"
-
-# define    TITLE "Cube3D"
-# define    TILE_SIZE 64
-# define    FPS 60
-# define    PLAYER_SPEED 0.1
-#define     screenWidth 1920
-#define     screenHeight 1080
-
-
-#endif
+int	dir_ok(char *dir)
+{
+	if (strlen(dir) == 1 
+		&& (dir[0] == 'N' 
+			|| dir[0] == 'S' 
+			|| dir[0] == 'E' 
+			|| dir[0] == 'W'))
+		return (1);
+	return (0);
+}
