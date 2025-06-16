@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle.c                                        :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 12:59:15 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:46 by mvidal-h         ###   ########.fr       */
+/*   Created: 2025/06/10 12:11:56 by mvidal-h          #+#    #+#             */
+/*   Updated: 2025/06/10 15:34:41 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+// #include "cub3d.h"
 
-void	ft_handle_exit(void *param)
-{
-	t_game	*game;
-	
-	game = (t_game *)param;
-	if (!game)
-		return ;
-	if (mlx_is_key_down(game->render.mlx, MLX_KEY_ESCAPE))
-	{
-		ft_cleanup(game);
-		ft_successful("Game exited successfully\n", 1);
-	}
-}
+// void	init_time(t_time *time)
+// {
+// 	time->current = mlx_get_time();
+// 	time->prev = time->current;
+// }
+
+// void	upgrade_frameTime(t_time *time)
+// {
+// 	time->prev = time->current;
+// 	time->current = mlx_get_time();
+// 	time->frameTime = time->current - time->prev;
+// }

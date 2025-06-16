@@ -6,23 +6,96 @@
 # include "types.h"
 
 // ==================== Memory Management ====================
-void    ft_cleanup(t_game **game);
-void    ft_cleanup_player(t_player **player);
-void    ft_cleanup_render(t_render **render);
-void    ft_cleanup_map(t_map **map);
+void    ft_cleanup(t_game *game);
+void    ft_cleanup_player(t_player *player);
+void    ft_cleanup_render(t_render *render);
+void    ft_cleanup_map(t_map *map);
 
 // ==================== Render Management ====================
 
+void    ft_render_frame(void *param);
+void    ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player);
 
 // ==================== Player Management ====================
 
 // ===================== Map Management ====================
 
-t_map   *ft_create_map(const char *path);
+int   ft_create_map(const char *path, t_map *map);
+char  **ft_load_map(const char *path, size_t *width, size_t *height);
+void  ft_cleanup_map(t_map *map);
+void wrong_map_exit(char *buffer, char *message, int need_free);
+void check_arg_cub(char *name);
+void wrong_generate_map_exit(char *message, int fd);
+void wrong_copy_map_exit(char **copy_array, int pos);
+
+// ==================== Hooks Management ====================
+void    ft_on_destroy(void *param);
+void    ft_on_keypress(mlx_key_data_t keydata, void *param);
+void    ft_on_game_loop(void *param);
+// ==================== Game Management ====================
+
+// ==================== Minimap Management ====================
+
+void    ft_draw_tile(mlx_t *mlx, int x, int y, int color);
+int     ft_draw_player_on_minimap(mlx_t *mlx, t_player *player);
+int     ft_draw_minimap_grid(mlx_t *mlx, t_map *map);
+mlx_image_t *ft_create_minimap_image(mlx_t *mlx, t_map map);
+int     ft_create_minimap_viewport(mlx_t *mlx, t_map *map, t_player *player);
+char    ft_get_map_tile(int x, int y);
+void    ft_set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
+void    ft_set_minimap_scale(mlx_image_t *img, float scale);
+
+// ==================== Player Movements ====================
+void    rotate_player(t_game *game, double angle);
+void    move_player_forward(t_game *game, double moveSpeed);
+void    move_player_backward(t_game *game, double moveSpeed);
+void    strafe_player_left(t_game *game, double moveSpeed);
+void    strafe_player_right(t_game *game, double moveSpeed);
+// ==================== Raycasting ====================
+void    cast_all_rays(t_game *g);
+// ==================== Ray Management ====================
+void    setup_dda(t_ray *ray, t_game *game);
+void    raycast_dda(t_ray *ray, t_game *g);
+// ==================== Ray Calculation ====================
+double  calc_cameraX(int x);
+t_vector calc_ray_dir(t_vector dir, t_vector plane, double cameraX);
+void    set_ray_pos(t_ray *ray, t_game *game);
+void    calc_delta_dist(t_ray *ray);
+void    calc_step_dir(t_ray *ray);
+void    calc_side_dist(t_ray *ray, t_vector *player_pos);
+// ==================== Ray Drawing ====================
+void    calc_draw_line(t_game *g, t_ray *ray);
+void    draw_vertical_line(mlx_image_t *img, int x, t_screenline draw);
+// ==================== Player Calculation ====================
+double   ft_calc_fov_factor(double fov_degrees);
+t_vector ft_calc_player_dir(char dir);
+t_vector ft_calc_plane(t_vector dir, double fov_factor);
+int      is_player(char c);
+void     ft_init_player(t_player *player, t_map *map);
+
+// ==================== Transformations ====================
+double		deg_to_rad(double degrees);
+void		rotate_vector(t_vector *vect, double angle);
+t_vector	normalize(t_vector vect);
+void		remove_newline(char *line);
+void		fill_with_spaces(char *dest, const char *src, int width);
+
+// ==================== printer ====================
+void		print_game_info(t_game *game);
+void		print_game_map(char **map);
+// ==================== Checkers ====================
+int		dir_ok(char *dir);
+// ==================== Files ====================
+int		secure_open(char *map_name);
+void	secure_close(int fd);
+// ==================== Color ====================
+uint32_t	set_color_line(t_game *g, t_vector map, int wall_side);
+uint32_t	darken_color(uint32_t color);
 
 // ==================== Game Setup ===================  
 
-int     ft_setup(t_game **game, char *map);
+
+int     ft_setup(t_game *game, char *map);
 void	ft_handle_exit(void *param);
 
 #endif

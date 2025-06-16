@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   ft_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 15:35:30 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 10:43:30 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/16 14:45:46 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#include "cube3d.h"
 
-# include "libft.h"
-# include "methods.h"
-# include "MLX42.h"
-# include "mt.h"
-# include "types.h"
-# include "utils.h"
-
-# define    TITLE "Cube3D"
-# define    TILE_SIZE 64
-# define    FPS 60
-# define    PLAYER_SPEED 0.1
-#define     screenWidth 1920
-#define     screenHeight 1080
-
-
-#endif
+void ft_render_frame(void *param)
+{
+    t_game *g;
+    
+    g = (t_game *)param;
+    if (!g)
+        return;
+    usleep(10000000 / FPS); // Simulate frame rate (60 FPS)
+    ft_printf("fps: %d\n", FPS);
+}

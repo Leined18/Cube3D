@@ -6,29 +6,29 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:03 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 14:16:20 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:45:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int *ft_get_widths(char **map, int height)
+int ft_get_width(char **map, int height)
 {
-    int	*widths;
+    int	width;
+    int length;
     int	i;
 
     if (!map || height <= 0)
-        return (NULL);
-    widths = ft_calloc(height, sizeof(int));
-    if (!widths)
-        return (NULL);
+        return (0);
     i = 0;
     while (i < height && map[i])
     {
-        widths[i] = ft_strlen(map[i]);
+        length = ft_strlen(map[i]);
+        if (length > width)
+            width = length;
         i++;
     }
-    return (widths);
+    return (width);
 }
 
 /**
@@ -39,7 +39,7 @@ int *ft_get_widths(char **map, int height)
   * This file contains functions to read a map from a file and store it in a 2D array.
 */
 
-char **ft_read_map(int fd, int *height)
+char **ft_read_map(int fd, size_t *height)
 {
     char	**map;
     char	*line;
@@ -78,20 +78,16 @@ char **ft_read_map(int fd, int *height)
 */
 
 
-char **ft_load_map(const char *path, int **width, int *height)
+char **ft_load_map(const char *path, size_t *width, size_t *height)
 {
     char	**map;
     int		fd;
-    int     i;
 
     fd = open(path, O_RDONLY);
     if (fd < 0)
         return (NULL);
     map = ft_read_map(fd, height);
-    i = 0;
-    *width = ft_get_widths(map, *height);
-    if (!*width)
-        return (free_2d(map), close(fd), NULL);
+    *width = ft_get_width(map, *height);
     return (close(fd), map);
 }
 
@@ -101,23 +97,19 @@ char **ft_load_map(const char *path, int **width, int *height)
  * @path The path to the map file.
  */
 
-t_map *ft_create_map(const char *path)
+int ft_create_map(const char *path, t_map *map)
 {
-    t_map	*map;
-
-    map = ft_calloc(1, sizeof(t_map));
-    if (!map)
-        return (NULL);
-    map->width = 0;
-    map->height = 0;
-    map->path = ft_strdup(path);
-    if (!map->path)
-        return (free(map), NULL);
-    map->map_2d = ft_load_map(path, &map->width, &map->height);
-    if (!map->map_2d)
-        return (free(map->path), free(map), NULL);
-    ft_mtnew("map")->data = map;
-    return (map);
+    ft_bzero(map, sizeof(t_map));
+    //map.path = ft_strdup(path);
+   /*  if (!map.path)
+        return (map); */
+    map->matrix = ft_load_map(path, &map->map_width, &map->map_height);
+    if (!map->matrix)
+        return (0);
+    ft_mtnew("map", "map_width")->data = &map->map_width;
+    ft_mtnew("map", "map_height")->data = &map->map_height;
+    ft_mtnew("map", "map_struct")->data = &map;
+    return (1);
 }
 
 /** * Cleans up the map structure.
@@ -125,15 +117,12 @@ t_map *ft_create_map(const char *path)
  * @param map A pointer to the map structure to clean up.
  */
 
-void ft_cleanup_map(t_map **map)
+void ft_cleanup_map(t_map *map)
 {
-    if (!map || !*map)
+    if (!map)
         return;
-    if ((*map)->path)
-        free_null((void **)&(*map)->path);
-    if ((*map)->map_2d)
-        free_2d((*map)->map_2d);
-    if ((*map)->width)
-        free_null((void **)&(*map)->width);
-    free_null((void **)map);
+    /* if (map->path)
+        free_null((void **)&map->path); */
+    if (map->matrix)
+        free_2d(map->matrix);
 }

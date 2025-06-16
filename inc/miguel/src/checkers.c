@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle.c                                        :+:      :+:    :+:   */
+/*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 12:59:15 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:46 by mvidal-h         ###   ########.fr       */
+/*   Created: 2025/05/29 10:13:20 by mvidal-h          #+#    #+#             */
+/*   Updated: 2025/05/29 10:13:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-void	ft_handle_exit(void *param)
+int	dir_ok(char *dir)
 {
-	t_game	*game;
-	
-	game = (t_game *)param;
-	if (!game)
-		return ;
-	if (mlx_is_key_down(game->render.mlx, MLX_KEY_ESCAPE))
-	{
-		ft_cleanup(game);
-		ft_successful("Game exited successfully\n", 1);
-	}
+	if (strlen(dir) == 1 
+		&& (dir[0] == 'N' 
+			|| dir[0] == 'S' 
+			|| dir[0] == 'E' 
+			|| dir[0] == 'W'))
+		return (1);
+	return (0);
 }
