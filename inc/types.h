@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 12:21:53 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 13:05:57 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct	s_textures
 {
 	char	        *path;
     mlx_texture_t 	*texture;
+    uint32_t	    color;
 }				t_textures;
 
 typedef struct s_player

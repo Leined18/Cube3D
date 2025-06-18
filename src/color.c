@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:50:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 13:34:28 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ uint32_t	set_color_line(t_game *g, t_vector map, int wall_side)
 	uint32_t	color;
 
 	color = get_wall_color(g, map);
-	if (wall_side == 0)
-		color = darken_color(color);
+	(void)wall_side; // Si no se usa wall_side, se puede eliminar
 	return (color);
 }
