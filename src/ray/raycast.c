@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:45:42 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/16 15:26:53 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:29:51 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	cast_all_rays(t_game *g)
 
 	ft_memset(&ray, 0, sizeof(t_ray));
 	x = 0;
+	ray.draw.texture_floor = g->map.textures[F].texture;
+	ray.draw.texture_ceiling = g->map.textures[C].texture;
 	while (x < g->render.screen_width)
 	{
 		ray.cameraX = calc_cameraX(x);

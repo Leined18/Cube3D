@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 11:12:39 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 12:21:53 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ typedef struct s_vector
 
 typedef struct	s_screenline
 {
-	int			start;
-	int			end;
-	uint32_t	color_wall;
-	uint32_t	color_floor;
-	uint32_t	color_ceiling;
+	int			    start;
+	int			    end;
+	uint32_t	    color_wall;
+	uint32_t	    color_floor;
+	uint32_t	    color_ceiling;
+    mlx_texture_t	*texture;	// Textura del muro
+    mlx_texture_t	*texture_floor; // Textura del suelo
+    mlx_texture_t	*texture_ceiling; // Textura del techo
 }				t_screenline;
 
 typedef struct	s_ray

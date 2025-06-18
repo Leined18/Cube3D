@@ -70,7 +70,10 @@ void    calc_step_dir(t_ray *ray);
 void    calc_side_dist(t_ray *ray, t_vector *player_pos);
 // ==================== Ray Drawing ====================
 void    calc_draw_line(t_game *g, t_ray *ray);
+void    draw_image(mlx_image_t *dst_img, mlx_image_t *src_img, int dst_x, int dst_y);
+void    draw_texture(mlx_image_t *img, mlx_texture_t *texture, int x, int y);
 void    draw_vertical_line(mlx_image_t *img, int x, t_screenline draw);
+
 // ==================== Player Calculation ====================
 double   ft_calc_fov_factor(double fov_degrees);
 t_vector ft_calc_player_dir(char dir);

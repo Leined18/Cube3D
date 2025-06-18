@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 11:36:03 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 12:39:19 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@
 # define    TILE_SIZE 64
 # define    FPS 60
 
+//configuration 
+# define    TEXTURES false
+# define    MINIMAP true
+# define    DEBUG true
+
 // Player configuration
 # define    PLAYER_SPEED 4.3
 # define    PLAYER_ROTATION_SPEED 2.05
@@ -34,6 +39,7 @@
 #define     screenHeight 1080
 #define     MAX_PITCH PI / 2
 # define    MIN_PITCH -PI / 2
+
 
 # define    ASSESTS_PATH "./assets/"
 # define    TEXTURE_NO ASSESTS_PATH "textures/no.png"
