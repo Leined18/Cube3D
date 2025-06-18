@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 13:16:34 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 18:54:53 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 # define    FPS 60
 
 //configuration 
-# define    TEXTURES false
-# define    MINIMAP true
-# define    DEBUG true
+# define    TEXTURES TRUE
+# define    MINIMAP FALSE
+# define    DEBUG FALSE
 
 // Player configuration
 # define    PLAYER_SPEED 4.3

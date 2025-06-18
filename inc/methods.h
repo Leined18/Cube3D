@@ -24,7 +24,7 @@ void    ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player);
 
 // ===================== Map Management ====================
 
-int   ft_create_map(const char *path, t_map *map);
+int   ft_create_map(t_map *map);
 char  **ft_load_map(const char *path, size_t *width, size_t *height);
 void  ft_cleanup_map(t_map *map);
 void wrong_map_exit(char *buffer, char *message, int need_free);

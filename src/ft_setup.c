@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 18:07:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/18 19:04:02 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,19 @@ int	ft_setup(t_game *game, char *map_file)
 	if (!game || !map_file)
 		return (0);
     ft_bzero(game, sizeof(t_game));
-    ft_printf("llego aqui\n");
     if (parse_file(map_file, game) < 0)
     {
         ft_printf("Error parsing %s\n", map_file);
-        exit(EXIT_FAILURE);
+        return (0);
     }
-    ft_printf("llego aqui2\n");
 	game->backup = ft_backup_static(1, true, false);
 	if (!game->backup)
 		return (ft_cleanup(game), 0);
-	if (!ft_create_map(map_file, &game->map))
+	if (!ft_create_map(&game->map)) //llamarlo algo como init_textures
 		return (ft_cleanup(game), 0);
+    ft_mtnew("map", "map_width")->data = &game->map.map_width; //quizás juntar todo en una funcion.
+    ft_mtnew("map", "map_height")->data = &game->map.map_height;
+    ft_mtnew("map", "map_struct")->data = &game->map;
 	if (!ft_create_player(&game->player, &game->map))
 		return (ft_cleanup(game), 0);
     if (!ft_create_render(&game->render))

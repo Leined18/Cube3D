@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:40:59 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 18:08:40 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/18 18:50:52 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,15 +137,12 @@ int	parse_file(char *map_name, t_game *game)
 		wrong_map_exit(buffer, "Error\nReading line from file", -1);
 	while (buffer && !error)
 	{
-		ft_printf("llego aqui3\n");
 		error = parse_line(buffer, game);
-		ft_printf("error: %d\n", error);
 		free(buffer);
 		if (!error)
 			buffer = get_next_line(fd);
 	}
 	secure_close(fd);
-	ft_printf("llego aqui4\n");
 	if (error)
 		return (error);
 	if (!all_elem(game->map.textures) && game->map.map_list == NULL)

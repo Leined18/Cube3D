@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:03 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 17:44:51 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/18 19:03:55 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ char **ft_load_map(const char *path, size_t *width, size_t *height)
  * @path The path to the map file.
  */
 
-int ft_create_map(const char *path, t_map *map)
+int ft_create_map(t_map *map)
 {
-    ft_bzero(map, sizeof(t_map));
-    map->matrix = ft_load_map(path, &map->map_width, &map->map_height);
-    if (!map->matrix)
-        return (0);
+    // ft_bzero(map, sizeof(t_map));
+    // map->matrix = ft_load_map(path, &map->map_width, &map->map_height);
+    // if (!map->matrix)
+    //     return (0);
     if (!ft_init_textures(map))
         return (ft_cleanup_map(map), 0);
     ft_mtnew("map", "map_width")->data = &map->map_width;

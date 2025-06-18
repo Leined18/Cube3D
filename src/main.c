@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 09:41:52 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 18:48:06 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 	check_arg_cub(argv[1]);
 	if (!ft_setup(&game, argv[1]))
 		ft_error("Error: Failed to setup game\n", 1);
-	ft_print_map(&game);
+	// ft_print_map(&game);
 	ft_successful("Game setup successful\n", 0);
 	if (!ft_launch_game(&game))
 		ft_error("Error: Failed to launch game\n", 1);

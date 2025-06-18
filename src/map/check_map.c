@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:02:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 17:58:58 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/18 18:53:05 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	check_map(t_game *g)
 		return (free_all(g, NULL, "Error\nMap must have exactly one player"));
 	if (generate_map_array(g) < 0)
 		return (-1);
-	print_game_map(g->map.matrix);
 	if (check_map_border(g, g->map.map_height, g->map.map_width) < 0)
 		return (-1);
 	if (check_map_closed(g, g->map.map_height, g->map.map_width) < 0)
