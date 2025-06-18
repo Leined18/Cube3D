@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 08:58:47 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/12 17:58:46 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:48:35 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int			parse_file(char *map_name, t_game *game);
 
 //player/calculate_player.c
 double		calc_fov_factor(double fov_degrees);
-t_vector	calc_player_dir(char dir);
-t_vector	calc_plane(t_vector dir, double fov_factor);
+t_vect2	calc_player_dir(char dir);
+t_vect2	calc_plane(t_vect2 dir, double fov_factor);
 void		initialize_player(t_map *map, t_player *player);
 int			is_player(char c);
 
@@ -65,11 +65,11 @@ void		strafe_player_right(t_game *game, double moveSpeed);
 
 //ray/calculate_ray.c
 double		calc_cameraX(int x);
-t_vector	calc_ray_dir(t_vector dir, t_vector plane, double cameraX);
+t_vect2	calc_ray_dir(t_vect2 dir, t_vect2 plane, double cameraX);
 void		set_ray_pos(t_ray *ray, t_game *game);
 void		calc_delta_dist(t_ray *ray);
 void		calc_step_dir(t_ray *ray);
-void		calc_side_dist(t_ray *ray, t_vector *player_pos);
+void		calc_side_dist(t_ray *ray, t_vect2 *player_pos);
 
 //ray/dda.c
 void		setup_dda(t_ray *ray, t_game *game);
@@ -110,8 +110,8 @@ void		print_game_map(char **map);
 
 //transform.c
 double		deg_to_rad(double degrees);
-void		rotate_vector(t_vector *vect, double angle);
-t_vector	normalize(t_vector vect);
+void		rotate_vector(t_vect2 *vect, double angle);
+t_vect2	normalize(t_vect2 vect);
 void		remove_newline(char *line);
 void		fill_with_spaces(char *dest, const char *src, int width);
 

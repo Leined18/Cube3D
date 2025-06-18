@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 08:56:52 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 10:21:10 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 16:48:35 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct	s_vector
 	double		x;
 	double		y;
 	double		z; // Puede ser útil para futuras expansiones, como 3D
-}				t_vector;
+}				t_vect2;
 
 typedef struct	s_coord
 {
@@ -37,9 +37,9 @@ typedef struct	s_coord
 
 typedef struct	s_player
 {
-	t_vector	pos;
-	t_vector	dir;
-	t_vector	plane;
+	t_vect2	pos;
+	t_vect2	dir;
+	t_vect2	plane;
 	double		pitch; // Puede ser útil para futuras expansiones, como 3D
 }				t_player;
 
@@ -104,10 +104,10 @@ typedef struct	s_screenline
 typedef struct	s_ray
 {
 	double			cameraX;		//Normalizacion de las columnas de pixels de la pantalla (-1 .. 0 .. 1)
-	t_vector		dir;			//vector que indica la direccion a donde va el rayo.
+	t_vect2		dir;			//vector que indica la direccion a donde va el rayo.
 	t_coord			map;			// posición actual en la grid/mapa
-	t_vector		delta_dist;		// distancia a recorrer para pasar a la siguiente línea X o Y
-	t_vector		side_dist;		// distancia acumulada desde el origen del rayo a la próxima línea X o Y
+	t_vect2		delta_dist;		// distancia a recorrer para pasar a la siguiente línea X o Y
+	t_vect2		side_dist;		// distancia acumulada desde el origen del rayo a la próxima línea X o Y
 	t_coord			step;			// dirección de incremento en X e Y
 	int				side;			// 0 si el muro es vertical, 1 si horizontal
 	int				hit;			// 0 si aun no ha chocado con un muro, 1 si ha chocado.

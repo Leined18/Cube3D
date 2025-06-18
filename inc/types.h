@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 13:05:57 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 17:04:17 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,31 @@ typedef struct s_vector
 {
     double  	x;
     double  	y;
-}	t_vector;
+}	t_vect2;
 
 typedef struct	s_screenline
 {
-	int			    start;
-	int			    end;
-	uint32_t	    color_wall;
-	uint32_t	    color_floor;
-	uint32_t	    color_ceiling;
-    mlx_texture_t	*texture;	// Textura del muro
-    mlx_texture_t	*texture_floor; // Textura del suelo
-    mlx_texture_t	*texture_ceiling; // Textura del techo
+	int			            start;
+	int			            end;
+	uint32_t	            color_wall;
+	uint32_t	            color_floor;
+	uint32_t	            color_ceiling;
+    mlx_texture_t	        *texture;	// Textura del muro
+    mlx_texture_t	        *texture_floor; // Textura del suelo
+    mlx_texture_t	        *texture_ceiling; // Textura del techo
+    t_vect2                 wall;	// Coordenada del muro en el espacio de la textura
+    t_vect2                 step;		// Paso de textura
+    t_vect2                 tex;	// Posición de la textura
 }				t_screenline;
 
 typedef struct	s_ray
 {
 	double			cameraX;		//Normalizacion de las columnas de pixels de la pantalla (-1 .. 0 .. 1)
-	t_vector		dir;			//vector que indica la direccion a donde va el rayo.
-    t_vector		map;			// posición actual en la grid/mapa
-	t_vector		delta_dist;		// distancia a recorrer para pasar a la siguiente línea X o Y
-	t_vector		side_dist;		// distancia acumulada desde el origen del rayo a la próxima línea X o Y
-    t_vector		step;			// dirección de incremento en X e Y
+	t_vect2		dir;			//vector que indica la direccion a donde va el rayo.
+    t_vect2		map;			// posición actual en la grid/mapa
+	t_vect2		delta_dist;		// distancia a recorrer para pasar a la siguiente línea X o Y
+	t_vect2		side_dist;		// distancia acumulada desde el origen del rayo a la próxima línea X o Y
+    t_vect2		step;			// dirección de incremento en X e Y
 	int				side;			// 0 si el muro es vertical, 1 si horizontal
 	int				hit;			// 0 si aun no ha chocado con un muro, 1 si ha chocado.
 	double			perpWallDist;	// distancia corregida hasta la pared perpendicular a plane.
@@ -73,9 +76,9 @@ typedef struct	s_textures
 
 typedef struct s_player
 {
-    t_vector            pos;
-    t_vector            dir;
-    t_vector            plane;
+    t_vect2            pos;
+    t_vect2            dir;
+    t_vect2            plane;
     double		        fov_degrees;
 	double		        fov_factor;
     double		        movspeed;

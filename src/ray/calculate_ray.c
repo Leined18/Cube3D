@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:54:21 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 10:25:53 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 16:48:35 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ double	calc_cameraX(int x)
 	return (2 * x / (double)render.screen_width - 1);
 }
 
-t_vector	calc_ray_dir(t_vector dir, t_vector plane, double cameraX)
+t_vect2	calc_ray_dir(t_vect2 dir, t_vect2 plane, double cameraX)
 {
-	t_vector	ray_dir;
+	t_vect2	ray_dir;
 
 	ray_dir.x = dir.x + plane.x * cameraX;
 	ray_dir.y = dir.y + plane.y * cameraX;
@@ -63,7 +63,7 @@ void	calc_step_dir(t_ray *ray)
 		ray->step.y = 1;
 }
 
-void	calc_side_dist(t_ray *ray, t_vector *player_pos)
+void	calc_side_dist(t_ray *ray, t_vect2 *player_pos)
 {
 	if (ray->step.x < 0)
 		ray->side_dist.x = (player_pos->x - ray->map.x) * ray->delta_dist.x;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 09:01:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/12 16:30:50 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:48:35 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	deg_to_rad(double degrees)
 	return (degrees * (M_PI / 180));
 }
 
-void	rotate_vector(t_vector *vect, double radians)
+void	rotate_vector(t_vect2 *vect, double radians)
 {
 	double	old_vect_x;
 
@@ -26,9 +26,9 @@ void	rotate_vector(t_vector *vect, double radians)
 	vect->y = old_vect_x * sin(radians) + vect->y * cos(radians);
 }
 
-t_vector	normalize(t_vector vect)
+t_vect2	normalize(t_vect2 vect)
 {
-	t_vector	result;
+	t_vect2	result;
 	double		length;
 	
 	length =sqrt(vect.x * vect.x + vect.y * vect.y);

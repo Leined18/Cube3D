@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 10:07:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/12 17:53:34 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:48:35 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ double	calc_fov_factor(double fov_degrees)
 	return (tanf(half_angle_rad));
 }
 
-t_vector	calc_player_dir(char dir)
+t_vect2	calc_player_dir(char dir)
 {
-	t_vector	player_dir;
+	t_vect2	player_dir;
 
 	if (dir == 'N' || dir == 'S')
 		player_dir.x = 0;
@@ -39,9 +39,9 @@ t_vector	calc_player_dir(char dir)
 	return (player_dir);
 }
 
-t_vector	calc_plane(t_vector dir, double fov_factor)
+t_vect2	calc_plane(t_vect2 dir, double fov_factor)
 {
-	t_vector	plane;
+	t_vect2	plane;
 
 	plane.x = -dir.y * fov_factor;
 	plane.y = dir.x * fov_factor;
