@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:47:30 by daniel            #+#    #+#             */
-/*   Updated: 2025/06/18 17:44:50 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 18:08:03 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ uint32_t get_pixel_texture(mlx_texture_t *texture, int x, int y)
 	uint8_t a = texture->pixels[i + 3];
 
 	// Devuelve el color empaquetado como uint32_t RGBA
-	return (a << 24 | r << 16 | g << 8 | b);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
 uint32_t darken_color(uint32_t color)
