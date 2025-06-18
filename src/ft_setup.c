@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_setup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 15:46:49 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 10:32:36 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,15 @@ int ft_create_render(t_render *render)
     return (1);
 }
 
-int ft_create_player(t_player *player)
+int ft_create_player(t_player *player, t_map *map)
 {
 	if (!player)
 		return (0);
-    player->fov_degrees = 60;
+    ft_init_player(player, map);
+    player->fov_degrees = FOV_DEGREES;
     player->fov_factor = ft_calc_fov_factor(player->fov_degrees);
+    player->movspeed = PLAYER_SPEED;
+    player->rotspeed = PLAYER_ROTATION_SPEED;
     player->plane = ft_calc_plane(player->dir, player->fov_factor);
     ft_mtnew("entity","player")->data = &player;
     return (1);
@@ -66,8 +69,7 @@ int	ft_setup(t_game *game, char *map_file)
 		return (ft_cleanup(game), 0);
 	if (!ft_create_map(map_file, &game->map))
 		return (ft_cleanup(game), 0);
-    ft_init_player(&game->player, &game->map);
-	if (!ft_create_player(&game->player))
+	if (!ft_create_player(&game->player, &game->map))
 		return (ft_cleanup(game), 0);
     if (!ft_create_render(&game->render))
 		return (ft_cleanup(game), 0);

@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 09:55:06 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 10:33:19 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void ft_on_game_loop(void *param)
 	g = (t_game *)param;
 	// upgrade_frameTime(&g->time);
 	// printf("Frame_time: %.3f - delta_time: %.3f\n", g->time.frameTime, g->data.mlx->delta_time);
-	moveSpeed = g->render.mlx->delta_time * 3.0;
-	rotSpeed = g->render.mlx->delta_time * 1.5;
+	moveSpeed = g->render.mlx->delta_time * g->player.movspeed; // Ajusta la velocidad de movimiento
+	rotSpeed = g->render.mlx->delta_time * g->player.rotspeed; // Ajusta la velocidad de rotación
 	handle_input(g, moveSpeed, rotSpeed);
 	cast_all_rays(g);
 	// Mostrar FPS (opcional)

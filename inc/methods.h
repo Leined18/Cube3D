@@ -28,6 +28,11 @@ void check_arg_cub(char *name);
 void wrong_generate_map_exit(char *message, int fd);
 void wrong_copy_map_exit(char **copy_array, int pos);
 
+// ==================== Texture Management ====================
+int     ft_load_texture(t_textures *texture);
+void    ft_free_texture(t_textures *texture);
+int     ft_init_textures(t_map *map);
+
 // ==================== Hooks Management ====================
 void    ft_on_destroy(void *param);
 void    ft_on_keypress(mlx_key_data_t keydata, void *param);

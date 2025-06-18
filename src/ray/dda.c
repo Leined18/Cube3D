@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:06:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:47 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:50:37 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	raycast_dda(t_ray *ray, t_game *g)
 	ray->hit = 0;
 	while (!ray->hit)
 	{
+		if (!g->map.matrix[(int)ray->map.y][(int)ray->map.x])
+			return; // No hay muro en la posición actual, salir del bucle.
 		if (ray->side_dist.x < ray->side_dist.y)
 		{
 			ray->side_dist.x += ray->delta_dist.x;
@@ -33,7 +35,7 @@ void	raycast_dda(t_ray *ray, t_game *g)
 		}
 		else
 		{
-			ray->side_dist.y += + ray->delta_dist.y;
+			ray->side_dist.y += ray->delta_dist.y;
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}

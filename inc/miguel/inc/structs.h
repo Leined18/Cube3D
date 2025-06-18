@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 08:56:52 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/12 18:25:06 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/18 10:21:10 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct	s_vector
 {
 	double		x;
 	double		y;
+	double		z; // Puede ser útil para futuras expansiones, como 3D
 }				t_vector;
 
 typedef struct	s_coord
@@ -39,6 +40,7 @@ typedef struct	s_player
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	plane;
+	double		pitch; // Puede ser útil para futuras expansiones, como 3D
 }				t_player;
 
 typedef struct	s_map

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 15:35:30 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:36:03 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,25 @@
 # define    TITLE "Cube3D"
 # define    TILE_SIZE 64
 # define    FPS 60
-# define    PLAYER_SPEED 0.1
+
+// Player configuration
+# define    PLAYER_SPEED 4.3
+# define    PLAYER_ROTATION_SPEED 2.05
+# define    FOV_DEGREES 77.0
+
+// Raycasting configuration
 #define     screenWidth 1920
 #define     screenHeight 1080
+#define     MAX_PITCH PI / 2
+# define    MIN_PITCH -PI / 2
+
+# define    ASSESTS_PATH "./assets/"
+# define    TEXTURE_NO ASSESTS_PATH "textures/no.png"
+# define    TEXTURE_SE ASSESTS_PATH "textures/se.png"
+# define    TEXTURE_WE ASSESTS_PATH "textures/we.png"
+# define    TEXTURE_EA ASSESTS_PATH "textures/ea.png"
+# define    TEXTURE_F  ASSESTS_PATH "textures/f.png"
+# define    TEXTURE_C  ASSESTS_PATH "textures/c.png"
 
 
 #endif

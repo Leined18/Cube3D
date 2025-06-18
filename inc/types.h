@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:12:39 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 # include "methods.h"
 # include "mt.h"
 # include "utils.h"
+
+typedef enum e_texture
+{
+    NO,
+    SE,
+    WE,
+    EA,
+    F,
+    C,
+    TEXTURE_COUNT
+}	t_texture;
 
 typedef struct s_vector
 {
@@ -52,12 +63,8 @@ typedef struct	s_ray
 
 typedef struct	s_textures
 {
-	char	*NO;
-	char	*SE;
-	char	*WE;
-	char	*EA;
-	char	*F;
-	char	*C;
+	char	        *path;
+    mlx_texture_t 	*texture;
 }				t_textures;
 
 typedef struct s_player
@@ -67,6 +74,8 @@ typedef struct s_player
     t_vector            plane;
     double		        fov_degrees;
 	double		        fov_factor;
+    double		        movspeed;
+    double		        rotspeed;
     t_mt       *objs;
 }	t_player;
 
@@ -75,11 +84,10 @@ typedef struct s_map
     size_t		    map_width;
     size_t		    map_height;
     int			    player_count;
-	t_list		*map_list;
-    char	    **matrix;
-    // char	    *path;
-    
+	t_list		    *map_list;
+    char	        **matrix;
     bool		minimap_bool;
+    t_textures      textures[TEXTURE_COUNT];
     t_mt    *objs;
 }	t_map;
 
@@ -91,7 +99,6 @@ typedef struct s_render
     int		        screen_height;
     // int		        angle;
 	// int		        fps;
-    t_textures      textures;
     t_mt	*objs;
 }	t_render;
 
