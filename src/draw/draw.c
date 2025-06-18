@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 16:33:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 13:44:12 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 18:04:10 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	draw_ceiling(mlx_image_t* img, int x, t_screenline draw)
 		{
 			tex_x = (int)(draw.texture_ceiling->width * (x % draw.texture_ceiling->width) / screenWidth);
 			tex_y = (int)(index * draw.texture_ceiling->height / draw.start);
-			draw.color_ceiling = get_pixel_texture(draw.texture_ceiling, tex_x, tex_y);
+			*draw.color_ceiling = get_pixel_texture(draw.texture_ceiling, tex_x, tex_y);
 		}
-		mlx_put_pixel(img, x, index, draw.color_ceiling);
+		mlx_put_pixel(img, x, index, *draw.color_ceiling);
 		index++;
 	}
 }
@@ -45,9 +45,9 @@ static void	draw_floor(mlx_image_t* img, int x, t_screenline draw)
 		{
 			tex_x = (int)(draw.texture_floor->width * (x % draw.texture_floor->width) / screenWidth);
 			tex_y = (int)((index - draw.end - 1) * draw.texture_floor->height / (screenHeight - draw.end - 1));
-			draw.color_floor = get_pixel_texture(draw.texture_floor, tex_x, tex_y);
+			*draw.color_floor = get_pixel_texture(draw.texture_floor, tex_x, tex_y);
 		}
-		mlx_put_pixel(img, x, index, draw.color_floor);
+		mlx_put_pixel(img, x, index, *draw.color_floor);
 		index++;
 	}
 }
@@ -97,6 +97,6 @@ void	calc_draw_line(t_game *g, t_ray *ray)
 		ray->draw.end = screenHeight - 1;
 	ray->draw.texture = g->map.textures[ray->side].texture;
 	ray->draw.color_wall = set_color_line(g, ray->map, ray->side);
-	ray->draw.color_floor = g->map.textures[F].color;
-	ray->draw.color_ceiling = g->map.textures[C].color;
+	ray->draw.color_floor = &g->map.textures[F].color;
+	ray->draw.color_ceiling = &g->map.textures[C].color;
 }

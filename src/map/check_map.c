@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:02:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:46 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 17:58:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	generate_map_array(t_game *g)
 
 	g->map.matrix = ft_calloc(g->map.map_height + 1, sizeof(char *));
 	if (g->map.matrix == NULL)
-		return (ft_cleanup(g), -1);
+		return (free_all(g, NULL, "allocating memory for map array"));
 	current_node = g->map.map_list;
 	i = 0;
 	while (current_node)
@@ -28,8 +28,8 @@ int	generate_map_array(t_game *g)
 		line = current_node->content;
 		g->map.matrix[i] =ft_calloc(g->map.map_width + 1, sizeof(char));
 		if (g->map.matrix[i] == NULL)
-			return (ft_cleanup(g), -1);
-		fill_with_spaces(g->map.matrix[i], line, g->map.map_width);	
+			return (free_all(g, NULL, "allocating memory for map array line"));
+		fill_with_spaces(g->map.matrix[i], line, g->map.map_width);
 		current_node = current_node->next;
 		i++;
 	}
@@ -54,7 +54,7 @@ int check_map_closed(t_game *g, size_t height, size_t width)
 				if (y == 0 || y == height - 1 || x == 0 || x == width - 1
 						|| map[y - 1][x] == ' ' || map[y + 1][x] == ' '
 						|| map[y][x - 1] == ' ' || map[y][x + 1] == ' ')
-					return (ft_cleanup(g), -1);
+					return (free_all(g, NULL, "Map must be closed with walls"));
 			}
 			x++;
 		}
@@ -63,7 +63,7 @@ int check_map_closed(t_game *g, size_t height, size_t width)
 	return (0);
 }
 
-int	check_map_elems(t_game *g, size_t height, size_t width)
+int	check_map_border(t_game *g, size_t height, size_t width)
 {
 	size_t		y;
 	size_t		x;
@@ -77,13 +77,13 @@ int	check_map_elems(t_game *g, size_t height, size_t width)
 		while (x < g->map.map_width)
 		{
 			if (map[0][x] != '1' && map[0][x] != ' ')
-				return (ft_cleanup(g), -1);
+				return (free_all(g, NULL, "Map must be surrounded by walls"));
 			if (map[height - 1][x] != '1' && map[height - 1][x] != ' ')
-				return (ft_cleanup(g), -1);
+				return (free_all(g, NULL, "Map must be surrounded by walls"));
 			if (map[y][0] != '1' && map[y][0] != ' ')
-				return (ft_cleanup(g), -1);
+				return (free_all(g, NULL, "Map must be surrounded by walls"));
 			if (map[y][width - 1] != '1' && map[y][width - 1] != ' ')
-				return (ft_cleanup(g), -1);
+				return (free_all(g, NULL, "Map must be surrounded by walls"));
 			x++;
 		}
 		y++;
@@ -91,15 +91,16 @@ int	check_map_elems(t_game *g, size_t height, size_t width)
 	return (0);
 }
 
-/* int	check_map(t_game *g)
+int	check_map(t_game *g)
 {
 	if (g->map.player_count != 1)
-		return (free_parse_all(g, "Error\nMap must have exactly one player"));
+		return (free_all(g, NULL, "Error\nMap must have exactly one player"));
 	if (generate_map_array(g) < 0)
 		return (-1);
-	if (check_map_elems(g, g->map.height, g->map.width) < 0)
+	print_game_map(g->map.matrix);
+	if (check_map_border(g, g->map.map_height, g->map.map_width) < 0)
 		return (-1);
-	if (check_map_closed(g, g->map.height, g->map.width) < 0)
+	if (check_map_closed(g, g->map.map_height, g->map.map_width) < 0)
 		return (-1);
 	return (0);
-} */
+}

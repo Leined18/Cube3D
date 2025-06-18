@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 13:05:57 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 17:40:55 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef enum e_texture
 {
     NO,
-    SE,
+    SO,
     WE,
     EA,
     F,
@@ -42,8 +42,8 @@ typedef struct	s_screenline
 	int			    start;
 	int			    end;
 	uint32_t	    color_wall;
-	uint32_t	    color_floor;
-	uint32_t	    color_ceiling;
+	uint32_t	    *color_floor;
+	uint32_t	    *color_ceiling;
     mlx_texture_t	*texture;	// Textura del muro
     mlx_texture_t	*texture_floor; // Textura del suelo
     mlx_texture_t	*texture_ceiling; // Textura del techo

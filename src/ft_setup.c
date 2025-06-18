@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_setup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 10:32:36 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 18:07:00 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ int	ft_setup(t_game *game, char *map_file)
 	if (!game || !map_file)
 		return (0);
     ft_bzero(game, sizeof(t_game));
+    ft_printf("llego aqui\n");
+    if (parse_file(map_file, game) < 0)
+    {
+        ft_printf("Error parsing %s\n", map_file);
+        exit(EXIT_FAILURE);
+    }
+    ft_printf("llego aqui2\n");
 	game->backup = ft_backup_static(1, true, false);
 	if (!game->backup)
 		return (ft_cleanup(game), 0);

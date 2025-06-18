@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 10:55:58 by daniel            #+#    #+#             */
-/*   Updated: 2025/06/18 13:17:54 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 18:04:26 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int ft_init_textures(t_map *map)
     if (!map)
         return (0);
     map->textures[NO].path = TEXTURE_NO;
-    map->textures[SE].path = TEXTURE_SE;
+    map->textures[SO].path = TEXTURE_SE;
     map->textures[WE].path = TEXTURE_WE;
     map->textures[EA].path = TEXTURE_EA;
     map->textures[F].path = TEXTURE_F;

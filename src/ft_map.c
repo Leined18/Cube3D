@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:03 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 11:57:44 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/18 17:44:51 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void ft_cleanup_map(t_map *map)
         free_2d(map->matrix);
         map->matrix = NULL;
     }
+    ft_lstclear(&map->map_list, free);
     i = 0;
 	while (i < TEXTURE_COUNT && map->textures[i].texture)
     {
