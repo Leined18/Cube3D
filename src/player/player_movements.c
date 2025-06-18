@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 13:33:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/16 14:50:07 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 09:55:58 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	move_player_forward(t_game *game, double moveSpeed)
 	double	new_x;
 	double	new_y;
 
-	new_x = game->player.pos.x - game->player.plane.x * moveSpeed;
-	new_y = game->player.pos.y - game->player.plane.y * moveSpeed;
+	new_x = game->player.pos.x + game->player.dir.x * moveSpeed;
+	new_y = game->player.pos.y + game->player.dir.y * moveSpeed;
 	// Mover en X si no hay pared en la posición nueva en X pero misma Y
 	if (game->map.matrix[(int)game->player.pos.y][(int)new_x] == '0')
 		game->player.pos.x = new_x;
@@ -39,8 +39,8 @@ void	move_player_backward(t_game *game, double moveSpeed)
 	double	new_x;
 	double	new_y;
 
-	new_x = game->player.pos.x - game->player.plane.x * moveSpeed;
-	new_y = game->player.pos.y - game->player.plane.y * moveSpeed;
+	new_x = game->player.pos.x - game->player.dir.x * moveSpeed;
+	new_y = game->player.pos.y - game->player.dir.y * moveSpeed;
 	// Mover en X si no hay pared en la posición nueva en X pero misma Y
 	if (game->map.matrix[(int)game->player.pos.y][(int)new_x] == '0')
 		game->player.pos.x = new_x;

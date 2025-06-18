@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 15:49:04 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 09:41:52 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int ft_launch_game(t_game *game)
 	mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
 	cast_all_rays(game);
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
-	//mlx_loop_hook(game->render.mlx, ft_on_game_loop, game);
+	mlx_loop_hook(game->render.mlx, ft_on_game_loop, game);
 	mlx_loop(game->render.mlx);
 	return (1);
 }

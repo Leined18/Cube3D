@@ -3,24 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:03 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 09:37:19 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int ft_get_width(char **map, int height)
+size_t ft_get_width(char **map, size_t height)
 {
-    int	width;
-    int length;
-    int	i;
+    size_t	width;
+    size_t length;
+    size_t	i;
 
     if (!map || height <= 0)
         return (0);
     i = 0;
+    width = 0;
     while (i < height && map[i])
     {
         length = ft_strlen(map[i]);

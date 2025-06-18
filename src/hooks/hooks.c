@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 09:55:06 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,9 @@ void handle_input(t_game *g, double moveSpeed, double rotSpeed)
 	if (g->input.move_right)
 		strafe_player_right(g, moveSpeed);
 	if (g->input.rotate_left)
-		(void)rotSpeed;
-		//rotate_player(g, -rotSpeed);
+		rotate_player(g, -rotSpeed);
 	if (g->input.rotate_right)
-		(void)rotSpeed;
-		//rotate_player(g, rotSpeed);
+		rotate_player(g, rotSpeed);
 }
 
 void ft_on_game_loop(void *param)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 10:07:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/16 15:36:03 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/18 09:46:04 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	ft_init_player(t_player *player, t_map *map)
 
 	y = 0;
 	found = 0;
-	ft_bzero(player, sizeof(t_player));
 	while (!found && map->matrix[y])
 	{
 		x = 0;
