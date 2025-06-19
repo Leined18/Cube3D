@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ray_compute_distance.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 13:22:49 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/19 10:27:46 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/19 09:37:39 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/19 10:30:41 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "ray.h"
 
-/* ==================== 1 ==================== */
-
-/* ==================== 2 ==================== */
-
-#endif
+void ray_compute_distance(t_ray_hit *ray, t_vect2 pos)
+{
+    if (ray->side == 0)
+        ray->perp_wall_dist = (ray->map_pos.x - pos.x + (1 - ray->step.x) / 2) / ray->ray_dir.x;
+    else
+        ray->perp_wall_dist = (ray->map_pos.y - pos.y + (1 - ray->step.y) / 2) / ray->ray_dir.y;
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 10:55:58 by daniel            #+#    #+#             */
-/*   Updated: 2025/06/18 13:17:54 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/19 11:04:56 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,8 @@ int ft_init_textures(t_map *map)
 {
     if (!map)
         return (0);
-    map->textures[NO].path = TEXTURE_NO;
-    map->textures[SE].path = TEXTURE_SE;
-    map->textures[WE].path = TEXTURE_WE;
-    map->textures[EA].path = TEXTURE_EA;
-    map->textures[F].path = TEXTURE_F;
-    map->textures[C].path = TEXTURE_C;
-    map->textures[F].color = 0xFFFFFF; // Default color for floor
-    map->textures[C].color = 0x000000; // Default color for ceiling
     int i = 0;
-    while (i < TEXTURE_COUNT)
+    while (i < TEXTURE_COUNT - 2) // Exclude F and C
     {
         if (!ft_load_texture(&map->textures[i]))
             return (ft_error("Error: Failed to load texture\n", 0), 0);

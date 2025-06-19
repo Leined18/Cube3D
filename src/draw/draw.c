@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:42:52 by daniel            #+#    #+#             */
-/*   Updated: 2025/06/18 17:42:53 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/19 11:12:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ void	calc_draw_line(t_game *g, t_ray *ray)
 	ray->draw.end = ft_clamp(screenHeight / 2 + lineheight / 2, 0, screenHeight - 1);
 	ray->draw.texture = g->map.textures[ray->side].texture;
 	ray->draw.color_wall = set_color_line(g, ray->map, ray->side);
-	ray->draw.color_floor = g->map.textures[F].color;
-	ray->draw.color_ceiling = g->map.textures[C].color;
+	ray->draw.texture_floor = g->map.textures[F].texture;	
+	ray->draw.texture_ceiling = g->map.textures[C].texture;
+	ray->draw.color_floor = &g->map.textures[F].color;
+	ray->draw.color_ceiling = &g->map.textures[C].color;
 	
 	if (ray->side == 0)
 		ray->draw.wall.x = g->player.pos.y + ray->perpWallDist * ray->dir.y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:03 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 11:57:44 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/19 11:12:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ char **ft_load_map(const char *path, size_t *width, size_t *height)
  * @path The path to the map file.
  */
 
-int ft_create_map(const char *path, t_map *map)
+int ft_set_map(t_map *map)
 {
-    ft_bzero(map, sizeof(t_map));
-    map->matrix = ft_load_map(path, &map->map_width, &map->map_height);
-    if (!map->matrix)
-        return (0);
+    // ft_bzero(map, sizeof(t_map));
+    // map->matrix = ft_load_map(path, &map->map_width, &map->map_height);
+    // if (!map->matrix)
+    //     return (0);
     if (!ft_init_textures(map))
         return (ft_cleanup_map(map), 0);
     ft_mtnew("map", "map_width")->data = &map->map_width;
@@ -128,6 +128,7 @@ void ft_cleanup_map(t_map *map)
         free_2d(map->matrix);
         map->matrix = NULL;
     }
+    ft_lstclear(&map->map_list, free);
     i = 0;
 	while (i < TEXTURE_COUNT && map->textures[i].texture)
     {

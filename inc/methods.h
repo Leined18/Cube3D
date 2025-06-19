@@ -1,5 +1,17 @@
-#ifndef MTMETHODS_H
-# define MTMETHODS_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   methods.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/19 11:05:05 by danpalac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef METHODS_H
+# define METHODS_H
 
 # include "libft.h"
 # include "MLX42.h"
@@ -11,6 +23,10 @@ void    ft_cleanup_player(t_player *player);
 void    ft_cleanup_render(t_render *render);
 void    ft_cleanup_map(t_map *map);
 
+// ==================== Parsing ====================
+int     parse_file(char *map_name, t_game *game);
+int	    free_all(t_game *game, char **tokens, char *message);
+
 // ==================== Render Management ====================
 
 void    ft_render_frame(void *param);
@@ -19,14 +35,14 @@ void    ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player);
 // ==================== Player Management ====================
 
 // ===================== Map Management ====================
-
-int   ft_create_map(const char *path, t_map *map);
+int         ft_set_map(t_map *map);
 char  **ft_load_map(const char *path, size_t *width, size_t *height);
 void  ft_cleanup_map(t_map *map);
 void wrong_map_exit(char *buffer, char *message, int need_free);
 void check_arg_cub(char *name);
 void wrong_generate_map_exit(char *message, int fd);
 void wrong_copy_map_exit(char **copy_array, int pos);
+int		check_map(t_game *g);
 
 // ==================== Texture Management ====================
 int     ft_load_texture(t_textures *texture);
@@ -41,14 +57,8 @@ void    ft_on_game_loop(void *param);
 
 // ==================== Minimap Management ====================
 
-void    ft_draw_tile(mlx_t *mlx, int x, int y, int color);
-int     ft_draw_player_on_minimap(mlx_t *mlx, t_player *player);
-int     ft_draw_minimap_grid(mlx_t *mlx, t_map *map);
-mlx_image_t *ft_create_minimap_image(mlx_t *mlx, t_map map);
-int     ft_create_minimap_viewport(mlx_t *mlx, t_map *map, t_player *player);
 char    ft_get_map_tile(int x, int y);
 void    ft_set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
-void    ft_set_minimap_scale(mlx_image_t *img, float scale);
 
 // ==================== Player Movements ====================
 void    rotate_player(t_game *game, double angle);
@@ -56,6 +66,7 @@ void    move_player_forward(t_game *game, double moveSpeed);
 void    move_player_backward(t_game *game, double moveSpeed);
 void    strafe_player_left(t_game *game, double moveSpeed);
 void    strafe_player_right(t_game *game, double moveSpeed);
+
 // ==================== Raycasting ====================
 void    cast_all_rays(t_game *g);
 // ==================== Ray Management ====================
@@ -84,8 +95,8 @@ double     calc_texture_y(int y, int start, int height, int texture_height);
 
 // ==================== Drawing Colors ====================
 
-uint32_t	get_ceiling_color(t_screenline *draw, int x, int y);
-uint32_t	get_floor_color(t_screenline *draw, int x, int y);
+uint32_t	get_ceiling_color(t_screenline *draw);
+uint32_t	get_floor_color(t_screenline *draw);
 uint32_t	get_wall_color(t_screenline *draw, int y);
 
 // ==================== Pixel Management ====================
@@ -123,6 +134,7 @@ void	secure_close(int fd);
 // ==================== Color ====================
 uint32_t	set_color_line(t_game *g, t_vect2 map, int wall_side);
 uint32_t	darken_color(uint32_t color);
+int			set_surface_color(t_game *g, char surface);
 
 // ==================== Game Setup ===================  
 
