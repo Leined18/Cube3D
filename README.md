@@ -50,7 +50,7 @@ make
 Una vez compilado, ejecuta el juego así:
 
 ```bash
-./cube3d assets/maps/map1.cub
+./cube3d assets/maps/scene_1.cub
 ```
 
 Usa las teclas para moverte por el mapa renderizado en 3D.
