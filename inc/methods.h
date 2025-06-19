@@ -11,6 +11,10 @@ void    ft_cleanup_player(t_player *player);
 void    ft_cleanup_render(t_render *render);
 void    ft_cleanup_map(t_map *map);
 
+// ==================== Parsing ====================
+int     parse_file(char *map_name, t_game *game);
+int	    free_all(t_game *game, char **tokens, char *message);
+
 // ==================== Render Management ====================
 
 void    ft_render_frame(void *param);
@@ -20,13 +24,14 @@ void    ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player);
 
 // ===================== Map Management ====================
 
-int   ft_create_map(const char *path, t_map *map);
+int   ft_create_map(t_map *map);
 char  **ft_load_map(const char *path, size_t *width, size_t *height);
 void  ft_cleanup_map(t_map *map);
 void wrong_map_exit(char *buffer, char *message, int need_free);
 void check_arg_cub(char *name);
 void wrong_generate_map_exit(char *message, int fd);
 void wrong_copy_map_exit(char **copy_array, int pos);
+int		check_map(t_game *g);
 
 // ==================== Texture Management ====================
 int     ft_load_texture(t_textures *texture);
@@ -123,6 +128,7 @@ void	secure_close(int fd);
 // ==================== Color ====================
 uint32_t	set_color_line(t_game *g, t_vect2 map, int wall_side);
 uint32_t	darken_color(uint32_t color);
+int			set_surface_color(t_game *g, char surface);
 
 // ==================== Game Setup ===================  
 
