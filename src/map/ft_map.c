@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:03 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 19:03:55 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/19 11:12:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char **ft_load_map(const char *path, size_t *width, size_t *height)
  * @path The path to the map file.
  */
 
-int ft_create_map(t_map *map)
+int ft_set_map(t_map *map)
 {
     // ft_bzero(map, sizeof(t_map));
     // map->matrix = ft_load_map(path, &map->map_width, &map->map_height);

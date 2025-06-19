@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_setup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 19:04:02 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/19 11:12:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ mlx_t *ft_create_mlx(t_render render)
     if (render.screen_width <= 0 || render.screen_height <= 0)
         return (NULL);
     mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	mlx_set_setting(MLX_FULLSCREEN, true);
+	mlx_set_setting(MLX_FULLSCREEN, false);
     mlx = mlx_init(render.screen_width, render.screen_height, TITLE, true);
     if (!mlx)
         return (NULL);
@@ -72,11 +72,8 @@ int	ft_setup(t_game *game, char *map_file)
 	game->backup = ft_backup_static(1, true, false);
 	if (!game->backup)
 		return (ft_cleanup(game), 0);
-	if (!ft_create_map(&game->map)) //llamarlo algo como init_textures
+	if (!ft_set_map(&game->map)) //llamarlo algo como init_textures
 		return (ft_cleanup(game), 0);
-    ft_mtnew("map", "map_width")->data = &game->map.map_width; //quizás juntar todo en una funcion.
-    ft_mtnew("map", "map_height")->data = &game->map.map_height;
-    ft_mtnew("map", "map_struct")->data = &game->map;
 	if (!ft_create_player(&game->player, &game->map))
 		return (ft_cleanup(game), 0);
     if (!ft_create_render(&game->render))

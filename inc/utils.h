@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:22:49 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/10 13:00:51 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:27:46 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MTUTILS_H
-# define MTUTILS_H
-
-# include "cube3d.h"
+#ifndef UTILS_H
+# define UTILS_H
 
 /* ==================== 1 ==================== */
 

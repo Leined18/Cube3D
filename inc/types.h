@@ -6,17 +6,15 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/19 10:16:13 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:25:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
-
 # include "MLX42.h"
 # include "libft.h"
-# include "methods.h"
 # include "mt.h"
 # include "utils.h"
 
@@ -42,8 +40,8 @@ typedef struct	s_screenline
 	int			            start;
 	int			            end;
 	uint32_t	            color_wall;
-	uint32_t	            color_floor;
-	uint32_t	            color_ceiling;
+	uint32_t	            *color_floor;
+	uint32_t	            *color_ceiling;
     mlx_texture_t	        *texture;	// Textura del muro
     mlx_texture_t	        *texture_floor; // Textura del suelo
     mlx_texture_t	        *texture_ceiling; // Textura del techo
