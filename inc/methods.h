@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/25 15:30:32 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/25 18:26:34 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void    ft_cleanup_map(t_map *map);
 // ==================== Parsing ====================
 int     parse_file(char *map_name, t_game *game);
 int	    free_all(t_game *game, char **tokens, char *message);
+char	*remove_spaces(char *str);
 
 // ==================== Render Management ====================
 
