@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/19 11:05:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:11:51 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int     ft_init_textures(t_map *map);
 void    ft_on_destroy(void *param);
 void    ft_on_keypress(mlx_key_data_t keydata, void *param);
 void    ft_on_game_loop(void *param);
+void    ft_handle_input(t_game *g, double moveSpeed, double rotSpeed);
 // ==================== Game Management ====================
 
 // ==================== Minimap Management ====================
@@ -70,12 +71,13 @@ void    strafe_player_right(t_game *game, double moveSpeed);
 // ==================== Raycasting ====================
 void    cast_all_rays(t_game *g);
 // ==================== Ray Management ====================
-void    setup_dda(t_ray *ray, t_game *game);
-void    raycast_dda(t_ray *ray, t_game *g);
+int     ft_raycast_dda(t_ray *ray, t_game *g);
+int     ft_set_ray(t_ray *ray, int x, t_game *g);
+
 // ==================== Ray Calculation ====================
 double  calc_cameraX(int x);
 t_vect2 calc_ray_dir(t_vect2 dir, t_vect2 plane, double cameraX);
-void    set_ray_pos(t_ray *ray, t_game *game);
+void    set_ray_pos(t_ray *ray, int x, int y);
 void    calc_delta_dist(t_ray *ray);
 void    calc_step_dir(t_ray *ray);
 void    calc_side_dist(t_ray *ray, t_vect2 *player_pos);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:02:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 18:53:05 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/25 10:45:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	generate_map_array(t_game *g)
+static int	generate_map_array(t_game *g)
 {
 	t_list	*current_node;
 	char	*line;
@@ -36,7 +36,7 @@ int	generate_map_array(t_game *g)
 	return (0);
 }
 
-int check_map_closed(t_game *g, size_t height, size_t width)
+static int check_map_closed(t_game *g, size_t height, size_t width)
 {
 	size_t		y;
 	size_t		x;
@@ -63,7 +63,7 @@ int check_map_closed(t_game *g, size_t height, size_t width)
 	return (0);
 }
 
-int	check_map_border(t_game *g, size_t height, size_t width)
+static int	check_map_border(t_game *g, size_t height, size_t width)
 {
 	size_t		y;
 	size_t		x;

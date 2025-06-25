@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_render.c                                        :+:      :+:    :+:   */
+/*   ray_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 10:43:30 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:46 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/25 11:01:50 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/25 11:14:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void ft_render_frame(void *param)
+int ft_set_ray(t_ray *ray,  int x, t_game *g)
 {
-    t_game *g;
-    
-    g = (t_game *)param;
-    if (!g)
-        return;
-    usleep(10000000 / FPS); // Simulate frame rate (60 FPS)
-    ft_printf("fps: %d\n", FPS);
+    if (!ray || !g || !g->map.matrix)
+        return (0); // Validación de entrada
+    ft_bzero(ray, sizeof(t_ray)); // Limpiar la estructura del rayo
+    ray->cameraX = calc_cameraX(x);
+	ray->dir = calc_ray_dir(g->player.dir, g->player.plane, ray->cameraX);
+    return (1);
 }

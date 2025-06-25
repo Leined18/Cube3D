@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 10:07:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 16:48:35 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/25 10:49:25 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +53,4 @@ int	is_player(char c)
 	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-void	ft_init_player(t_player *player, t_map *map)
-{
-	int		y;
-	int		x;
-	int		found;
 
-	y = 0;
-	found = 0;
-	while (!found && map->matrix[y])
-	{
-		x = 0;
-		while (!found && map->matrix[y][x] && map->matrix[y][x] != '\n')
-		{
-			if (is_player(map->matrix[y][x]))
-			{
-				player->pos.x = x + 0.5;
-				player->pos.y = y + 0.5;
-				player->dir = ft_calc_player_dir(map->matrix[y][x]);
-				map->matrix[y][x] = '0'; // quitar el simbolo de inicio del jugador del mapa.
-				found = 1;
-			}
-			x++;
-		}
-		y++;
-	}
-}

@@ -1,8 +1,6 @@
 
 #include "cube3d.h"
 
-
-
 void ft_cleanup_player(t_player *player)
 {
 	if (!player)

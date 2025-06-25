@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/19 10:25:36 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/25 10:58:02 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ typedef struct	s_screenline
 typedef struct	s_ray
 {
 	double			cameraX;		//Normalizacion de las columnas de pixels de la pantalla (-1 .. 0 .. 1)
-	t_vect2		dir;			//vector que indica la direccion a donde va el rayo.
-    t_vect2		map;			// posición actual en la grid/mapa
-	t_vect2		delta_dist;		// distancia a recorrer para pasar a la siguiente línea X o Y
-	t_vect2		side_dist;		// distancia acumulada desde el origen del rayo a la próxima línea X o Y
-    t_vect2		step;			// dirección de incremento en X e Y
+	t_vect2		    dir;			//vector que indica la direccion a donde va el rayo.
+    t_vect2		    pos;			// posición actual en la grid/mapa
+	t_vect2		    delta_dist;		// distancia a recorrer para pasar a la siguiente línea X o Y
+	t_vect2		    side_dist;		// distancia acumulada desde el origen del rayo a la próxima línea X o Y
+    t_vect2		    step;			// dirección de incremento en X e Y
 	int				side;			// 0 si el muro es vertical, 1 si horizontal
 	int				hit;			// 0 si aun no ha chocado con un muro, 1 si ha chocado.
 	double			perpWallDist;	// distancia corregida hasta la pared perpendicular a plane.

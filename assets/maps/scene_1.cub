@@ -4,8 +4,8 @@ NO         ./assets/textures/no.png
 WE ./assets/textures/we.png
 EA ./assets/textures/ea.png
 
-F     255    ,    242     ,    234
-C     14     ,     14    ,     49
+F     255,242,234
+C     14,14,49
 
 1111111111
 1000000001

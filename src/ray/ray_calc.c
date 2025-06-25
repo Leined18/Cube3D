@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_ray.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:54:21 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 16:48:35 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/25 10:59:15 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ t_vect2	calc_ray_dir(t_vect2 dir, t_vect2 plane, double cameraX)
 	ray_dir.x = dir.x + plane.x * cameraX;
 	ray_dir.y = dir.y + plane.y * cameraX;
 	return (normalize(ray_dir));
-}
-
-void	set_ray_pos(t_ray *ray, t_game *game)
-{
-	ray->map.x = (int)game->player.pos.x;
-	ray->map.y = (int)game->player.pos.y;
 }
 
 void	calc_delta_dist(t_ray *ray)
@@ -66,15 +60,15 @@ void	calc_step_dir(t_ray *ray)
 void	calc_side_dist(t_ray *ray, t_vect2 *player_pos)
 {
 	if (ray->step.x < 0)
-		ray->side_dist.x = (player_pos->x - ray->map.x) * ray->delta_dist.x;
+		ray->side_dist.x = (player_pos->x - ray->pos.x) * ray->delta_dist.x;
 	else if (ray->step.x > 0)
-		ray->side_dist.x = (ray->map.x + 1.0 - player_pos->x) * ray->delta_dist.x;
+		ray->side_dist.x = (ray->pos.x + 1.0 - player_pos->x) * ray->delta_dist.x;
 	else
 		ray->side_dist.x = INFINITY;
 	if (ray->step.y < 0)
-		ray->side_dist.y = (player_pos->y - ray->map.y) * ray->delta_dist.y;
+		ray->side_dist.y = (player_pos->y - ray->pos.y) * ray->delta_dist.y;
 	else if (ray->step.y > 0)
-		ray->side_dist.y = (ray->map.y + 1.0 - player_pos->y) * ray->delta_dist.y;
+		ray->side_dist.y = (ray->pos.y + 1.0 - player_pos->y) * ray->delta_dist.y;
 	else
 		ray->side_dist.y = INFINITY;
 }
