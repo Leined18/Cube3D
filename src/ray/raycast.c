@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:45:42 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 11:15:30 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:45:44 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	cast_all_rays(t_game *g)
 		if (!ft_raycast_dda(&ray, g))
 			printf("DDA failed for column %d\n", x);
 		calc_draw_line(g, &ray);
-		draw_vertical_line(g->render.img, x, ray.draw, ray.side);
+		if (TEXTURES)
+			calc_tex_inf(g, &ray);
+		draw_vertical_line(g, x, ray.draw, &ray.tex_info);
+		// draw_vertical_line(g->render.img, x, ray.draw, ray.side);
 		x++;
 	}
 }

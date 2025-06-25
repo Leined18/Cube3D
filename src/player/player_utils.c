@@ -1,0 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/25 15:29:13 by mvidal-h          #+#    #+#             */
+/*   Updated: 2025/06/25 15:30:03 by mvidal-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cube3d.h"
+
+int	is_player(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+}
+
+int	is_wall(t_game *g, double x, double y)
+{
+	return (g->map.matrix[(int)y][(int)x] != '0');
+}
+
+void	can_walk(t_game *game, double new_x, double new_y, t_vect2 dir)
+{
+	// Mover en X si no hay pared en la posición nueva en X con misma Y
+	if (!is_wall(game, new_x + MARGIN_WALL * sign(dir.x), game->player.pos.y))
+		game->player.pos.x = new_x;
+	// Mover en Y si no hay pared en la posición nueva en Y con misma X
+	if (!is_wall(game, game->player.pos.x, new_y + MARGIN_WALL * sign(dir.y)))
+		game->player.pos.y = new_y;
+}

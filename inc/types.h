@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/25 10:58:02 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:35:14 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	s_screenline
 {
 	int			            start;
 	int			            end;
+    int			            lineheight;
 	uint32_t	            color_wall;
 	uint32_t	            *color_floor;
 	uint32_t	            *color_ceiling;
@@ -50,6 +51,16 @@ typedef struct	s_screenline
     t_vect2                 tex;	// Posición de la textura
 }				t_screenline;
 
+typedef struct	s_tex_inf
+{
+	int				tx_dir;		// id de la textura a usar para pintar el muro.
+	mlx_texture_t	*mlx_tx;	// Puntero a la textura que indica tx_dir.
+	double			wallX;		// Punto exacto de impacto del rayo dentro de la celda del muro (0.0 - 1.0)
+	t_vect2			tx;			// Columna de textura que se usará para esta franja vertical
+	double			tx_step;	// Cuántos píxeles de textura avanzamos por cada píxel vertical en pantalla
+	double			tx_pos;		// Posición inicial en la textura.
+	int				pixel_index; // Índice del píxel en la textura (para acceder a los colores)
+}				t_tex_inf;
 typedef struct	s_ray
 {
 	double			cameraX;		//Normalizacion de las columnas de pixels de la pantalla (-1 .. 0 .. 1)
@@ -62,6 +73,7 @@ typedef struct	s_ray
 	int				hit;			// 0 si aun no ha chocado con un muro, 1 si ha chocado.
 	double			perpWallDist;	// distancia corregida hasta la pared perpendicular a plane.
 	t_screenline	draw;			// inicio y final de pintado de una linea de pantalla respecto a la distancia del muro.
+    t_tex_inf		tex_info;		// Información de textura para pintar el muro.
 }				t_ray;
 
 

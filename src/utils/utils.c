@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:28:20 by daniel            #+#    #+#             */
-/*   Updated: 2025/06/18 17:34:11 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/25 15:23:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,10 @@ int	ft_max(int a, int b)
 float	ft_lerp(float a, float b, float t)
 {
 	return (a + (b - a) * t);
+}
+
+// Sign function: returns -1 for negative, 1 for positive, and 0 for zero
+int sign(double x)
+{
+	return (x > 0) - (x < 0);
 }

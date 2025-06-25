@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/19 10:15:37 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:42:07 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@
 # define    FPS 60
 
 //configuration 
-# define    TEXTURES TRUE
-# define    MINIMAP FALSE
-# define    DEBUG FALSE
+# define    TEXTURES true
+# define    MINIMAP false
+# define    DEBUG false
 
 // Player configuration
 # define    PLAYER_SPEED 4.3
 # define    PLAYER_ROTATION_SPEED 2.05
 # define    FOV_DEGREES 77.0
+# define	MARGIN_WALL 0.2 // Margin representing the body space of the player, used to avoid collisions with walls
 
 // Raycasting configuration
 #define     screenWidth 1920
