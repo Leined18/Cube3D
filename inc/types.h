@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/25 12:35:14 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:29:59 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct s_game
     t_player	player;
     t_render    render;
     t_input		input;
+    bool		cursor_hidden;
     t_backup	*backup;
 } t_game;
 

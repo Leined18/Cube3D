@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_loop_hook.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 10:43:32 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/25 10:52:13 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:54:50 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@ void ft_on_game_loop(void *param)
 {
 	t_game	*g;
 	double	moveSpeed;
-	double	rotSpeed;
+	double	rotSpeedk;
+	double	rotSpeedm;
 
 	g = (t_game *)param;
-	// upgrade_frameTime(&g->time);
-	// printf("Frame_time: %.3f - delta_time: %.3f\n", g->time.frameTime, g->data.mlx->delta_time);
-	moveSpeed = g->render.mlx->delta_time * g->player.movspeed; // Ajusta la velocidad de movimiento
-	rotSpeed = g->render.mlx->delta_time * g->player.rotspeed; // Ajusta la velocidad de rotación
-	ft_handle_input(g, moveSpeed, rotSpeed);
+	moveSpeed = g->render.mlx->delta_time * PLAYER_SPEED;
+	rotSpeedk = g->render.mlx->delta_time * PLAYER_ROTATION_SPEED;
+	if (g->cursor_hidden)
+	{
+		rotSpeedm = g->render.mlx->delta_time * MOUSE_ROTATION_SPEED;
+		update_mouse_rotation(g, rotSpeedm);
+	}
+	update_player_movement(g, moveSpeed, rotSpeedk);
 	cast_all_rays(g);
-	// Mostrar FPS (opcional)
-	//printf("FPS: %.1f\n", 1.0 / g->time.frameTime);
 }

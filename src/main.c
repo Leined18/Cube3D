@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 18:48:06 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:53:08 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ int ft_print_map(t_game *game)
 	return (1);
 }
 
+void	ft_set_cursor(t_game *g)
+{
+
+	mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_HIDDEN);
+	g->cursor_hidden = true;
+	mlx_set_mouse_pos(g->render.mlx, screenWidth / 2, screenHeight / 2);
+
+}
+
 int ft_launch_game(t_game *game)
 {
 	if (!game || !game->render.mlx)
@@ -38,8 +47,10 @@ int ft_launch_game(t_game *game)
 		return (ft_cleanup(game), 0);
 	}
 	mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
+	ft_set_cursor(game);
 	cast_all_rays(game);
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
+	mlx_mouse_hook(game->render.mlx, ft_mouse_button, game);
 	mlx_loop_hook(game->render.mlx, ft_on_game_loop, game);
 	mlx_loop(game->render.mlx);
 	return (1);

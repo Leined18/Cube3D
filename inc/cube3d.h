@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/25 15:42:07 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:59:40 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,14 @@
 # define    MINIMAP false
 # define    DEBUG false
 
+//window configuration
+# define	STRETCH_IMAGE	true
+# define	FULLSCREEN		false
+
 // Player configuration
-# define    PLAYER_SPEED 4.3
-# define    PLAYER_ROTATION_SPEED 2.05
+# define	PLAYER_SPEED 3.0
+# define	PLAYER_ROTATION_SPEED 1.5
+# define	MOUSE_ROTATION_SPEED 0.05
 # define    FOV_DEGREES 77.0
 # define	MARGIN_WALL 0.2 // Margin representing the body space of the player, used to avoid collisions with walls
 

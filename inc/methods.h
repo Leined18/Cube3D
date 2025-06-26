@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/25 18:26:34 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:54:05 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ void	calc_tex_inf(t_game *g, t_ray *ray);
 // ==================== Hooks Management ====================
 void    ft_on_destroy(void *param);
 void    ft_on_keypress(mlx_key_data_t keydata, void *param);
+void    ft_mouse_button(mouse_key_t btn, action_t act, modifier_key_t mod, void* p);
 void    ft_on_game_loop(void *param);
-void    ft_handle_input(t_game *g, double moveSpeed, double rotSpeed);
+void    update_player_movement(t_game *g, double moveSpeed, double rotSpeed);
+void    update_mouse_rotation(t_game *g, double rotSpeed);
+void    process_scape_key(t_game *g);
 // ==================== Game Management ====================
 
 // ==================== Minimap Management ====================

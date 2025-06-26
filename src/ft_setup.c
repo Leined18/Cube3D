@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_setup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/19 11:12:12 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:34:31 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ mlx_t *ft_create_mlx(t_render render)
 
     if (render.screen_width <= 0 || render.screen_height <= 0)
         return (NULL);
-    mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	mlx_set_setting(MLX_FULLSCREEN, false);
+    mlx_set_setting(MLX_STRETCH_IMAGE, STRETCH_IMAGE);
+	mlx_set_setting(MLX_FULLSCREEN, FULLSCREEN);
     mlx = mlx_init(render.screen_width, render.screen_height, TITLE, true);
     if (!mlx)
         return (NULL);

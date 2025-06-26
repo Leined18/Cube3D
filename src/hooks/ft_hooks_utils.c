@@ -3,16 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 10:52:09 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:43:38 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void ft_handle_input(t_game *g, double moveSpeed, double rotSpeed)
+void process_scape_key(t_game *g)
+{
+	if (g->cursor_hidden)
+	{
+		mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_NORMAL);
+		g->cursor_hidden = false;
+	}
+	else
+	{
+		ft_printf("Bye!\n");
+		ft_cleanup(g);
+	}
+}
+
+void	update_mouse_rotation(t_game *g, double rotSpeed)
+{
+	static bool first = true;
+	int	xpos;
+	int	ypos;
+	int	delta_x;
+
+	/*Para que la primera vez no se mueva el raton porque podria ser que el
+	 puntero estuviera totalmente a la derecha o izquierda de la pantalla y 
+	entonces se moveria un salto raro hacia esa direccion. De esta manera la
+	 primera ves solo centra sin mover y no hay un salto exagerado.*/
+	if (first) 
+	{
+		first = false;
+		mlx_set_mouse_pos(g->render.mlx, screenWidth / 2, screenHeight / 2);
+		return ;
+	}
+	mlx_get_mouse_pos(g->render.mlx, &xpos, &ypos);
+	delta_x = xpos - (screenWidth / 2);
+	delta_x = ft_clamp(delta_x, -50, 50);
+	rotate_player(g, delta_x * rotSpeed);
+	mlx_set_mouse_pos(g->render.mlx, screenWidth / 2, screenHeight / 2);
+}
+
+void update_player_movement(t_game *g, double moveSpeed, double rotSpeed)
 {
 	if (g->input.move_forward)
 		move_player_forward(g, moveSpeed);
