@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/27 13:32:49 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/27 23:26:23 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,14 @@ int		sign(double x);
 t_button	button_new(int x, int y, const char *label, void (*on_click)(void *));
 void		ft_button_handle_click(t_button *btn, int mouse_x, int mouse_y);
 void		draw_button(mlx_t *mlx, t_button *btn);
+int         ft_create_buttons(t_render *render);
+void        remove_button(mlx_t *mlx, t_button *btn);
+
+
+// button actions
+void		ft_launch_game(void *p);
+void		print_exit(void *param);
+void        start_game(void *p);
 
 // ==================== Player Calculation ====================
 double	ft_calc_fov_factor(double fov_degrees);

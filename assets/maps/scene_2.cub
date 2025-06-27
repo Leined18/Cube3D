@@ -2,7 +2,7 @@ SO        ./assets/textures/f.png
 
 
 
-NO ./assets/textures/eagle.png
+NO ./assets/textures/bluestone.png
 
 
 WE ./assets/textures/redbrick.png
@@ -10,8 +10,8 @@ WE ./assets/textures/redbrick.png
 
 EA ./assets/textures/redbrick.png
 
-F     1,     200,     245
-C     90    ,   14     ,49
+F     1,     10,     245
+C     100    ,   14     ,49
 
      11111111111111111111111111
      10000000000000000010000001

@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/27 14:26:17 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/27 23:24:40 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,43 @@ int ft_print_map(t_game *game)
 	return (1);
 }
 
-void	ft_set_cursor(t_game *g)
+void ft_set_cursor(t_game *g)
 {
-
-	mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_HIDDEN);
-	g->cursor_hidden = true;
-	mlx_set_mouse_pos(g->render.mlx, screenWidth / 2, screenHeight / 2);
-
+    mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_HIDDEN);
+    g->cursor_hidden = true;
+    mlx_set_mouse_pos(g->render.mlx, g->render.screen_width / 2, g->render.screen_height / 2);
 }
 
-int ft_launch_game(t_game *game)
+void ft_launch_game(void *p)
 {
+	t_game *game;
+	int i;
+
+	game = (t_game *)p;
 	if (!game || !game->render.mlx)
-		return (ft_cleanup(game), 0);
+	{
+        ft_cleanup(game);
+        return;
+    }
 	game->render.img = mlx_new_image(game->render.mlx, game->render.screen_width, game->render.screen_height);
 	if (!game->render.img)
 	{
 		ft_error("Error: Failed to create render image\n", 1);
-		return (ft_cleanup(game), 0);
+		ft_cleanup(game);
+        return;
 	}
 	mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
 	ft_set_cursor(game);
-	cast_all_rays(game);
-	draw_button(game->render.mlx, &game->render.buttons[0]);
+	i = 0;
+	while (i < game->render.button_count)
+	{
+		draw_button(game->render.mlx, &game->render.buttons[i]);
+		i++;
+	}
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
 	mlx_mouse_hook(game->render.mlx, ft_mouse_button, game);
-	mlx_loop_hook(game->render.mlx, ft_on_game_loop, game);
 	mlx_loop(game->render.mlx);
-	return (1);
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -67,9 +74,7 @@ int	main(int argc, char **argv)
 	check_arg_cub(argv[1]);
 	if (!ft_setup(&game, argv[1]))
 		ft_error("Error: Failed to setup game\n", 1);
-	// ft_print_map(&game);
 	ft_successful("Game setup successful\n", 0);
-	if (!ft_launch_game(&game))
-		ft_error("Error: Failed to launch game\n", 1);
+	ft_launch_game(&game);
 	return (ft_cleanup(&game), 0);
 }
