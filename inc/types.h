@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/26 18:29:59 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:29:59 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft.h"
 # include "mt.h"
 # include "utils.h"
+# include "button.h"
 
 typedef enum e_texture
 {
@@ -61,6 +62,7 @@ typedef struct	s_tex_inf
 	double			tx_pos;		// Posición inicial en la textura.
 	int				pixel_index; // Índice del píxel en la textura (para acceder a los colores)
 }				t_tex_inf;
+
 typedef struct	s_ray
 {
 	double			cameraX;		//Normalizacion de las columnas de pixels de la pantalla (-1 .. 0 .. 1)
@@ -103,7 +105,8 @@ typedef struct s_map
     int			    player_count;
 	t_list		    *map_list;
     char	        **matrix;
-    bool		minimap_bool;
+    bool		    minimap_bool;
+    mlx_image_t	    *minimap_img;
     t_textures      textures[TEXTURE_COUNT];
     t_mt    *objs;
 }	t_map;
@@ -114,8 +117,8 @@ typedef struct s_render
     mlx_image_t		*img;
     int		        screen_width;
     int		        screen_height;
-    // int		        angle;
-	// int		        fps;
+    t_button       buttons[10];
+    int            button_count;
     t_mt	*objs;
 }	t_render;
 

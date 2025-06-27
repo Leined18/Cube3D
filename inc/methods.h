@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   methods.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/26 18:54:05 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:32:49 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,11 @@ int		ft_max(int a, int b);
 int		ft_clamp(int value, int min, int max);
 float	ft_lerp(float a, float b, float t); // linear interpolation
 int		sign(double x);
+
+// ==================== Buttons ====================
+t_button	button_new(int x, int y, const char *label, void (*on_click)(void *));
+void		ft_button_handle_click(t_button *btn, int mouse_x, int mouse_y);
+void		draw_button(mlx_t *mlx, t_button *btn);
 
 // ==================== Player Calculation ====================
 double	ft_calc_fov_factor(double fov_degrees);

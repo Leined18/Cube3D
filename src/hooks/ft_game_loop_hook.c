@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_loop_hook.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 10:43:32 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/26 18:54:50 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:25:00 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ void ft_on_game_loop(void *param)
 	}
 	update_player_movement(g, moveSpeed, rotSpeedk);
 	cast_all_rays(g);
+	
 }

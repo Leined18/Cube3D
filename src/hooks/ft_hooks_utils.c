@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/26 18:43:38 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:33:31 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,20 @@ void update_player_movement(t_game *g, double moveSpeed, double rotSpeed)
 		rotate_player(g, -rotSpeed);
 	if (g->input.rotate_right)
 		rotate_player(g, rotSpeed);
+}
+
+bool ft_button_is_hovered(t_button *btn, int mouse_x, int mouse_y)
+{
+	return (mouse_x >= btn->x && mouse_x <= btn->x + btn->width &&
+			mouse_y >= btn->y && mouse_y <= btn->y + btn->height);
+}
+
+void ft_button_handle_click(t_button *btn, int mouse_x, int mouse_y)
+{
+	if (ft_button_is_hovered(btn, mouse_x, mouse_y))
+	{
+		if (btn->on_click)
+			btn->on_click(btn->param);
+	}
 }
 

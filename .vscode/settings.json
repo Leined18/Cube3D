@@ -13,7 +13,8 @@
     "random": "c",
     "cub3d.h": "c",
     "system_error": "c",
-    "types.h": "c"
+    "types.h": "c",
+    "button.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

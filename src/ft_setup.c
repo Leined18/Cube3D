@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_setup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/26 18:34:31 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:56:34 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ mlx_t *ft_create_mlx(t_render render)
     if (!mlx)
         return (NULL);
     return (mlx);
+}
+
+void print_exit(void *param)
+{
+    t_game *game;
+
+    game = (t_game *)param;
+    ft_cleanup(game);
+    ft_successful("Game exited successfully.", true);
 }
 
 int ft_create_render(t_render *render)
@@ -57,6 +66,16 @@ int ft_create_player(t_player *player, t_map *map)
     return (1);
 }
 
+int ft_create_buttons(t_render *render)
+{
+    if (!render)
+        return (0);
+    render->buttons[0] = button_new(50, 50, "Exit", print_exit);
+    render->button_count++;
+    draw_button(render->mlx, &render->buttons[0]);
+    return (1);
+}
+
 
 
 int	ft_setup(t_game *game, char *map_file)
@@ -80,6 +99,8 @@ int	ft_setup(t_game *game, char *map_file)
 		return (ft_cleanup(game), 0);
 	if (!game->backup)
 		return (ft_cleanup(game), 0);
-    ft_mtnew("game", "game_struct")->data = game;
-	return (1);
+	ft_mtnew("game", "game_struct")->data = game;
+	if (!ft_create_buttons(&game->render))
+		return (ft_cleanup(game), 0);
+    return (1);
 }
