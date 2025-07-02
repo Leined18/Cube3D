@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dda.c                                              :+:      :+:    :+:   */
+/*   ray_dda.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:06:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 11:13:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:24:57 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	reach_wall(t_ray *ray, t_game *g)
 			ray->pos.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (g->map.matrix[(int)ray->pos.y][(int)ray->pos.x] > '0')
+		if (is_wall_elem(g, g->map.matrix[(int)ray->pos.y][(int)ray->pos.x]))
 			ray->hit = 1;
 	}
 	if (ray->side == 0)

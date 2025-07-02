@@ -1,42 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   ft_map_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:02:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 10:45:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:30:14 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static int	generate_map_array(t_game *g)
+int	is_wall_elem(t_game *g, char c)
 {
-	t_list	*current_node;
-	char	*line;
-	int		i;
+	if (is_reserved_symbol(c))
+		return (0);
+	if (g->map.textures[(int)c].texture)
+		return (1);
+	return (0);
+}
 
-	g->map.matrix = ft_calloc(g->map.map_height + 1, sizeof(char *));
-	if (g->map.matrix == NULL)
-		return (free_all(g, NULL, "allocating memory for map array"));
-	current_node = g->map.map_list;
-	i = 0;
-	while (current_node)
+
+// This function checks if every element in the map has a texture.
+int	validate_map_textures(t_game *g, size_t height, size_t width)
+{
+	size_t		y;
+	size_t		x;
+	char		c;
+
+	y = 0;
+	while (y < height)
 	{
-		line = current_node->content;
-		g->map.matrix[i] =ft_calloc(g->map.map_width + 1, sizeof(char));
-		if (g->map.matrix[i] == NULL)
-			return (free_all(g, NULL, "allocating memory for map array line"));
-		fill_with_spaces(g->map.matrix[i], line, g->map.map_width);
-		current_node = current_node->next;
-		i++;
+		x = 0;
+		while (x < width)
+		{
+			c = g->map.matrix[y][x];
+			if (!g->map.textures[(int)c].path && !is_reserved_symbol(c))
+				return (free_all(g, NULL, "No texture for element in map"));
+			x++;
+		}
+		y++;
 	}
 	return (0);
 }
 
-static int check_map_closed(t_game *g, size_t height, size_t width)
+int check_map_closed(t_game *g, size_t height, size_t width)
 {
 	size_t		y;
 	size_t		x;
@@ -63,26 +72,26 @@ static int check_map_closed(t_game *g, size_t height, size_t width)
 	return (0);
 }
 
-static int	check_map_border(t_game *g, size_t height, size_t width)
+int	check_map_border(t_game *g, size_t hei, size_t wid)
 {
-	size_t		y;
-	size_t		x;
+	size_t	y;
+	size_t	x;
 	char	**map;
 
 	map = g->map.matrix;
 	y = 0;
-	while (y < g->map.map_height)
+	while (y < hei)
 	{
 		x = 0;
-		while (x < g->map.map_width)
+		while (x < wid)
 		{
-			if (map[0][x] != '1' && map[0][x] != ' ')
+			if (!is_wall_elem(g, map[0][x]) && map[0][x] != ' ')
 				return (free_all(g, NULL, "Map must be surrounded by walls"));
-			if (map[height - 1][x] != '1' && map[height - 1][x] != ' ')
+			if (!is_wall_elem(g, map[hei - 1][x]) && map[hei - 1][x] != ' ')
 				return (free_all(g, NULL, "Map must be surrounded by walls"));
-			if (map[y][0] != '1' && map[y][0] != ' ')
+			if (!is_wall_elem(g, map[y][0]) && map[y][0] != ' ')
 				return (free_all(g, NULL, "Map must be surrounded by walls"));
-			if (map[y][width - 1] != '1' && map[y][width - 1] != ' ')
+			if (!is_wall_elem(g, map[y][wid - 1]) && map[y][wid - 1] != ' ')
 				return (free_all(g, NULL, "Map must be surrounded by walls"));
 			x++;
 		}
@@ -97,9 +106,12 @@ int	check_map(t_game *g)
 		return (free_all(g, NULL, "Error\nMap must have exactly one player"));
 	if (generate_map_array(g) < 0)
 		return (-1);
+	print_game_map(g->map.matrix);
 	if (check_map_border(g, g->map.map_height, g->map.map_width) < 0)
 		return (-1);
 	if (check_map_closed(g, g->map.map_height, g->map.map_width) < 0)
+		return (-1);
+	if (validate_map_textures(g, g->map.map_height, g->map.map_width) < 0)
 		return (-1);
 	return (0);
 }

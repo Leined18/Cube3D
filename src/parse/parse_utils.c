@@ -6,38 +6,61 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:25:00 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 18:25:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:01:10 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-//Elimina los espacios y tabulaciones de un string, dejando solo un espacio después
-//del identificador del elemento, y devuelve un nuevo string.
-char	*remove_spaces(char *str)
+static bool	is_special_symbol(char c)
 {
-	int	i;
-	int	j;
-	int	space;
-	
-	i = 0;
-	j = 0;
-	space = 0;
+	return (c == ' ' || c == '0' 
+			|| c == 'N' || c == 'S' || c == 'E' || c == 'W');
+}
 
-	char *clean = malloc(strlen(str) + 1);
-	if (!clean)
-		return (free(str), NULL);
-	while (str[i])
+static bool	is_color_symbol(char c)
+{
+	return (c == 'F' || c == 'C');
+}
+
+bool	is_reserved_symbol(char c)
+{
+	return (is_color_symbol(c) || is_special_symbol(c));
+}
+
+int	is_map_line(t_textures *tx, char *line)
+{
+	int		not_all_spaces;
+	char	c;
+
+	not_all_spaces = 0;
+	while (*line)
 	{
-		if (str[i] != ' ' && str[i] != '\t')
-			clean[j++] = str[i];
-		else if (str[i] == ' ' && !space)
+		c = *line;
+		if (!is_special_symbol(c))
 		{
-			clean[j++] = ' ';
-			space = 1; // only one space allowed
+			if (c == 'F' || c == 'C')
+				return (0); // F y C son reservados para colores, no pueden ir en el mapa
+			if (!tx[(int)c].path)
+				return (0);
+			not_all_spaces = 1;
 		}
+		line++;
+	}
+	return (not_all_spaces); // returns 1 if there is at least one non-space character
+}
+
+int	is_player_inline(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' 
+			|| line[i] == 'W')
+			return (1); // found a player character
 		i++;
 	}
-	clean[j] = '\0';
-	return (clean);
+	return (0); // no player character found
 }

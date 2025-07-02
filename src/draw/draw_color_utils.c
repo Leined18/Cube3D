@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   draw_color_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:50:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/19 10:29:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/07/02 13:01:43 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ int	color_to_hex(t_game *game, char *color_text, uint32_t *color)
 	return (0);
 }
 
-int	set_surface_color(t_game *g, char surface)
+int	set_surface_color(t_game *g, int s)
 {
+	char		*path;
+	uint32_t	*color;
 
-	if (surface == 'F')
-		return (color_to_hex(g, g->map.textures[F].path, &g->map.textures[F].color));
-	else if (surface == 'C')
-		return (color_to_hex(g, g->map.textures[C].path, &g->map.textures[C].color));
+	path = g->map.textures[s].path;
+	color = &g->map.textures[s].color;
+	if (s == 'F' || s == 'C')
+		return (color_to_hex(g, path, color));
 	return (free_all(g, NULL, "Invalid surface type"));
 }
 
@@ -65,6 +67,7 @@ uint32_t	set_color_line(t_game *g, t_vect2 map, int wall_side)
 	uint32_t	color;
 
 	color = get_def_wall_color(g, map);
-	(void)wall_side; // Si no se usa wall_side, se puede eliminar
+	if (wall_side == 0)
+		color = darken_color(color);
 	return (color);
 }

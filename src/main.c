@@ -6,25 +6,26 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/26 18:53:08 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/02 13:37:34 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int ft_print_map(t_game *game)
+/*Check if the map file extension is ".cub". Error and exit if not*/
+void	check_arg_cub(char *name)
 {
-	size_t i;
+	int	len_total;
+	int	len_name;
 
-	if (!game || !game->map.matrix)
-		return (0);
-	i = 0;
-	while (i < game->map.map_height)
+	len_total = ft_strlen(name);
+	len_name = len_total - 4;
+	if (!(len_total > 4 && ft_strncmp(name + len_name, ".cub", 4) == 0
+			&& name[len_total - 5] != '/'))
 	{
-		ft_printf("%s\n", game->map.matrix[i]);
-		i++;
+		ft_printf("Error: Invalid map file extension. Expected '.cub'\n");
+		exit(EXIT_FAILURE);
 	}
-	return (1);
 }
 
 void	ft_set_cursor(t_game *g)
@@ -48,7 +49,8 @@ int ft_launch_game(t_game *game)
 	}
 	mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
 	ft_set_cursor(game);
-	cast_all_rays(game);
+	if (cast_all_rays(game) < 0)
+		return (0);
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
 	mlx_mouse_hook(game->render.mlx, ft_mouse_button, game);
 	mlx_loop_hook(game->render.mlx, ft_on_game_loop, game);
@@ -66,7 +68,7 @@ int	main(int argc, char **argv)
 	check_arg_cub(argv[1]);
 	if (!ft_setup(&game, argv[1]))
 		ft_error("Error: Failed to setup game\n", 1);
-	// ft_print_map(&game);
+	// print_game_map(game.map.matrix);
 	ft_successful("Game setup successful\n", 0);
 	if (!ft_launch_game(&game))
 		ft_error("Error: Failed to launch game\n", 1);
