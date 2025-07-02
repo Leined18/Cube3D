@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/27 23:09:17 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/02 14:43:21 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int ft_create_render(t_render *render)
     render->screen_height = 1080; // Adjust height based on TILE_SIZE
     render->mlx = ft_create_mlx(*render);
     ft_mtnew("config", "render")->data = render;
+    ft_mtnew("config", "mlx")->data = render->mlx;
     return (1);
 }
 

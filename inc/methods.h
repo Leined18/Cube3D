@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/27 23:26:23 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/02 14:31:11 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,30 @@ void    ft_on_game_loop(void *param);
 void    update_player_movement(t_game *g, double moveSpeed, double rotSpeed);
 void    update_mouse_rotation(t_game *g, double rotSpeed);
 void    process_scape_key(t_game *g);
+
+// ==================== Button Hooks ====================
+void    ft_on_button_click(mlx_key_data_t keydata, void *param);
+void    ft_ui_handle_click(t_render *render, int mouse_x, int mouse_y);
+
+
 // ==================== Game Management ====================
+
+// ==================== Button Management ====================
+
+t_button	button_new(t_vect2 c, const char *label, void (*on_click)(void *), u_int32_t color);
+void		ft_button_handle_click(t_button *btn, int mouse_x, int mouse_y);
+void		ft_draw_button(mlx_t *mlx, t_button *btn);
+int         ft_create_buttons(t_render *render);
+
+// ==================== Button Removal ====================
+void        ft_remove_button(mlx_t *mlx, t_button *btn);
+void        ft_remove_all_buttons(mlx_t *mlx, t_render *render);
+void        ft_free_all_buttons(mlx_t *mlx, t_render *render);
+void        ft_free_button(mlx_t *mlx, t_button *btn);
+
+// ==================== Button Image Management ====================
+mlx_image_t *get_button_image(mlx_t *mlx, t_button *btn);
+
 
 // ==================== Minimap Management ====================
 
@@ -123,12 +146,7 @@ int		ft_clamp(int value, int min, int max);
 float	ft_lerp(float a, float b, float t); // linear interpolation
 int		sign(double x);
 
-// ==================== Buttons ====================
-t_button	button_new(int x, int y, const char *label, void (*on_click)(void *));
-void		ft_button_handle_click(t_button *btn, int mouse_x, int mouse_y);
-void		draw_button(mlx_t *mlx, t_button *btn);
-int         ft_create_buttons(t_render *render);
-void        remove_button(mlx_t *mlx, t_button *btn);
+
 
 
 // button actions

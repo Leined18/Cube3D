@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/27 14:33:31 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/02 14:34:49 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void process_scape_key(t_game *g)
 	{
 		mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_NORMAL);
 		g->cursor_hidden = false;
+		ft_draw_button(g->render.mlx, &g->render.buttons[0]);
 	}
 	else
 	{
@@ -65,19 +66,3 @@ void update_player_movement(t_game *g, double moveSpeed, double rotSpeed)
 	if (g->input.rotate_right)
 		rotate_player(g, rotSpeed);
 }
-
-bool ft_button_is_hovered(t_button *btn, int mouse_x, int mouse_y)
-{
-	return (mouse_x >= btn->x && mouse_x <= btn->x + btn->width &&
-			mouse_y >= btn->y && mouse_y <= btn->y + btn->height);
-}
-
-void ft_button_handle_click(t_button *btn, int mouse_x, int mouse_y)
-{
-	if (ft_button_is_hovered(btn, mouse_x, mouse_y))
-	{
-		if (btn->on_click)
-			btn->on_click(btn->param);
-	}
-}
-

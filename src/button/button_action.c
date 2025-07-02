@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 23:03:32 by daniel            #+#    #+#             */
-/*   Updated: 2025/06/27 23:26:52 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/02 14:40:54 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@ void start_game(void *p)
         ft_error("Error: Game or render not initialized.\n", 1);
         return;
     }
-    mlx_loop_hook(game->render.mlx, ft_on_game_loop, game);
-    remove_button(game->render.mlx, &game->render.buttons[1]);
+    ft_remove_button(game->render.mlx, &game->render.buttons[0]);
+    ft_free_button(game->render.mlx, &game->render.buttons[1]); // Free the start button
+    ft_successful("Game started successfully.", false);
+    game->render.button_count = 1; // Update button count after starting the game
+    game->render.buttons[0].y = 0; // Reset the second button position
+    game->render.buttons[0].x = 0; // Reset the second button position
+    mlx_loop_hook(game->render.mlx, ft_on_game_loop, game); 
 }
 
 void print_exit(void *param)

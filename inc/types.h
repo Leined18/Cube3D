@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/27 13:29:59 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/02 14:41:56 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "libft.h"
 # include "mt.h"
 # include "utils.h"
-# include "button.h"
 
 typedef enum e_texture
 {
@@ -77,6 +76,20 @@ typedef struct	s_ray
 	t_screenline	draw;			// inicio y final de pintado de una linea de pantalla respecto a la distancia del muro.
     t_tex_inf		tex_info;		// Información de textura para pintar el muro.
 }				t_ray;
+
+typedef struct s_button {
+    int x;
+    int y;
+    int width, height;
+    uint32_t color; // Color of the button
+    char *label;
+    void (*on_click)(void *);
+    void *param;
+    mlx_image_t *label_img; // Optional: to store the label image if needed
+    mlx_image_t *img; // Optional: to store the button image if needed
+    bool active; // Indicates if the button is active or not
+    mlx_t *mlx; // Pointer to the MLX instance for rendering
+} t_button;
 
 
 typedef struct	s_textures

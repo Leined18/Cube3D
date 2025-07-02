@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/27 23:24:40 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/02 14:22:36 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int ft_print_map(t_game *game)
 
 void ft_set_cursor(t_game *g)
 {
-    mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_HIDDEN);
-    g->cursor_hidden = true;
+    //mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_HIDDEN);
+    //g->cursor_hidden = true;
     mlx_set_mouse_pos(g->render.mlx, g->render.screen_width / 2, g->render.screen_height / 2);
 }
 
@@ -54,12 +54,9 @@ void ft_launch_game(void *p)
 	}
 	mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
 	ft_set_cursor(game);
-	i = 0;
-	while (i < game->render.button_count)
-	{
-		draw_button(game->render.mlx, &game->render.buttons[i]);
-		i++;
-	}
+	i = -1;
+	while (++i < game->render.button_count)
+		ft_draw_button(game->render.mlx, &game->render.buttons[i]);
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
 	mlx_mouse_hook(game->render.mlx, ft_mouse_button, game);
 	mlx_loop(game->render.mlx);
