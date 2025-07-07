@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cleanup_map.c                                   :+:      :+:    :+:   */
+/*   ft_map_cleanup.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:17:54 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/25 11:18:02 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:33:31 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void ft_cleanup_map(t_map *map)
     }
     ft_lstclear(&map->map_list, free);
     i = 0;
-	while (i < TEXTURE_COUNT && map->textures[i].texture)
+	while (i < MAX_TEXTURES && map->textures[i].texture)
     {
 		mlx_delete_texture(map->textures[i].texture);
         map->textures[i].texture = NULL;

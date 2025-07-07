@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/02 14:41:56 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/02 15:04:20 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@
 # include "mt.h"
 # include "utils.h"
 
-typedef enum e_texture
-{
-    NO,
-    SO,
-    WE,
-    EA,
-    F,
-    C,
-    TEXTURE_COUNT
-}	t_texture;
+// typedef enum e_texture
+// {
+//     NO,
+//     SO,
+//     WE,
+//     EA,
+//     F,
+//     C,
+//     TEXTURE_COUNT
+// }	t_texture;
+
+# define MAX_TEXTURES 128 // 1 por cada caracter ASCII válido
 
 typedef struct s_vector
 {
@@ -94,6 +96,7 @@ typedef struct s_button {
 
 typedef struct	s_textures
 {
+    char			symbol;
 	char	        *path;
     mlx_texture_t 	*texture;
     uint32_t	    color;
@@ -120,7 +123,7 @@ typedef struct s_map
     char	        **matrix;
     bool		    minimap_bool;
     mlx_image_t	    *minimap_img;
-    t_textures      textures[TEXTURE_COUNT];
+    t_textures      textures[MAX_TEXTURES];
     t_mt    *objs;
 }	t_map;
 

@@ -6,25 +6,26 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/02 14:22:36 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/02 15:02:13 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int ft_print_map(t_game *game)
+/*Check if the map file extension is ".cub". Error and exit if not*/
+void	check_arg_cub(char *name)
 {
-	size_t i;
+	int	len_total;
+	int	len_name;
 
-	if (!game || !game->map.matrix)
-		return (0);
-	i = 0;
-	while (i < game->map.map_height)
+	len_total = ft_strlen(name);
+	len_name = len_total - 4;
+	if (!(len_total > 4 && ft_strncmp(name + len_name, ".cub", 4) == 0
+			&& name[len_total - 5] != '/'))
 	{
-		ft_printf("%s\n", game->map.matrix[i]);
-		i++;
+		ft_printf("Error: Invalid map file extension. Expected '.cub'\n");
+		exit(EXIT_FAILURE);
 	}
-	return (1);
 }
 
 void ft_set_cursor(t_game *g)
