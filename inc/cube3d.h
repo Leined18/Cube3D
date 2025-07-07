@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/02 13:36:06 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:45:35 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,18 @@
 # define    FOV_DEGREES 77.0
 # define	MARGIN_WALL 0.2 // Margin representing the body space of the player, used to avoid collisions with walls
 
+// Door configuration
+# define	DOOR_SYMBOL 'D' // Symbol representing a door in the map
+# define	DOOR_ANIMATION_SPEED 0.5 // Speed of door opening/closing animation in units per second
+
 // Raycasting configuration
 #define     screenWidth 1920
 #define     screenHeight 1080
 #define     MAX_PITCH PI / 2
 # define    MIN_PITCH -PI / 2
 
+// Macros
+# define TOGGLE(x) ((x) = !(x))
 
 # define    ASSESTS_PATH "./assets/"
 # define    TEXTURE_NO ASSESTS_PATH "textures/no.png"

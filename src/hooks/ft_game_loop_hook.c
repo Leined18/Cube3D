@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 10:43:32 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/26 18:54:50 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:24:39 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,9 @@ void ft_on_game_loop(void *param)
 		update_mouse_rotation(g, rotSpeedm);
 	}
 	update_player_movement(g, moveSpeed, rotSpeedk);
-	cast_all_rays(g);
+	update_doors_touch_timer(g);
+	update_doors_animation(g, g->render.mlx->delta_time);
+	if (cast_all_rays(g) < 0)
+		exit(-1);
+	
 }

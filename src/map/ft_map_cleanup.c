@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:17:54 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/02 11:33:31 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:38:33 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,10 @@ void ft_cleanup_map(t_map *map)
         map->textures[i].texture = NULL;
         i++;
     }
+    if (map->doors_info.doors_array)
+	{
+		free(map->doors_info.doors_array);
+		map->doors_info.doors_array = NULL;
+		map->doors_info.doors_count = 0;
+	}
 }

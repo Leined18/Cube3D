@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/02 11:24:52 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:54:17 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ typedef struct	s_screenline
     mlx_texture_t	        *texture;	// Textura del muro
     mlx_texture_t	        *texture_floor; // Textura del suelo
     mlx_texture_t	        *texture_ceiling; // Textura del techo
-    t_vect2                 wall;	// Coordenada del muro en el espacio de la textura
-    t_vect2                 step;		// Paso de textura
-    t_vect2                 tex;	// Posición de la textura
+    // t_vect2                 wall;	// Coordenada del muro en el espacio de la textura
+    // t_vect2                 step;		// Paso de textura
+    // t_vect2                 tex;	// Posición de la textura
 }				t_screenline;
 
 typedef struct	s_tex_inf
@@ -73,6 +73,7 @@ typedef struct	s_ray
     t_vect2		    step;			// dirección de incremento en X e Y
 	int				side;			// 0 si el muro es vertical, 1 si horizontal
 	int				hit;			// 0 si aun no ha chocado con un muro, 1 si ha chocado.
+    int				hit_door;		// 0 si no ha chocado con una puerta parcialmente abierta, 1 si ha chocado.
 	double			perpWallDist;	// distancia corregida hasta la pared perpendicular a plane.
 	t_screenline	draw;			// inicio y final de pintado de una linea de pantalla respecto a la distancia del muro.
     t_tex_inf		tex_info;		// Información de textura para pintar el muro.
@@ -99,6 +100,21 @@ typedef struct s_player
     t_mt       *objs;
 }	t_player;
 
+typedef struct	s_door
+{
+	int			x;
+	int			y;
+	bool		open; // false = cerrada, true = abierta
+	double		anim_state;
+	double		timer;
+}				t_door;
+
+typedef struct	s_doors
+{
+	t_door		*doors_array; // Lista de puertas
+	size_t		doors_count; // Número de puertas en el mapa
+}               t_doors;
+
 typedef struct s_map
 {
     size_t		    map_width;
@@ -107,6 +123,7 @@ typedef struct s_map
 	t_list		    *map_list;
     char	        **matrix;
     bool		minimap_bool;
+    t_doors     doors_info;
     t_textures      textures[MAX_TEXTURES];
     t_mt    *objs;
 }	t_map;
