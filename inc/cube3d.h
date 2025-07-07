@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/02 15:00:07 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/07 11:45:05 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
 
 //configuration 
 # define    TEXTURES true
-# define    MINIMAP false
+# define    MINIMAP true
 # define    DEBUG false
 # define    MAX_BUTTONS 10
+# define    MINIMAP_SCALE 0.2  // escala respecto al mapa real
 
 
 //window configuration

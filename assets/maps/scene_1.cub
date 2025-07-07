@@ -1,11 +1,23 @@
 
-SO        ./assets/textures/se.png
-NO         ./assets/textures/no.png
-WE ./assets/textures/we.png
-EA ./assets/textures/ea.png
+T3        ./assets/textures/wood.png
+T r ./assets/textures/bluestone.png
 
-F     255,242,234
-C     14,14,49
+
+T m ./assets/textures/eagle.png
+
+T9 ./assets/textures/wood.png
+T                     T                                ./assets/textures/colorstone.png
+
+
+Te./assets/textures/mossy.png
+
+Ty./assets/textures/purplestone.png
+
+TQ./assets/textures/redbrick.png
+T1./assets/textures/greystone.png
+
+C 234,14,49
+F     100,     200,     245
 
 1111111111
 1000000001

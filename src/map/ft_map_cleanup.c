@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_cleanup.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:17:54 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/02 11:33:31 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/07 11:44:01 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,10 @@ void ft_cleanup_map(t_map *map)
 		mlx_delete_texture(map->textures[i].texture);
         map->textures[i].texture = NULL;
         i++;
+    }
+    if (map->minimap.img)
+    {
+        mlx_delete_image(ft_mtget("mlx")->data, map->minimap.img);
+        map->minimap.img = NULL;
     }
 }

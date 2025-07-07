@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/02 15:02:31 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/07 11:41:54 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,9 @@ mlx_t *ft_create_mlx(t_render render)
 
 int ft_create_render(t_render *render)
 {
-    int         width;
-    int         height;
-
-    ft_bzero(render, sizeof(t_render)); 
-    width = *(int *)ft_mtget("map_width")->data;
-    height = *(int *)ft_mtget("map_height")->data;
-    if (width <= 0 || height <= 0)
+    if (!render)
         return (0);
+    ft_bzero(render, sizeof(t_render)); 
     render->screen_width = 1920; // Adjust width based on TILE_SIZE
     render->screen_height = 1080; // Adjust height based on TILE_SIZE
     render->mlx = ft_create_mlx(*render);
@@ -68,8 +63,6 @@ int	ft_setup(t_game *game, char *map_file)
 	game->backup = ft_backup_static(1, true, false);
 	if (!game->backup)
 		return (ft_cleanup(game), 0);
-	if (!ft_set_map(&game->map))
-		return (ft_cleanup(game), 0);
 	if (!ft_create_player(&game->player, &game->map))
 		return (ft_cleanup(game), 0);
     if (!ft_create_render(&game->render))
@@ -78,6 +71,8 @@ int	ft_setup(t_game *game, char *map_file)
 		return (ft_cleanup(game), 0);
 	ft_mtnew("game", "game_struct")->data = game;
 	if (!ft_create_buttons(&game->render))
+		return (ft_cleanup(game), 0);
+    if (!ft_set_map(&game->map))
 		return (ft_cleanup(game), 0);
     return (1);
 }

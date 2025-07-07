@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 10:43:32 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/27 22:57:22 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/07 11:48:57 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void ft_on_game_loop(void *param)
 	}
 	update_player_movement(g, moveSpeed, rotSpeedk);
 	cast_all_rays(g);
+	ft_draw_minimap(&g->map.minimap, g);
 	
 }

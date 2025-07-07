@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/02 15:04:20 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/07 11:30:12 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_vector
     double  	x;
     double  	y;
 }	t_vect2;
+
+
 
 typedef struct	s_screenline
 {
@@ -114,6 +116,15 @@ typedef struct s_player
     t_mt       *objs;
 }	t_player;
 
+typedef struct s_minimap
+{
+    mlx_image_t	*img; // Imagen del minimapa
+    int			width; // Ancho del minimapa
+    int			height; // Alto del minimapa
+    double		scale; // Escala del minimapa respecto al mapa real
+    bool        enabled; // Indica si el minimapa está habilitado
+}	t_minimap;
+
 typedef struct s_map
 {
     size_t		    map_width;
@@ -121,8 +132,7 @@ typedef struct s_map
     int			    player_count;
 	t_list		    *map_list;
     char	        **matrix;
-    bool		    minimap_bool;
-    mlx_image_t	    *minimap_img;
+    t_minimap       minimap; // Estructura para el minimapa
     t_textures      textures[MAX_TEXTURES];
     t_mt    *objs;
 }	t_map;
