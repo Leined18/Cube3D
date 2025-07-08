@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:29:23 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/07 11:54:40 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/08 10:15:07 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ t_minimap  ft_create_minimap(t_map *map)
     if (!map)
         return ((t_minimap){0});
     ft_bzero(&minimap, sizeof(t_minimap));
-    minimap.width = map->map_width * TILE_SIZE * MINIMAP_SCALE;
-    minimap.height = map->map_height * TILE_SIZE * MINIMAP_SCALE;
+    minimap.width = map->map_width;
+    minimap.height = map->map_height;
     minimap.scale = MINIMAP_SCALE;
     minimap.enabled = MINIMAP;
-    minimap.img = ft_create_minimap_image(ft_mtget("mlx")->data, minimap.width, minimap.height);
+    minimap.img = mlx_new_image(ft_mtget("mlx")->data, 
+        map->map_width * MINIMAP_SCALE, map->map_height * MINIMAP_SCALE);
     if (!minimap.img)
         return ((t_minimap){0});
     return (minimap);

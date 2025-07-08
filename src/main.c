@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/07 11:40:50 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/08 10:41:30 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ void ft_launch_game(void *p)
 		ft_cleanup(game);
         return;
 	}
-	mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
+	game->render.instance = mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
 	ft_set_cursor(game);
 	i = -1;
+	printf("%d", i);
+	ft_draw_minimap(&game->map.minimap, game);
 	while (++i < game->render.button_count)
 		ft_draw_button(game->render.mlx, &game->render.buttons[i]);
-	ft_draw_minimap(&game->map.minimap, game);
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
 	mlx_mouse_hook(game->render.mlx, ft_mouse_button, game);
 	mlx_loop(game->render.mlx);

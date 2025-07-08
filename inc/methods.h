@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/07 11:55:12 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/08 09:46:54 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,9 @@ mlx_image_t *get_button_image(mlx_t *mlx, t_button *btn);
 
 char		ft_get_map_tile(int x, int y);
 void		ft_set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
+void        ft_set_scale(mlx_image_t *img, float scale);
 mlx_image_t *ft_create_minimap_image(mlx_t *mlx, int width, int height);
-void        ft_draw_tile(mlx_image_t *img, int x, int y, int size, uint32_t color);
+void        ft_draw_tile(mlx_image_t *img, size_t *x, size_t  *y, size_t size, uint32_t color);
 void        ft_draw_player(mlx_image_t *img, t_game *g);
 void        ft_draw_player_dir(mlx_image_t *img, t_game *g);
 void        ft_draw_minimap(t_minimap *minimap, t_game *g);
