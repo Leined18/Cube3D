@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/07 16:32:51 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/08 09:05:03 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,9 @@ void process_action_key(t_game *g)
 
 	int target_x = (int)(g->player.pos.x + g->player.dir.x);
 	int target_y = (int)(g->player.pos.y + g->player.dir.y);
-	printf("Checking door at (%d, %d) with symbol '%c'\n", target_x, target_y, g->map.matrix[target_y][target_x]);
 	door = find_door(g, target_x, target_y);
-	printf("is door? %s - ", door ? "yes" : "no");
-	printf("Processing action key at (%d, %d)\n", target_x, target_y);
 	if (door)
 	{
-		printf("Door at (%d, %d) is %s\n", door->x, door->y, door->open ? "open" : "closed");
 		toggle_door(door);
 		if (door->open) //si la acabo de abrir actualizao el tiempo.
 			door->timer = ft_get_time();

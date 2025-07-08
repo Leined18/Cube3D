@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 14:46:28 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/07 17:04:22 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:22:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	calc_wallx_and_texx(t_game *g, t_ray *ray)
 	t_door	*door;
 
 	ray->tex_info.wallX = calc_wallx(g, ray);
-	ray->tex_info.tx.x = (int)(ray->tex_info.wallX * ray->tex_info.mlx_tx->width);
+	ray->tex_info.tx.x = ray->tex_info.wallX * ray->tex_info.mlx_tx->width;
 	door = find_door(g, ray->pos.x, ray->pos.y);
 	if (door)
 	{
@@ -80,7 +80,7 @@ int	calc_tex_inf(t_game *g, t_ray *ray)
 {
 	char	map_elem;
 	
-	map_elem = g->map.matrix[(int)ray->pos.y][(int)ray->pos.x];
+	map_elem = g->map.matrix[ray->pos.y][ray->pos.x];
 	if (!g->map.textures[(int)map_elem].texture)
 		return (free_all(g, NULL, "Texture not loaded for map element"));
 	ray->tex_info.tx_dir = (int)map_elem;

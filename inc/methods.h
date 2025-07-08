@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/07 16:43:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/08 10:59:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ void		print_game_map(char **map);
 int			secure_open(char *map_name);
 void		secure_close(int fd);
 // ==================== Color ====================
-uint32_t	set_color_line(t_game *g, t_vect2 map, int wall_side);
+uint32_t	set_color_line(t_game *g, t_coord map, int wall_side);
 uint32_t	darken_color(uint32_t color);
 int			set_surface_color(t_game *g, int s);
 

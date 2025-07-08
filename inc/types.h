@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/07 15:54:17 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:16:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef struct s_vector
     double  	y;
 }	t_vect2;
 
+typedef struct	s_coord
+{
+	int			x;
+	int			y;
+}				t_coord;
+
 typedef struct	s_screenline
 {
 	int			            start;
@@ -58,19 +64,20 @@ typedef struct	s_tex_inf
 	int				tx_dir;		// id de la textura a usar para pintar el muro.
 	mlx_texture_t	*mlx_tx;	// Puntero a la textura que indica tx_dir.
 	double			wallX;		// Punto exacto de impacto del rayo dentro de la celda del muro (0.0 - 1.0)
-	t_vect2			tx;			// Columna de textura que se usará para esta franja vertical
+	t_coord			tx;			// Columna de textura que se usará para esta franja vertical
 	double			tx_step;	// Cuántos píxeles de textura avanzamos por cada píxel vertical en pantalla
 	double			tx_pos;		// Posición inicial en la textura.
 	int				pixel_index; // Índice del píxel en la textura (para acceder a los colores)
 }				t_tex_inf;
+
 typedef struct	s_ray
 {
 	double			cameraX;		//Normalizacion de las columnas de pixels de la pantalla (-1 .. 0 .. 1)
 	t_vect2		    dir;			//vector que indica la direccion a donde va el rayo.
-    t_vect2		    pos;			// posición actual en la grid/mapa
+    t_coord		    pos;			// posición actual en la grid/mapa
 	t_vect2		    delta_dist;		// distancia a recorrer para pasar a la siguiente línea X o Y
 	t_vect2		    side_dist;		// distancia acumulada desde el origen del rayo a la próxima línea X o Y
-    t_vect2		    step;			// dirección de incremento en X e Y
+    t_coord		    step;			// dirección de incremento en X e Y
 	int				side;			// 0 si el muro es vertical, 1 si horizontal
 	int				hit;			// 0 si aun no ha chocado con un muro, 1 si ha chocado.
     int				hit_door;		// 0 si no ha chocado con una puerta parcialmente abierta, 1 si ha chocado.
