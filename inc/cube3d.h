@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/07 16:45:35 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:39:46 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 
 // Door configuration
 # define	DOOR_SYMBOL 'D' // Symbol representing a door in the map
-# define	DOOR_ANIMATION_SPEED 0.5 // Speed of door opening/closing animation in units per second
+# define	DOOR_ANIMATION_SPEED 1.5 // Speed of door opening/closing animation in units per second
 
 // Raycasting configuration
 #define     screenWidth 1920
