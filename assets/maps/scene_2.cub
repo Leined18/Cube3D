@@ -1,14 +1,20 @@
-SO        ./assets/textures/f.png
+
+T3        ./assets/textures/wood.png
+T r ./assets/textures/bluestone.png
 
 
+T m ./assets/textures/eagle.png
 
-NO ./assets/textures/bluestone.png
+T9 ./assets/textures/wood.png
+T                     T                                ./assets/textures/colorstone.png
 
 
-WE ./assets/textures/redbrick.png
+Te./assets/textures/mossy.png
 
+Ty./assets/textures/purplestone.png
 
-EA ./assets/textures/redbrick.png
+TQ./assets/textures/redbrick.png
+T1./assets/textures/greystone.png
 
 F     1,     10,     245
 C     100    ,   14     ,49

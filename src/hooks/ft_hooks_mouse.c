@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 18:36:51 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/09 10:26:09 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 13:11:26 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void ft_mouse_button(mouse_key_t btn, action_t act, modifier_key_t mod, void *p)
 			mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_HIDDEN);
 			g->cursor_hidden = true;
 			mlx_set_mouse_pos(g->render.mlx, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-			ft_remove_all_buttons(g->render.mlx, &g->render);
+			ft_remove_button(g->render.mlx, &g->render.buttons[0]);
 		}
 	}
 }

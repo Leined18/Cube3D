@@ -6,11 +6,12 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/09 10:26:09 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 12:59:05 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
 
 void process_scape_key(t_game *g)
 {
@@ -27,42 +28,51 @@ void process_scape_key(t_game *g)
 	}
 }
 
-void	update_mouse_rotation(t_game *g, double rotSpeed)
+t_door *find_door(t_game *g, int x, int y)
 {
-	static bool first = true;
-	int	xpos;
-	int	ypos;
-	int	delta_x;
+	size_t	i;
 
-	/*Para que la primera vez no se mueva el raton porque podria ser que el
-	 puntero estuviera totalmente a la derecha o izquierda de la pantalla y 
-	entonces se moveria un salto raro hacia esa direccion. De esta manera la
-	 primera ves solo centra sin mover y no hay un salto exagerado.*/
-	if (first) 
+	if (!g || !g->map.doors_info.doors_array)
+		return (NULL);
+	for (i = 0; i < g->map.doors_info.doors_count; i++)
 	{
-		first = false;
-		mlx_set_mouse_pos(g->render.mlx, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-		return ;
+		if (g->map.doors_info.doors_array[i].x == x
+			&& g->map.doors_info.doors_array[i].y == y)
+			return (&g->map.doors_info.doors_array[i]);
 	}
-	mlx_get_mouse_pos(g->render.mlx, &xpos, &ypos);
-	delta_x = xpos - (SCREEN_WIDTH / 2);
-	delta_x = ft_clamp(delta_x, -50, 50);
-	rotate_player(g, delta_x * rotSpeed);
-	mlx_set_mouse_pos(g->render.mlx, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	return (NULL);
 }
 
-void update_player_movement(t_game *g, double moveSpeed, double rotSpeed)
+double ft_get_time(void)
 {
-	if (g->input.move_forward)
-		move_player_forward(g, moveSpeed);
-	if (g->input.move_backward)
-		move_player_backward(g, moveSpeed);
-	if (g->input.move_left)
-		strafe_player_left(g, moveSpeed);
-	if (g->input.move_right)
-		strafe_player_right(g, moveSpeed);
-	if (g->input.rotate_left)
-		rotate_player(g, -rotSpeed);
-	if (g->input.rotate_right)
-		rotate_player(g, rotSpeed);
+	struct timeval tv;
+
+	if (gettimeofday(&tv, NULL) == -1)
+		return (0.0);
+	return (tv.tv_sec + (double)tv.tv_usec / 1000000.0);
+}
+
+void process_action_key(t_game *g, mlx_key_data_t keydata)
+{
+	t_door *door;
+
+	if (keydata.key == MLX_KEY_E)
+	{
+		int target_x = (int)(g->player.pos.x + g->player.dir.x);
+		int target_y = (int)(g->player.pos.y + g->player.dir.y);
+		door = find_door(g, target_x, target_y);
+		if (door)
+		{
+			//toggle_door(door);
+			if (door->open) //si la acabo de abrir actualizao el tiempo.
+				door->timer = ft_get_time();
+		}
+	}
+	else if (keydata.key == MLX_KEY_LEFT_SHIFT)
+	{
+		if (g->player.running)
+			g->player.running = false;
+		else
+			g->player.running = true;
+	}
 }

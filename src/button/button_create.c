@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 23:05:21 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/02 14:48:45 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 13:13:17 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,12 @@ int ft_create_buttons(t_render *render)
     button_pos.x += 0; // Adjust position for the next button
     button_pos.y -= 140; // Adjust position for the next button
     render->buttons[1] = button_new(button_pos, "Start", start_game, 0x00FF00FF); // Green color for the start button
-    render->button_count = 2;
+    button_pos.x = SCREEN_WIDTH - 150; // Adjust position for the next button
+    button_pos.y = 230; // Adjust position for the next button
+    render->buttons[2] = button_new(button_pos, "Minimap", ft_show_minimap, 0x0000FFFF); // Blue color for the minimap button
+    render->buttons[2].width = 100; // Set width for the minimap button
+    render->buttons[2].height = 50; // Set height for the minimap button
+    render->button_count = 3;
     while (++i < render->button_count)
         get_button_image(render->mlx, &render->buttons[i]);
     return (1);

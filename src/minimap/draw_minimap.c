@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:12:50 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/09 11:18:26 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 13:05:46 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ void	ft_draw_player(mlx_image_t *img, t_game *g)
 
 	if (!img || !g)
 		return;
-	player_pixel = TILE_SIZE * g->map.minimap.scale; // Tamaño del jugador en el minimapa
-	pos.x = g->player.pos.x * g->map.minimap.scale * TILE_SIZE; // Escalar la posición del jugador
-	pos.y = g->player.pos.y * g->map.minimap.scale * TILE_SIZE; // Escalar la posición del jugador
+	player_pixel = ceil((TILE_SIZE / 2) * g->map.minimap.scale); // Tamaño del jugador en píxeles
+	pos.x = g->player.pos.x * (g->map.minimap.scale * TILE_SIZE) - player_pixel / 2; // Escalar la posición del jugador
+	pos.y = g->player.pos.y * (g->map.minimap.scale * TILE_SIZE) - player_pixel / 2; // Escalar la posición del jugador
 	if (pos.x < 0 || pos.y < 0 || pos.x >= (int)img->width || pos.y >= (int)img->height)
 		return;
 	ft_draw_tile(img, pos, player_pixel, 0xFFF0FF); // Dibuja el jugador en rojo
@@ -125,12 +125,27 @@ void	fill_image_color(mlx_image_t *img, uint32_t color)
 	}
 }
 
+void ft_draw_by_tile(char tile, mlx_image_t *img, t_vect2 pos, double scale)
+{
+	uint32_t color;
+
+	if (tile == '1') // Assuming '1' represents a wall
+		color = 0xFFF00FFF; // Red for walls
+	else if (tile == '0') // Assuming '0' represents empty space
+		color = 0x0000FFF; // Black for empty space
+	else if (tile == ' ') // Assuming 'P' represents the player
+		color = 0x000000; // Green for other tiles
+	else
+		color = 0xFFFFFF; // Default color for unknown tiles
+	ft_draw_tile(img, pos, ceil(TILE_SIZE * scale), color);
+}
 
 // no funciona
 void ft_draw_minimap_grid(mlx_image_t *img, t_map *map, double scale)
 {
 	size_t x;
 	size_t y;
+	char current_tile;
 
 	if (!img || !map || !img->pixels)
 		return;
@@ -141,24 +156,9 @@ void ft_draw_minimap_grid(mlx_image_t *img, t_map *map, double scale)
 		(void)scale; // scale is not used in this function, but could be used for scaling the grid
 		while (y < map->map_height)
 		{
-			if (map->matrix[y][x] == '0') // Assuming '1' represents a wall
-			{
-				printf("Drawing wall at (%zu, %zu)\n", x, y);
-				ft_draw_tile(img, (t_vect2){x * TILE_SIZE * scale, y * TILE_SIZE * scale}, 
-					TILE_SIZE, 0xFFF00FFF); // Draw wall in red
-			}
-			else if (map->matrix[y][x] == ' ') // Assuming '0' represents empty space
-			{
-				printf("Drawing empty space at (%zu, %zu)\n", x, y);
-				ft_draw_tile(img, (t_vect2){x * TILE_SIZE * scale, y * TILE_SIZE * scale}, 
-					TILE_SIZE, 0x000000); // Draw empty space in black
-			}
-			else
-			{ 
-				printf("Drawing other tile at (%zu, %zu)\n", x, y);
-				ft_draw_tile(img, (t_vect2){x * TILE_SIZE * scale, y * TILE_SIZE * scale}, 
-					TILE_SIZE, 0xF00FFF); // Draw other tiles in green
-			}
+			current_tile = map->matrix[y][x];
+			ft_draw_by_tile(current_tile, img,
+				(t_vect2){x * TILE_SIZE * scale, y * TILE_SIZE * scale}, scale);
 			y++;
 		}
 		x++;
@@ -170,8 +170,8 @@ void ft_draw_minimap(t_minimap *minimap, t_game *g)
 {
 	t_vect2 draw_pos;
 
-	if (!minimap->enabled || !minimap->img)
-	return;
+	if (!minimap->img || !MINIMAP || !g || !g->render.mlx)
+		return;
 	ft_bzero(&draw_pos, sizeof(t_vect2));
 	draw_pos.x = g->render.screen_width - minimap->width - 10; // 10 pixels from the right edge
 	draw_pos.y = 40; //
@@ -182,7 +182,5 @@ void ft_draw_minimap(t_minimap *minimap, t_game *g)
 	ft_draw_player(minimap->img, g);
 	mlx_set_instance_depth(&minimap->img->instances[minimap->instance], 1);
 	mlx_set_instance_depth(&g->render.img->instances[g->render.instance], 0);
-	if (!minimap->text)
-		minimap->text = mlx_put_string(g->render.mlx, "Minimap",
-			SCREEN_WIDTH - 100, 20);
+	
 }

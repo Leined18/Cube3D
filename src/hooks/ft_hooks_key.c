@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_key_hook.c                                      :+:      :+:    :+:   */
+/*   ft_hooks_key.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 10:44:06 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/26 18:55:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/09 13:07:54 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ void	ft_on_keypress(mlx_key_data_t keydata, void *param)
 		g->input.rotate_left = pressed;
 	if (keydata.key == MLX_KEY_RIGHT)
 		g->input.rotate_right = pressed;
+	if (keydata.key == MLX_KEY_E && keydata.action == MLX_PRESS)
+		process_action_key(g, keydata);
+	if (keydata.key == MLX_KEY_LEFT_SHIFT && keydata.action == MLX_PRESS)
+		process_action_key(g, keydata);
+	if (keydata.key == MLX_KEY_LEFT_SHIFT && keydata.action == MLX_RELEASE)
+		process_action_key(g, keydata);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		process_scape_key(g);
 }

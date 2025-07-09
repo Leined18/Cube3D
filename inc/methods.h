@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/09 08:53:30 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 12:55:08 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,13 @@ void    ft_on_destroy(void *param);
 void    ft_on_keypress(mlx_key_data_t keydata, void *param);
 void    ft_mouse_button(mouse_key_t btn, action_t act, modifier_key_t mod, void* p);
 void    ft_on_game_loop(void *param);
+void    process_action_key(t_game *g, mlx_key_data_t keydata);
+void    process_scape_key(t_game *g);
+
+// ==================== UPdate Management ====================
 void    update_player_movement(t_game *g, double moveSpeed, double rotSpeed);
 void    update_mouse_rotation(t_game *g, double rotSpeed);
-void    process_scape_key(t_game *g);
+void    update_minimap(t_game *g);
 
 // ==================== Button Hooks ====================
 void    ft_on_button_click(mlx_key_data_t keydata, void *param);
@@ -99,6 +103,9 @@ void        ft_draw_player(mlx_image_t *img, t_game *g);
 void        ft_draw_player_dir(mlx_image_t *img, t_game *g);
 void        ft_draw_minimap(t_minimap *minimap, t_game *g);
 t_minimap  ft_create_minimap(t_map *map);
+
+void        ft_show_minimap(void *param);
+
 
 // ==================== Player Movements ====================
 void		rotate_player(t_game *game, double angle);

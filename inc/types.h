@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/09 09:39:56 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 12:54:15 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_player
     double		        fov_degrees;
 	double		        fov_factor;
     double		        movspeed;
-    double		        rotspeed;
+    bool		        running;
     t_mt       *objs;
 }	t_player;
 
@@ -127,6 +127,21 @@ typedef struct s_minimap
     int32_t instance; // ID de la instancia del minimapa
 }	t_minimap;
 
+typedef struct	s_door
+{
+	int			x;
+	int			y;
+	bool		open; // false = cerrada, true = abierta
+	double		anim_state;
+	double		timer;
+}				t_door;
+
+typedef struct	s_doors
+{
+	t_door		*doors_array; // Lista de puertas
+	size_t		doors_count; // Número de puertas en el mapa
+}               t_doors;
+
 typedef struct s_map
 {
     size_t		    map_width;
@@ -135,6 +150,7 @@ typedef struct s_map
 	t_list		    *map_list;
     char	        **matrix;
     t_minimap       minimap; // Estructura para el minimapa
+    t_doors         doors_info;
     t_textures      textures[MAX_TEXTURES];
     t_mt    *objs;
 }	t_map;

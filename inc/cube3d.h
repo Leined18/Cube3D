@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/09 10:50:56 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 13:10:33 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "mt.h"
 # include "types.h"
 # include "utils.h"
+#include <sys/time.h>
 
 # define    TITLE "Cube3D"
 # define    TILE_SIZE 64
@@ -41,10 +42,11 @@
 
 // Player configuration
 # define	PLAYER_SPEED 3.0
+# define	RUN_SPEED PLAYER_SPEED * 2 // Multiplicador de velocidad al correr
 # define	PLAYER_ROTATION_SPEED 1.5
 # define	MOUSE_ROTATION_SPEED 0.05
 # define    FOV_DEGREES 77.0
-# define	MARGIN_WALL 0.0 // Margin representing the body space of the player, used to avoid collisions with walls
+# define	MARGIN_WALL 0.2 // Margin representing the body space of the player, used to avoid collisions with walls
 
 // Raycasting configuration
 #define     SCREEN_WIDTH 1920

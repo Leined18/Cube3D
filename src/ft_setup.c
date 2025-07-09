@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/07 11:41:54 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 12:33:45 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int	ft_setup(t_game *game, char *map_file)
 	game->backup = ft_backup_static(1, true, false);
 	if (!game->backup)
 		return (ft_cleanup(game), 0);
-	if (!ft_create_player(&game->player, &game->map))
-		return (ft_cleanup(game), 0);
     if (!ft_create_render(&game->render))
+		return (ft_cleanup(game), 0);
+	if (!ft_create_player(&game->player, &game->map))
 		return (ft_cleanup(game), 0);
 	if (!game->backup)
 		return (ft_cleanup(game), 0);

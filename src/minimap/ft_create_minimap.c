@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:29:23 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/09 11:16:53 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 11:37:47 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ t_minimap	ft_create_minimap(t_map *map)
 		return ((t_minimap){0});
 	ft_bzero(&minimap, sizeof(t_minimap));
 	scale = ft_calc_scale(map->map_width, map->map_height);
-	minimap.width = map->map_width * TILE_SIZE * scale + 1;
-	minimap.height = map->map_height * TILE_SIZE * scale + 1;
+	minimap.width = ceil(map->map_width * TILE_SIZE * scale) + 1;
+	minimap.height = ceil(map->map_height * TILE_SIZE * scale) + 1;
 	minimap.scale = scale;
 	minimap.enabled = MINIMAP;
 	minimap.img = mlx_new_image(
