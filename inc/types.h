@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/08 10:38:26 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 09:39:56 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ typedef struct s_minimap
     double		scale; // Escala del minimapa respecto al mapa real
     bool        enabled; // Indica si el minimapa está habilitado
     mlx_image_t *text; // Imagen de texto para el minimapa
-    int instance; // ID de la instancia del minimapa
+    int32_t instance; // ID de la instancia del minimapa
 }	t_minimap;
 
 typedef struct s_map
@@ -147,7 +147,7 @@ typedef struct s_render
     int		        screen_height;
     t_button       buttons[10];
     int            button_count;
-    int             instance; // ID de la instancia del render
+    int32_t             instance; // ID de la instancia del render
     t_mt	*objs;
 }	t_render;
 
@@ -163,6 +163,7 @@ typedef struct	s_input
 
 typedef struct s_game
 {
+    bool        running;
     t_map		map;
     t_player	player;
     t_render    render;

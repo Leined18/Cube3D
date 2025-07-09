@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 23:03:32 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/02 14:40:54 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 09:40:44 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void start_game(void *p)
     game->render.button_count = 1; // Update button count after starting the game
     game->render.buttons[0].y = 0; // Reset the second button position
     game->render.buttons[0].x = 0; // Reset the second button position
+    game->running = true; // Set the game running state
     mlx_loop_hook(game->render.mlx, ft_on_game_loop, game); 
 }
 

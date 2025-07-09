@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/02 14:34:49 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 10:26:09 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	update_mouse_rotation(t_game *g, double rotSpeed)
 	if (first) 
 	{
 		first = false;
-		mlx_set_mouse_pos(g->render.mlx, screenWidth / 2, screenHeight / 2);
+		mlx_set_mouse_pos(g->render.mlx, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 		return ;
 	}
 	mlx_get_mouse_pos(g->render.mlx, &xpos, &ypos);
-	delta_x = xpos - (screenWidth / 2);
+	delta_x = xpos - (SCREEN_WIDTH / 2);
 	delta_x = ft_clamp(delta_x, -50, 50);
 	rotate_player(g, delta_x * rotSpeed);
-	mlx_set_mouse_pos(g->render.mlx, screenWidth / 2, screenHeight / 2);
+	mlx_set_mouse_pos(g->render.mlx, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 }
 
 void update_player_movement(t_game *g, double moveSpeed, double rotSpeed)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_texture.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 14:46:28 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/02 13:20:13 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:26:01 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	calc_wallx_and_texx(t_game *g, t_ray *ray)
 void	calc_step_and_pos(double *step, double *pos, t_ray *r, int lineheight)
 {
 	*step = (double)r->tex_info.mlx_tx->height / lineheight;
-	*pos = (r->draw.start - screenHeight / 2.0 + lineheight / 2.0) * (*step);
+	*pos = (r->draw.start - SCREEN_HEIGHT / 2.0 + lineheight / 2.0) * (*step);
 }
 
 int	calc_tex_inf(t_game *g, t_ray *ray)

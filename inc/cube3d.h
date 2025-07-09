@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/07 11:45:05 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/09 10:50:56 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 # define    DEBUG false
 # define    MAX_BUTTONS 10
 # define    MINIMAP_SCALE 0.2  // escala respecto al mapa real
+# define    MINIMAP_WIDTH_OFFSET 550 // ancho extra para el minimapa
+# define    MINIMAP_HEIGHT_OFFSET 550 // alto extra para el minimapa
+# define    MINIMAP_MAX_RATIO 0.25 // ratio máximo del minimapa respecto al tamaño del mapa
 
 
 //window configuration
@@ -41,11 +44,11 @@
 # define	PLAYER_ROTATION_SPEED 1.5
 # define	MOUSE_ROTATION_SPEED 0.05
 # define    FOV_DEGREES 77.0
-# define	MARGIN_WALL 0.2 // Margin representing the body space of the player, used to avoid collisions with walls
+# define	MARGIN_WALL 0.0 // Margin representing the body space of the player, used to avoid collisions with walls
 
 // Raycasting configuration
-#define     screenWidth 1920
-#define     screenHeight 1080
+#define     SCREEN_WIDTH 1920
+#define     SCREEN_HEIGHT 1080
 #define     MAX_PITCH PI / 2
 # define    MIN_PITCH -PI / 2
 
