@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/09 12:49:11 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/10 09:47:36 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void ft_launch_game(void *p)
 	game->render.instance = mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
 	ft_set_cursor(game);
 	i = -1;
-	while (++i < game->render.button_count)
+	while (++i < 2)
 		ft_draw_button(game->render.mlx, &game->render.buttons[i]);
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
 	mlx_mouse_hook(game->render.mlx, ft_mouse_button, game);

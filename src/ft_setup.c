@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/09 12:33:45 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/10 09:35:28 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int ft_create_player(t_player *player, t_map *map)
     player->fov_degrees = FOV_DEGREES;
     player->fov_factor = ft_calc_fov_factor(player->fov_degrees);
     player->movspeed = PLAYER_SPEED;
-    player->rotspeed = PLAYER_ROTATION_SPEED;
+    //player->rotspeed = PLAYER_ROTATION_SPEED;
     player->plane = ft_calc_plane(player->dir, player->fov_factor);
     ft_mtnew("entity","player")->data = &player;
     return (1);

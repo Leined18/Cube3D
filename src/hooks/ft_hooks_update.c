@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 12:53:51 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/09 13:09:06 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/10 09:45:04 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,5 @@ void update_minimap(t_game *g)
 {
     if (!g || !g->map.minimap.img)
         return;
-    if (!g->map.minimap.enabled)
-    {
-        if (g->map.minimap.img)
-        {
-            g->map.minimap.img->enabled = false;
-            if (g->map.minimap.img->instances && g->map.minimap.img->instances[0].enabled)
-                g->map.minimap.img->instances[0].enabled = false;
-        }
-        return;
-    }
     ft_draw_minimap(&g->map.minimap, g);
 }

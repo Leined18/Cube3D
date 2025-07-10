@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_dda.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:06:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/02 12:24:57 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:50:07 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	setup_dda(t_ray *ray, t_game *game)
 	return (1); // Retorna 1 si la configuración fue exitosa.
 }
 
-static int	reach_wall(t_ray *ray, t_game *g)
+int	reach_wall(t_ray *ray, t_game *g)
 {
 	ray->hit = 0;
 	while (!ray->hit)

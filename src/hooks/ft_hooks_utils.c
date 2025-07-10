@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/09 12:59:05 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/10 09:45:49 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void process_scape_key(t_game *g)
 		mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_NORMAL);
 		g->cursor_hidden = false;
 		ft_draw_button(g->render.mlx, &g->render.buttons[0]);
+		ft_draw_button(g->render.mlx, &g->render.buttons[1]);
 	}
 	else
 	{

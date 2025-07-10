@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 23:03:32 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/09 13:09:51 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/10 09:47:08 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void start_game(void *p)
     }
     ft_remove_button(game->render.mlx, &game->render.buttons[0]);
     ft_free_button(game->render.mlx, &game->render.buttons[1]); // Free the start button
+    game->render.buttons[1] = game->render.buttons[2];
+    game->render.buttons[2] = (t_button){0}; // Clear the third button
     ft_successful("Game started successfully.", false);
     game->render.button_count = 2; // Update button count after starting the game
     game->render.buttons[0].y = 50; // Reset the second button position
@@ -54,11 +56,13 @@ void ft_show_minimap(void *param)
     if (game->map.minimap.enabled)
     {
         game->map.minimap.enabled = false;
+        game->map.minimap.img->enabled = false;
         ft_successful("Minimap disabled. \n", false);
     }
     else
     {
         game->map.minimap.enabled = true;
+        game->map.minimap.img->enabled = true;
         ft_successful("Minimap enabled.\n", false);
     }
 }
