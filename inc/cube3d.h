@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/16 10:20:41 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:27:22 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 // Door configuration
 # define	DOOR_SYMBOL 'D' // Symbol representing a door in the map
 # define    DOOR_ANIM_TIME 3 // segundos
+# define    DOOR_OPEN_TIME 5.0 // segundos
 
 // Raycasting configuration
 #define     SCREEN_WIDTH 1920
