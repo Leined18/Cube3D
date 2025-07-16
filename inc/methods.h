@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   methods.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/10 10:50:32 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/16 10:16:16 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ void		ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player);
 // ==================== Player Management ====================
 
 
+// ========================== Doors ==========================
+t_door	    *find_door(t_game *g, int x, int y);
+void		toggle_door(t_door *door);
+double      ft_get_time(void);
+
 // ==================== Player Movements ====================
 
 void		rotate_player(t_game *game, double angle);
@@ -61,11 +66,10 @@ void		strafe_player_right(t_game *game, double moveSpeed);
 
 // ==================== Hooks Management ====================
 
-void    ft_on_destroy(void *param);
 void    ft_on_keypress(mlx_key_data_t keydata, void *param);
 void    ft_mouse_button(mouse_key_t btn, action_t act, modifier_key_t mod, void* p);
 void    ft_on_game_loop(void *param);
-void    process_action_key(t_game *g, mlx_key_data_t keydata);
+void    process_key(t_game *g, mlx_key_data_t keydata);
 void    process_scape_key(t_game *g);
 
 // ==================== Update Management ====================
@@ -189,6 +193,7 @@ int			is_player(char c);
 int			is_wall(t_game *g, double x, double y);
 void		ft_init_player(t_player *player, t_map *map);
 void		can_walk(t_game *game, double new_x, double new_y, t_vect2 dir);
+double	    get_player_speed(mlx_t *mlx);
 
 // ==================== Transformations ====================
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/09 13:10:33 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/16 10:20:41 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define    TILE_SIZE 64
 # define    FPS 60
 
+// Macros
+# define TOGGLE(x) ((x) = !(x))
+
 //configuration 
 # define    TEXTURES true
 # define    MINIMAP true
@@ -42,11 +45,15 @@
 
 // Player configuration
 # define	PLAYER_SPEED 3.0
-# define	RUN_SPEED PLAYER_SPEED * 2 // Multiplicador de velocidad al correr
+# define	PLAYER_RUN_SPEED 2.0 * PLAYER_SPEED
 # define	PLAYER_ROTATION_SPEED 1.5
 # define	MOUSE_ROTATION_SPEED 0.05
 # define    FOV_DEGREES 77.0
 # define	MARGIN_WALL 0.2 // Margin representing the body space of the player, used to avoid collisions with walls
+
+// Door configuration
+# define	DOOR_SYMBOL 'D' // Symbol representing a door in the map
+# define    DOOR_ANIM_TIME 3 // segundos
 
 // Raycasting configuration
 #define     SCREEN_WIDTH 1920

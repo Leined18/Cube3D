@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_loop_hook.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 10:43:32 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/09 13:10:01 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/16 09:49:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,23 @@ void ft_on_game_loop2(void *param)
 	cast_all_rays(g);
 	ft_draw_minimap(&g->map.minimap, g);
 }
+
 void ft_on_game_loop(void *param)
 {
 	t_game	*g;
 	double	rotSpeedk;
 	double	rotSpeedm;
+	double	moveSpeed;
 
 	g = (t_game *)param;
-	if (!g->player.running)
-		g->player.movspeed = g->render.mlx->delta_time * PLAYER_SPEED;
-	else
-		g->player.movspeed = g->render.mlx->delta_time * PLAYER_SPEED * RUN_SPEED;
+	moveSpeed = g->render.mlx->delta_time * get_player_speed(g->render.mlx);
 	rotSpeedk = g->render.mlx->delta_time * PLAYER_ROTATION_SPEED;
 	if (g->cursor_hidden)
 	{
 		rotSpeedm = g->render.mlx->delta_time * MOUSE_ROTATION_SPEED;
 		update_mouse_rotation(g, rotSpeedm);
 	}
-	update_player_movement(g, g->player.movspeed, rotSpeedk);
+	update_player_movement(g, moveSpeed, rotSpeedk);
 	cast_all_rays(g);
 	update_minimap(g);
 	

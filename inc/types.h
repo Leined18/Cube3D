@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/10 09:36:13 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/16 10:19:40 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,7 @@ typedef struct s_player
     t_vect2            plane;
     double		        fov_degrees;
 	double		        fov_factor;
-    double		        movspeed;
-    bool		        running;
-    t_mt       *objs;
+    t_mt              *objs;
 }	t_player;
 
 typedef struct s_minimap
@@ -133,6 +131,7 @@ typedef struct	s_door
 	int			y;
 	bool		open; // false = cerrada, true = abierta
 	double		anim_state;
+    double		anim_elapsed; //la ultrima
 	double		timer;
 }				t_door;
 

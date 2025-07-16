@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:29:13 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/26 12:58:39 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/16 09:50:16 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,12 @@ void	can_walk(t_game *game, double new_x, double new_y, t_vect2 dir)
 	// Mover en Y si no hay pared en la posición nueva en Y con misma X
 	if (!is_wall(game, game->player.pos.x, new_y + MARGIN_WALL * sign(dir.y)))
 		game->player.pos.y = new_y;
+}
+
+double	get_player_speed(mlx_t *mlx)
+{
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT_SHIFT))
+		return (PLAYER_RUN_SPEED);
+	else
+		return (PLAYER_SPEED);
 }

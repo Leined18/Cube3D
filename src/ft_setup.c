@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_setup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/10 09:35:28 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/16 10:16:44 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int ft_create_player(t_player *player, t_map *map)
     ft_init_player(player, map);
     player->fov_degrees = FOV_DEGREES;
     player->fov_factor = ft_calc_fov_factor(player->fov_degrees);
-    player->movspeed = PLAYER_SPEED;
     //player->rotspeed = PLAYER_ROTATION_SPEED;
     player->plane = ft_calc_plane(player->dir, player->fov_factor);
     ft_mtnew("entity","player")->data = &player;
