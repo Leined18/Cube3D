@@ -6,18 +6,10 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/16 10:15:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:26:27 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-double ft_get_time(void)
-{
-	struct timeval tv;
-
-	if (gettimeofday(&tv, NULL) == -1)
-		return (0.0);
-	return (tv.tv_sec + (double)tv.tv_usec / 1000000.0);
-}
 

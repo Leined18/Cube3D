@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/16 12:33:29 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:23:32 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int			is_wall_elem(t_game *g, char c);
 
 int			ft_load_texture(t_game *g, t_textures *texture);
 int			get_texture_direction(int side, t_vect2 ray_dir);
+double	    calc_wallx(t_game *g, t_ray *ray);
 void		calc_wallx_and_texx(t_game *g, t_ray *ray);
 void		calc_step_and_pos(double *step, double *pos, t_ray *r, int lineheight);
 int			calc_tex_inf(t_game *g, t_ray *ray);
@@ -48,7 +49,14 @@ int			calc_tex_inf(t_game *g, t_ray *ray);
 void		ft_render_frame(void *param);
 void		ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player);
 
-// ==================== Player Management ====================
+// ==================== Doors Management ====================
+int			init_doors(t_map *map, t_doors *d_inf);
+int			is_door_symbol(char c);
+bool		is_door_open(t_game *g, int x, int y);
+t_door		*find_door(t_game *g, int x, int y);
+void		update_doors_touch_timer(t_game *g);
+void		update_doors_animation(t_game *g, double delta_time);
+void		toggle_door(t_door *door);
 
 
 // ========================== Doors ==========================
@@ -145,7 +153,6 @@ int			cast_all_rays(t_game *g);
 int			ft_raycast_dda(t_ray *ray, t_game *g);
 int			ft_set_ray(t_ray *ray, int x, t_game *g);
 int			ft_setup_ray(t_ray *ray, int x, t_game *g);
-int         reach_wall(t_ray *ray, t_game *g);
 
 // ==================== Ray Calculation ====================
 
@@ -216,8 +223,7 @@ int			secure_open(char *map_name);
 void		secure_close(int fd);
 
 // ==================== Color ====================
-
-uint32_t	set_color_line(t_game *g, t_vect2 map, int wall_side);
+uint32_t	set_color_line(t_game *g, t_coord map, int wall_side);
 uint32_t	darken_color(uint32_t color);
 int			set_surface_color(t_game *g, int s);
 

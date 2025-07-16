@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/16 12:27:22 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/16 15:37:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@
 #define     MAX_PITCH PI / 2
 # define    MIN_PITCH -PI / 2
 
+// Macros
+# define TOGGLE(x) ((x) = !(x))
 
 # define    ASSESTS_PATH "./assets/"
 # define    TEXTURE_NO ASSESTS_PATH "textures/no.png"

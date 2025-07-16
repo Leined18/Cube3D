@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:18:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/16 10:16:44 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:17:30 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,14 @@ int	ft_setup(t_game *game, char *map_file)
 {
 	if (!game || !map_file)
 		return (0);
-	ft_bzero(game, sizeof(t_game));
-	if (parse_file(map_file, game) < 0)
-		return (ft_printf("Error parsing %s\n", map_file), 0);
+    ft_bzero(game, sizeof(t_game));
+    if (parse_file(map_file, game) < 0)
+        return (ft_printf("Error parsing %s\n", map_file), 0);
+    if (init_doors(&game->map, &game->map.doors_info) < 0)
+    {
+        ft_printf("Error parsing doors\n");
+		return (ft_cleanup(game), 0);
+    }
 	game->backup = ft_backup_static(1, true, false);
 	if (!game->backup)
 		return (ft_cleanup(game), 0);

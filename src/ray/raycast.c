@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:45:42 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/10 10:07:11 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:15:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	cast_all_rays(t_game *g)
 			if (calc_tex_inf(g, &ray) < 0)
 				return (-1);
 		draw_vertical_line(g, x, &ray, &ray.tex_info);
-		// draw_vertical_line(g->render.img, x, ray.draw, ray.side);
 		x++;
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks_update.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 12:53:51 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/10 09:45:04 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:26:46 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,15 @@ void update_player_movement(t_game *g, double moveSpeed, double rotSpeed)
 		rotate_player(g, -rotSpeed);
 	if (g->input.rotate_right)
 		rotate_player(g, rotSpeed);
+}
+
+void	update_doors_touch_timer(t_game *g)
+{
+	t_door *door;
+
+	door = find_door(g, (int)g->player.pos.x, (int)g->player.pos.y);
+	if (door && door->open)
+		door->timer = ft_get_time();
 }
 
 void update_minimap(t_game *g)
