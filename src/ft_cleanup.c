@@ -14,6 +14,7 @@ void ft_cleanup_render(t_render *render)
 	{
 		if (render->img)
 			mlx_delete_image(render->mlx, render->img);
+		ft_free_all_buttons(render->mlx, render);
 		mlx_close_window(render->mlx);
 		mlx_terminate(render->mlx);
 	}

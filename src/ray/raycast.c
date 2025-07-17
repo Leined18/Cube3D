@@ -3,30 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:45:42 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 11:15:30 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:15:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	cast_all_rays(t_game *g)
+int	ft_setup_ray(t_ray *ray, int x, t_game *g)
+{
+	if (!ray || !g || !g->render.img)
+		return (-1);
+	if (!ft_set_ray(ray, x, g))
+			return (-1);
+	if (!ft_raycast_dda(ray, g))
+			return (-1);
+	return (0);
+}
+
+int	cast_all_rays(t_game *g)
 {
 	int		x;
 	t_ray	ray;
 	if (!g || !g->render.img || !g->map.matrix)
-		return;
+		return (-1);
 	x = 0;
 	while (x < g->render.screen_width && x < (int)g->render.img->width)
 	{
-		if (!ft_set_ray(&ray, x, g))
-			return;
-		if (!ft_raycast_dda(&ray, g))
-			printf("DDA failed for column %d\n", x);
+		if (ft_setup_ray(&ray, x, g) < 0)
+			return (-1);
 		calc_draw_line(g, &ray);
-		draw_vertical_line(g->render.img, x, ray.draw, ray.side);
+		if (TEXTURES)
+			if (calc_tex_inf(g, &ray) < 0)
+				return (-1);
+		draw_vertical_line(g, x, &ray, &ray.tex_info);
 		x++;
 	}
+	return (0);
 }

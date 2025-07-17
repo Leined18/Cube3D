@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:28:20 by daniel            #+#    #+#             */
-/*   Updated: 2025/06/18 17:34:11 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/16 12:30:36 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ int ft_clamp(int value, int min, int max)
     if (value > max)
         return (max);
     return (value);
+}
+
+double	ft_clamp_double(double value, double min, double max)
+{
+	if (value < min)
+		return min;
+	if (value > max)
+		return max;
+	return value;
 }
 
 int	ft_min(int a, int b)
@@ -39,4 +48,10 @@ int	ft_max(int a, int b)
 float	ft_lerp(float a, float b, float t)
 {
 	return (a + (b - a) * t);
+}
+
+// Sign function: returns -1 for negative, 1 for positive, and 0 for zero
+int sign(double x)
+{
+	return (x > 0) - (x < 0);
 }

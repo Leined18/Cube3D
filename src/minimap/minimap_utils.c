@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minimap_utils.c                                 :+:      :+:    :+:   */
+/*   minimap_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:22:56 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 14:45:47 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/07 11:55:02 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-mlx_image_t *ft_create_minimap_image(mlx_t *mlx, t_map map)
+mlx_image_t *ft_create_minimap_image(mlx_t *mlx, int width, int height)
 {
     mlx_image_t *minimap_img;
     
     if (!mlx)
         return (0);
-    minimap_img = mlx_new_image(mlx, map.map_width * TILE_SIZE, map.map_height * TILE_SIZE);
+    minimap_img = mlx_new_image(mlx, width, height);
     if (!minimap_img)
         return (NULL);
     return (minimap_img);

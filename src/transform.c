@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 09:01:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/19 10:15:08 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:02:21 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,4 @@ t_vect2	normalize(t_vect2 vect)
 		result.y = vect.y / length;
 	}
 	return (result);
-}
-
-// Función para eliminar el '\n' al final de una línea
-void remove_newline(char *line)
-{
-	int	len;
-	
-	len = ft_strlen(line);
-	if (len > 0 && line[len - 1] == '\n')
-		line[len - 1] = '\0';
-}
-
-void	fill_with_spaces(char *dest, const char *src, int width)
-{
-	int	i;
-
-	i = ft_strlcpy(dest, src, width + 1);
-	while (i < width)
-		dest[i++] = ' ';
-	dest[i] = '\0';
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ceiling_floor.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:42:06 by daniel            #+#    #+#             */
-/*   Updated: 2025/06/19 11:12:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:26:01 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_ceiling(mlx_image_t *img, int x, t_screenline draw)
     int y;
 
     y = 0;
-    while (y < draw.start && y < screenHeight)
+    while (y < draw.start && y < SCREEN_HEIGHT)
     {
         mlx_put_pixel(img, x, y, get_ceiling_color(&draw));
         y++;
@@ -29,7 +29,7 @@ void	draw_floor(mlx_image_t *img, int x, t_screenline draw)
     int y;
     
     y = draw.end + 1;
-    while (y < screenHeight)
+    while (y < SCREEN_HEIGHT)
     {
         mlx_put_pixel(img, x, y, get_floor_color(&draw));
         y++;
