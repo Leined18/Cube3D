@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/16 16:23:32 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:36:21 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ mlx_image_t *get_button_image(mlx_t *mlx, t_button *btn);
 
 // ===================== Map Management ====================
 int			ft_set_map(t_map *map);
-char		**ft_load_map(const char *path, size_t *width, size_t *height);
 void		ft_cleanup_map(t_map *map);
 void		check_arg_cub(char *name);
 int			check_map(t_game *g);
@@ -126,10 +125,6 @@ int			generate_map_array(t_game *g);
 
 // ==================== Minimap Management ====================
 
-char		ft_get_map_tile(int x, int y);
-void		ft_set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
-void        ft_set_scale(mlx_image_t *img, float scale);
-mlx_image_t *ft_create_minimap_image(mlx_t *mlx, int width, int height);
 void        ft_draw_tile(mlx_image_t *img, t_vect2 vtile, size_t size, uint32_t color);
 void        ft_draw_player(mlx_image_t *img, t_game *g);
 void        ft_draw_player_dir(mlx_image_t *img, t_game *g);
@@ -139,7 +134,6 @@ t_minimap  ft_create_minimap(t_map *map);
 // ==================== Minimap Utils ====================
 
 void        ft_draw_minimap_image(t_minimap *minimap, mlx_t *mlx, t_vect2 minimap_pos);
-void        fill_image_color(mlx_image_t *img, uint32_t color);
 void        ft_draw_by_tile(char tile, mlx_image_t *img, t_vect2 pos, double scale);
 void        ft_draw_line(mlx_image_t *img, t_vect2 start, t_vect2 end, uint32_t color);
 

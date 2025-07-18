@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/16 15:37:54 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:32:13 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,17 @@
 # define	DOOR_SYMBOL 'D' // Symbol representing a door in the map
 # define    DOOR_ANIM_TIME 3 // segundos
 # define    DOOR_OPEN_TIME 5.0 // segundos
+
+//MINIMAP
+# define	MINIMAP_MAX_RATIO 0.25 // ratio máximo del minimapa respecto al tamaño del mapa
+# define	MINIMAP_THICKNESS 1 // Grosor de los rayos del minimapa
+# define	MINIMAP_GRANULARITY_LINE 5 * MINIMAP_THICKNESS // Espacio entre líneas del minimapa
+# define	MINIMAP_COLOR_LINE 0xE5E8E8FF // Color of the minimap lines
+# define	MINIMAP_COLOR_PLAYER 0x9B59B6FF // Color of the minimap player
+# define	MINIMAP_COLOR_WALL 0x17202AFF // Color of the minimap lines
+# define	MINIMAP_COLOR_DOOR 0xD4AC0DFF // Color of the minimap lines
+# define	MINIMAP_COLOR_EMPTY 0x000000 // Color of the minimap lines
+# define	MINIMAP_COLOR_FLOOR 0x707B7CFF // Color of the minimap lines
 
 // Raycasting configuration
 #define     SCREEN_WIDTH 1920
