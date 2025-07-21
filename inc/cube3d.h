@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/18 15:32:13 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/21 12:30:22 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,22 @@
 # include "utils.h"
 #include <sys/time.h>
 
-# define    TITLE "Cube3D"
-# define    TILE_SIZE 64
-# define    FPS 60
+# define	TITLE "Cube3D"
+# define	TILE_SIZE 64
+# define	FPS 60
 
 // Macros
 # define TOGGLE(x) ((x) = !(x))
 
 //configuration 
-# define    TEXTURES true
-# define    MINIMAP true
-# define    DEBUG false
-# define    MAX_BUTTONS 10
-# define    MINIMAP_SCALE 0.2  // escala respecto al mapa real
-# define    MINIMAP_WIDTH_OFFSET 550 // ancho extra para el minimapa
-# define    MINIMAP_HEIGHT_OFFSET 550 // alto extra para el minimapa
-# define    MINIMAP_MAX_RATIO 0.25 // ratio máximo del minimapa respecto al tamaño del mapa
-
+# define	TEXTURES true
+# define	MINIMAP true
+# define	DEBUG false
+# define	MAX_BUTTONS 10
+# define	MINIMAP_SCALE 0.2  // escala respecto al mapa real
+# define	MINIMAP_WIDTH_OFFSET 550 // ancho extra para el minimapa
+# define	MINIMAP_HEIGHT_OFFSET 550 // alto extra para el minimapa
+# define	MINIMAP_MAX_RATIO 0.25 // ratio máximo del minimapa respecto al tamaño del mapa
 
 //window configuration
 # define	STRETCH_IMAGE	true
@@ -48,13 +47,13 @@
 # define	PLAYER_RUN_SPEED 2.0 * PLAYER_SPEED
 # define	PLAYER_ROTATION_SPEED 1.5
 # define	MOUSE_ROTATION_SPEED 0.05
-# define    FOV_DEGREES 77.0
+# define		FOV_DEGREES 77.0
 # define	MARGIN_WALL 0.2 // Margin representing the body space of the player, used to avoid collisions with walls
 
 // Door configuration
 # define	DOOR_SYMBOL 'D' // Symbol representing a door in the map
-# define    DOOR_ANIM_TIME 3 // segundos
-# define    DOOR_OPEN_TIME 5.0 // segundos
+# define	DOOR_ANIM_TIME 3 // segundos
+# define	DOOR_OPEN_TIME 5.0 // segundos
 
 //MINIMAP
 # define	MINIMAP_MAX_RATIO 0.25 // ratio máximo del minimapa respecto al tamaño del mapa
@@ -62,27 +61,18 @@
 # define	MINIMAP_GRANULARITY_LINE 5 * MINIMAP_THICKNESS // Espacio entre líneas del minimapa
 # define	MINIMAP_COLOR_LINE 0xE5E8E8FF // Color of the minimap lines
 # define	MINIMAP_COLOR_PLAYER 0x9B59B6FF // Color of the minimap player
-# define	MINIMAP_COLOR_WALL 0x17202AFF // Color of the minimap lines
-# define	MINIMAP_COLOR_DOOR 0xD4AC0DFF // Color of the minimap lines
-# define	MINIMAP_COLOR_EMPTY 0x000000 // Color of the minimap lines
-# define	MINIMAP_COLOR_FLOOR 0x707B7CFF // Color of the minimap lines
+# define	MINIMAP_COLOR_WALL 0x17202AFF // Color of the minimap walls
+# define	MINIMAP_COLOR_DOOR 0xD4AC0DFF // Color of the minimap doors
+# define	MINIMAP_COLOR_EMPTY 0x000000 // Color of the minimap empty spaces (' ')
+# define	MINIMAP_COLOR_FLOOR 0x707B7CFF // Color of the minimap floors ('0')
 
 // Raycasting configuration
-#define     SCREEN_WIDTH 1920
-#define     SCREEN_HEIGHT 1080
-#define     MAX_PITCH PI / 2
-# define    MIN_PITCH -PI / 2
+# define	SCREEN_WIDTH 1920
+# define	SCREEN_HEIGHT 1080
+# define	MAX_PITCH PI / 2
+# define	MIN_PITCH -PI / 2
 
 // Macros
-# define TOGGLE(x) ((x) = !(x))
-
-# define    ASSESTS_PATH "./assets/"
-# define    TEXTURE_NO ASSESTS_PATH "textures/no.png"
-# define    TEXTURE_SE ASSESTS_PATH "textures/se.png"
-# define    TEXTURE_WE ASSESTS_PATH "textures/we.png"
-# define    TEXTURE_EA ASSESTS_PATH "textures/ea.png"
-# define    TEXTURE_F  ASSESTS_PATH "textures/f.png"
-# define    TEXTURE_C  ASSESTS_PATH "textures/c.png"
-
+# define	TOGGLE(x) ((x) = !(x))
 
 #endif
