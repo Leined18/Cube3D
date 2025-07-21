@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   button_action.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 23:03:32 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/10 09:47:08 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/21 11:58:08 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void ft_show_minimap(void *param)
     if (game->map.minimap.enabled)
     {
         game->map.minimap.enabled = false;
-        game->map.minimap.img->enabled = false;
+        game->map.minimap.img->instances[0].enabled = false;
         ft_successful("Minimap disabled. \n", false);
     }
     else
     {
         game->map.minimap.enabled = true;
-        game->map.minimap.img->enabled = true;
+        game->map.minimap.img->instances[0].enabled = true;
         ft_successful("Minimap enabled.\n", false);
     }
 }
