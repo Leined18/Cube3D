@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 12:53:51 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/16 16:26:46 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:30:02 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	update_doors_touch_timer(t_game *g)
 void update_minimap(t_game *g)
 {
     if (!g || !g->map.minimap.img)
-        return;
-    ft_draw_minimap(&g->map.minimap, g);
+		return ;
+	if (g->map.minimap.enabled)
+    	ft_draw_minimap(&g->map.minimap, g);
 }
