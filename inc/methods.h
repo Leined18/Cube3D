@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   methods.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/18 15:36:21 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/07/22 10:02:23 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int         ft_create_buttons(t_render *render);
 // ==================== Button Actions =======================
 
 void        ft_show_minimap(void *param);
-void		ft_launch_game(void *p);
 void		print_exit(void *param);
 void        start_game(void *p);
 

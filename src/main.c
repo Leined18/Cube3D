@@ -6,7 +6,7 @@
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/10 09:47:36 by daniel           ###   ########.fr       */
+/*   Updated: 2025/07/22 10:13:25 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,15 @@ void ft_set_cursor(t_game *g)
     mlx_set_mouse_pos(g->render.mlx, g->render.screen_width / 2, g->render.screen_height / 2);
 }
 
-void ft_launch_game(void *p)
+int ft_launch_game(t_game *game)
 {
-	t_game *game;
 	int i;
 
-	game = (t_game *)p;
 	if (!game || !game->render.mlx)
-	{
-        ft_cleanup(game);
-        return;
-    }
+		return (ft_cleanup(game), 1);
 	game->render.img = mlx_new_image(game->render.mlx, game->render.screen_width, game->render.screen_height);
 	if (!game->render.img)
-	{
-		ft_error("Error: Failed to create render image\n", 1);
-		ft_cleanup(game);
-        return;
-	}
+		return (ft_cleanup(game), 1);
 	game->render.instance = mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
 	ft_set_cursor(game);
 	i = -1;
@@ -61,6 +52,7 @@ void ft_launch_game(void *p)
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
 	mlx_mouse_hook(game->render.mlx, ft_mouse_button, game);
 	mlx_loop(game->render.mlx);
+	return (ft_cleanup(game), 0);
 }
 
 int	main(int argc, char **argv)
