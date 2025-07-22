@@ -68,7 +68,7 @@ Usa las teclas para moverte por el mapa renderizado en 3D.
 
 ## 🧠 Autores
 
-Desarrollado por [danpalac](https://github.com/Leined18) && [mvidal-h](https://github.com/MiguelViHe)  como parte del proyecto en la escuela 42.
+Desarrollado por [mvidal-h](https://github.com/MiguelViHe) && [danpalac](https://github.com/Leined18)  como parte del proyecto en la escuela 42.
 
 ---
 
