@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:22:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/16 15:50:35 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:12:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	update_doors_animation(t_game *g, double delta_time)
 	size_t	i;
 	t_door	*d;
 	double	now;
-	double progress;
+	double	progress;
 
 	i = 0;
 	now = ft_get_time();
@@ -35,6 +35,3 @@ void	update_doors_animation(t_game *g, double delta_time)
 		d->anim_state = 0.5 - 0.5 * cos(progress * M_PI);
 	}
 }
-
-
-

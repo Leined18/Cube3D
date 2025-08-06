@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_generate_map_array.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:27:33 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/02 11:28:41 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:15:52 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	generate_map_array(t_game *g)
 	while (current_node)
 	{
 		line = current_node->content;
-		g->map.matrix[i] =ft_calloc(g->map.map_width + 1, sizeof(char));
+		g->map.matrix[i] = ft_calloc(g->map.map_width + 1, sizeof(char));
 		if (g->map.matrix[i] == NULL)
 			return (free_all(g, NULL, "allocating memory for map array line"));
 		fill_with_spaces(g->map.matrix[i], line, g->map.map_width);

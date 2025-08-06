@@ -1,15 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hooks_utils.c                                   :+:      :+:    :+:   */
+/*   mouse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 11:04:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/16 16:26:27 by mvidal-h         ###   ########.fr       */
+/*   Created: 2025/08/06 09:55:02 by danpalac          #+#    #+#             */
+/*   Updated: 2025/08/06 10:55:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-
+void	ft_set_cursor(t_game *g)
+{
+	mlx_set_mouse_pos(g->render.mlx, g->render.screen_width / 2,
+		g->render.screen_height / 2);
+}

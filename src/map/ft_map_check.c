@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:02:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/21 11:40:59 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:16:03 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ int	is_wall_elem(t_game *g, char c)
 	return (0);
 }
 
-
-// This function checks if every element in the map has a texture.
 int	validate_map_textures(t_game *g, size_t height, size_t width)
 {
-	size_t		y;
-	size_t		x;
-	char		c;
+	size_t	y;
+	size_t	x;
+	char	c;
 
 	y = 0;
 	while (y < height)
@@ -45,10 +43,10 @@ int	validate_map_textures(t_game *g, size_t height, size_t width)
 	return (0);
 }
 
-int check_map_closed(t_game *g, size_t height, size_t width)
+int	check_map_closed(t_game *g, size_t height, size_t width)
 {
-	size_t		y;
-	size_t		x;
+	size_t	y;
+	size_t	x;
 	char	**map;
 
 	map = g->map.matrix;
@@ -61,8 +59,8 @@ int check_map_closed(t_game *g, size_t height, size_t width)
 			if (map[y][x] == '0' || is_player(map[y][x]) || map[y][x] == 'D')
 			{
 				if (y == 0 || y == height - 1 || x == 0 || x == width - 1
-						|| map[y - 1][x] == ' ' || map[y + 1][x] == ' '
-						|| map[y][x - 1] == ' ' || map[y][x + 1] == ' ')
+					|| map[y - 1][x] == ' ' || map[y + 1][x] == ' ' || map[y][x
+					- 1] == ' ' || map[y][x + 1] == ' ')
 					return (free_all(g, NULL, "Map must be closed with walls"));
 			}
 			x++;

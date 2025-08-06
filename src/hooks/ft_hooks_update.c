@@ -3,27 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks_update.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 12:53:51 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/18 15:30:02 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:58:49 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
+/**
+ * Para que la primera vez no se mueva el raton porque podria ser que el
+ * puntero estuviera totalmente a la derecha o izquierda de la pantalla y
+ * entonces se moveria un salto raro hacia esa direccion. De esta manera la
+ * primera ves solo centra sin mover y no hay un salto exagerado.
+ * */
+
 void	update_mouse_rotation(t_game *g, double rotSpeed)
 {
-	static bool first = true;
-	int	xpos;
-	int	ypos;
-	int	delta_x;
+	static bool	first = true;
+	int			xpos;
+	int			ypos;
+	int			delta_x;
 
-	/*Para que la primera vez no se mueva el raton porque podria ser que el
-	 puntero estuviera totalmente a la derecha o izquierda de la pantalla y 
-	entonces se moveria un salto raro hacia esa direccion. De esta manera la
-	 primera ves solo centra sin mover y no hay un salto exagerado.*/
-	if (first) 
+	if (first)
 	{
 		first = false;
 		mlx_set_mouse_pos(g->render.mlx, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
@@ -36,7 +39,7 @@ void	update_mouse_rotation(t_game *g, double rotSpeed)
 	mlx_set_mouse_pos(g->render.mlx, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 }
 
-void update_player_movement(t_game *g, double moveSpeed, double rotSpeed)
+void	update_player_movement(t_game *g, double moveSpeed, double rotSpeed)
 {
 	if (g->input.move_forward)
 		move_player_forward(g, moveSpeed);
@@ -54,17 +57,17 @@ void update_player_movement(t_game *g, double moveSpeed, double rotSpeed)
 
 void	update_doors_touch_timer(t_game *g)
 {
-	t_door *door;
+	t_door	*door;
 
 	door = find_door(g, (int)g->player.pos.x, (int)g->player.pos.y);
 	if (door && door->open)
 		door->timer = ft_get_time();
 }
 
-void update_minimap(t_game *g)
+void	update_minimap(t_game *g)
 {
-    if (!g || !g->map.minimap.img)
+	if (!g || !g->map.minimap.img)
 		return ;
 	if (g->map.minimap.enabled)
-    	ft_draw_minimap(&g->map.minimap, g);
+		ft_draw_minimap(&g->map.minimap, g);
 }

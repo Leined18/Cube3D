@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/07/22 10:13:25 by daniel           ###   ########.fr       */
+/*   Updated: 2025/08/06 10:26:37 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,18 @@ void	check_arg_cub(char *name)
 	}
 }
 
-void ft_set_cursor(t_game *g)
+int	ft_launch_game(t_game *game)
 {
-    //mlx_set_cursor_mode(g->render.mlx, MLX_MOUSE_HIDDEN);
-    //g->cursor_hidden = true;
-    mlx_set_mouse_pos(g->render.mlx, g->render.screen_width / 2, g->render.screen_height / 2);
-}
-
-int ft_launch_game(t_game *game)
-{
-	int i;
-
 	if (!game || !game->render.mlx)
 		return (ft_cleanup(game), 1);
-	game->render.img = mlx_new_image(game->render.mlx, game->render.screen_width, game->render.screen_height);
+	game->render.img = mlx_new_image(game->render.mlx,
+			game->render.screen_width, game->render.screen_height);
 	if (!game->render.img)
 		return (ft_cleanup(game), 1);
-	game->render.instance = mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
+	game->render.instance = mlx_image_to_window(game->render.mlx,
+			game->render.img, 0, 0);
 	ft_set_cursor(game);
-	i = -1;
-	while (++i < 2)
-		ft_draw_button(game->render.mlx, &game->render.buttons[i]);
+	ft_draw_buttons(game);
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
 	mlx_mouse_hook(game->render.mlx, ft_mouse_button, game);
 	mlx_loop(game->render.mlx);

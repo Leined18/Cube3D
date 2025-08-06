@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_time.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 12:20:03 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/07 12:21:27 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:55:59 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/time.h>
 #include <stddef.h>
+#include <sys/time.h>
 
 double	ft_get_time(void)
 {

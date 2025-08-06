@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_door.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:25:52 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/16 15:50:46 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:12:58 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ t_door	*find_door(t_game *g, int x, int y)
 	i = 0;
 	c = g->map.matrix[y][x];
 	if (!is_door_symbol(c))
-		return NULL;
+		return (NULL);
 	while (i < g->map.doors_info.doors_count)
 	{
 		door = &g->map.doors_info.doors_array[i];
 		if (door->x == x && door->y == y)
-			return door;
+			return (door);
 		i++;
 	}
-	return NULL;
+	return (NULL);
 }
 
 bool	is_door_open(t_game *g, int x, int y)
@@ -43,6 +43,6 @@ bool	is_door_open(t_game *g, int x, int y)
 
 	door = find_door(g, x, y);
 	if (!door)
-		return false; // Si no se encuentra la puerta, asumo que está cerrada.
+		return (false);
 	return (door->anim_state >= 1.0);
 }

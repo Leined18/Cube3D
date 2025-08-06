@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 09:01:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/02 12:02:21 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:52:56 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ void	rotate_vector(t_vect2 *vect, double radians)
 t_vect2	normalize(t_vect2 vect)
 {
 	t_vect2	result;
-	double		length;
-	
-	length = sqrt(vect.x * vect.x + vect.y * vect.y);
+	double	length;
 
+	length = sqrt(vect.x * vect.x + vect.y * vect.y);
 	if (length == 0)
 	{
 		result.x = 0;

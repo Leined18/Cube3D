@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pmatch_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:36:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/30 17:22:53 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:25:23 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// compare two strings and return 1 if both are exactly the same.
 int	ft_pmatch_str(const char *s1, const char *s2, size_t n)
 {
 	if (!s1 || !s2)

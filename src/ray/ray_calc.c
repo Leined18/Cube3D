@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:54:21 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/08 11:17:09 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:56:43 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-double	calc_cameraX(int x)
+double	calc_camera_x(int x)
 {
-	t_render render;
-	
+	t_render	render;
+
 	render = *(t_render *)ft_mtget("render")->data;
 	if (render.screen_width <= 0)
 		return (0);
@@ -36,11 +36,11 @@ void	calc_delta_dist(t_ray *ray)
 	if (ray->dir.x == 0)
 		ray->delta_dist.x = INFINITY;
 	else
-		ray->delta_dist.x = fabs(1 / ray->dir.x); //distancia real (hipotenusa) que recorre el rayo para pasar de una línea vertical a la siguiente (es decir, avanzar una unidad completa en X).
+		ray->delta_dist.x = fabs(1 / ray->dir.x);
 	if (ray->dir.y == 0)
 		ray->delta_dist.y = INFINITY;
 	else
-		ray->delta_dist.y = fabs(1 / ray->dir.y); //distancia real (hipotenusa) que recorre el rayo para pasar de una línea horizontal a la siguiente (es decir, avanzar una unidad completa en Y).
+		ray->delta_dist.y = fabs(1 / ray->dir.y);
 }
 
 void	calc_step_dir(t_ray *ray)
@@ -62,13 +62,15 @@ void	calc_side_dist(t_ray *ray, t_vect2 *player_pos)
 	if (ray->step.x < 0)
 		ray->side_dist.x = (player_pos->x - ray->pos.x) * ray->delta_dist.x;
 	else if (ray->step.x > 0)
-		ray->side_dist.x = (ray->pos.x + 1.0 - player_pos->x) * ray->delta_dist.x;
+		ray->side_dist.x = (ray->pos.x + 1.0 - player_pos->x)
+			* ray->delta_dist.x;
 	else
 		ray->side_dist.x = INFINITY;
 	if (ray->step.y < 0)
 		ray->side_dist.y = (player_pos->y - ray->pos.y) * ray->delta_dist.y;
 	else if (ray->step.y > 0)
-		ray->side_dist.y = (ray->pos.y + 1.0 - player_pos->y) * ray->delta_dist.y;
+		ray->side_dist.y = (ray->pos.y + 1.0 - player_pos->y)
+			* ray->delta_dist.y;
 	else
 		ray->side_dist.y = INFINITY;
 }

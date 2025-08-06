@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:49:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/16 15:50:06 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:12:45 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void toggle_door(t_door *door)
+void	toggle_door(t_door *door)
 {
 	if (door)
 		TOGGLE(door->open);

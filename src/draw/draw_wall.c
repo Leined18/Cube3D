@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:42:28 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/02 12:51:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:13:57 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	draw_wall(mlx_image_t* img, int x, t_ray *r, t_tex_inf *ti)
+void	draw_wall(mlx_image_t *img, int x, t_ray *r, t_tex_inf *ti)
 {
 	int	index;
-	
+
 	index = r->draw.start;
 	while (index <= r->draw.end)
 	{

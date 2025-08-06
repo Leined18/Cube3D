@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_minimap.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:29:23 by daniel            #+#    #+#             */
-/*   Updated: 2025/07/18 15:17:44 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:21:27 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ t_minimap	ft_create_minimap(t_map *map)
 	minimap.height = ceil(map->map_height * scale) + 1;
 	minimap.scale = scale;
 	minimap.enabled = MINIMAP;
-	minimap.img = mlx_new_image(
-			ft_mtget("mlx")->data,
-			minimap.width,
+	minimap.img = mlx_new_image(ft_mtget("mlx")->data, minimap.width,
 			minimap.height);
 	if (!minimap.img)
 		return ((t_minimap){0});

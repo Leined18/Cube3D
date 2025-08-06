@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:45:42 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/16 16:15:24 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:57:45 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_setup_ray(t_ray *ray, int x, t_game *g)
 	if (!ray || !g || !g->render.img)
 		return (-1);
 	if (!ft_set_ray(ray, x, g))
-			return (-1);
+		return (-1);
 	if (!ft_raycast_dda(ray, g))
-			return (-1);
+		return (-1);
 	return (0);
 }
 
@@ -27,6 +27,7 @@ int	cast_all_rays(t_game *g)
 {
 	int		x;
 	t_ray	ray;
+
 	if (!g || !g->render.img || !g->map.matrix)
 		return (-1);
 	x = 0;

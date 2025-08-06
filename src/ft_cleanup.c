@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_cleanup.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/06 11:01:01 by danpalac          #+#    #+#             */
+/*   Updated: 2025/08/06 11:01:06 by danpalac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cube3d.h"
 
-void ft_cleanup_player(t_player *player)
+void	ft_cleanup_player(t_player *player)
 {
 	if (!player)
-		return;
+		return ;
 	(void)player;
 }
 
-void ft_cleanup_render(t_render *render)
+void	ft_cleanup_render(t_render *render)
 {
 	if (render->mlx)
 	{
@@ -20,8 +31,7 @@ void ft_cleanup_render(t_render *render)
 	}
 }
 
-
-void ft_cleanup(t_game *game)
+void	ft_cleanup(t_game *game)
 {
 	ft_cleanup_map(&game->map);
 	ft_cleanup_player(&game->player);

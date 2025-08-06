@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:40:59 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/07 11:06:15 by daniel           ###   ########.fr       */
+/*   Updated: 2025/08/06 10:22:49 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,21 @@ int	elems_required_loaded(t_textures *textures)
 	int	i;
 
 	i = 0;
-	//1. Colores de techo y suelo definidos
 	if (!textures['F'].path || !textures['C'].path)
 		return (0);
-	// 2. Al menos una textura para algún símbolo (excepto F y C o espacio)
 	while (i < MAX_TEXTURES)
 	{
 		if (i != 'F' && i != 'C' && textures[i].path)
-			return (1); // hay al menos una textura válida.
+			return (1);
 		i++;
 	}
-	return (0); // no hay textura para ningún símbolo del mapa
+	return (0);
 }
 
 int	set_texture(char **tks, t_game *g)
 {
 	int	result;
-	
+
 	if (ft_pmatch_str(tks[0], "F", 1) || ft_pmatch_str(tks[0], "C", 1))
 	{
 		if (!tks[1] || tks[2])
@@ -72,9 +70,8 @@ int	adding_map_line(char *line, t_game *g)
 	g->map.map_height++;
 	if (g->map.map_width < ft_strlen(line))
 		g->map.map_width = ft_strlen(line);
-	return (0); // valid map line, continue checking
+	return (0);
 }
-
 
 int	parse_line(char *line, t_game *g)
 {
@@ -83,8 +80,8 @@ int	parse_line(char *line, t_game *g)
 
 	if (line[0] == '\n')
 	{
-		if (g->map.map_list == NULL) // empty line before map
-			return (0); // continue checking
+		if (g->map.map_list == NULL)
+			return (0);
 		return (free_all(g, NULL, "Empty line after map beginning"));
 	}
 	remove_newline(line);

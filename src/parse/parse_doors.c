@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_doors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 09:34:31 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/07/16 16:06:55 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:22:28 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	set_doors_array(t_map *map, t_door *doors_array)
 			{
 				doors_array[index].x = x;
 				doors_array[index].y = y;
-				doors_array[index].open = 0; // 0 = closed, 1 = open
-				doors_array[index].anim_state = 0.0; // Initial animation state
-				doors_array[index].anim_elapsed = 0.0; // Timer for door animation
-				doors_array[index].timer = 0.0; // Timer for door animation
+				doors_array[index].open = 0;
+				doors_array[index].anim_state = 0.0;
+				doors_array[index].anim_elapsed = 0.0;
+				doors_array[index].timer = 0.0;
 				index++;
 			}
 			x++;
@@ -62,7 +62,6 @@ void	set_doors_array(t_map *map, t_door *doors_array)
 		y++;
 	}
 }
-			
 
 int	init_doors(t_map *map, t_doors *d_inf)
 {

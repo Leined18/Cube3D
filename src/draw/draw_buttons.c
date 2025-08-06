@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   draw_buttons.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 13:22:49 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/19 10:27:46 by danpalac         ###   ########.fr       */
+/*   Created: 2025/08/06 09:51:08 by danpalac          #+#    #+#             */
+/*   Updated: 2025/08/06 11:00:11 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "cube3d.h"
 
-/* ==================== 1 ==================== */
+int	ft_draw_buttons(t_game *game)
+{
+	int	i;
 
-/* ==================== 2 ==================== */
-
-#endif
+	if (!game)
+		return (0);
+	i = -1;
+	while (++i < 2)
+		ft_draw_button(game->render.mlx, &game->render.buttons[i]);
+	return (1);
+}
