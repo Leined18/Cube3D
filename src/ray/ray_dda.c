@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dda.c                                              :+:      :+:    :+:   */
+/*   ray_dda.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:06:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 11:13:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 17:02:34 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	setup_dda(t_ray *ray, t_game *game)
 	calc_delta_dist(ray);
 	calc_step_dir(ray);
 	calc_side_dist(ray, &game->player.pos);
-	return (1); // Retorna 1 si la configuración fue exitosa.
+	return (1);
 }
 
 static int	reach_wall(t_ray *ray, t_game *g)
@@ -27,7 +27,7 @@ static int	reach_wall(t_ray *ray, t_game *g)
 	while (!ray->hit)
 	{
 		if (!g->map.matrix[(int)ray->pos.y][(int)ray->pos.x])
-			return (0); // Si la posición del rayo está fuera del mapa, retornar 0.
+			return (0);
 		if (ray->side_dist.x < ray->side_dist.y)
 		{
 			ray->side_dist.x += ray->delta_dist.x;
@@ -44,22 +44,21 @@ static int	reach_wall(t_ray *ray, t_game *g)
 			ray->hit = 1;
 	}
 	if (ray->side == 0)
-		ray->perpWallDist = ray->side_dist.x - ray->delta_dist.x;
+		ray->perpwalldist = ray->side_dist.x - ray->delta_dist.x;
 	else
-		ray->perpWallDist = ray->side_dist.y - ray->delta_dist.y;
+		ray->perpwalldist = ray->side_dist.y - ray->delta_dist.y;
 	return (ray->hit);
 }
 
 int	ft_raycast_dda(t_ray *ray, t_game *g)
 {
-	
 	if (!ray || !g || !g->map.matrix)
-		return (0); // Validación de entrada.
-	if (ray->cameraX < -1 || ray->cameraX > 1)
-		return (0); // Si cameraX está fuera de rango, retornar 0.
+		return (0);
+	if (ray->camerax < -1 || ray->camerax > 1)
+		return (0);
 	if (!setup_dda(ray, g))
-		return (0); // Configuración del DDA fallida, retornar 0.
+		return (0);
 	if (!reach_wall(ray, g))
-		return (0); // Si no se alcanza un muro, retornar 0.
-	return (ray->hit); // Retorna 1 si se ha alcanzado un muro, 0 si no.
+		return (0);
+	return (ray->hit);
 }

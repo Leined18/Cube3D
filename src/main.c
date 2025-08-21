@@ -6,15 +6,15 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/18 18:48:06 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:31:33 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int ft_print_map(t_game *game)
+int	ft_print_map(t_game *game)
 {
-	size_t i;
+	size_t	i;
 
 	if (!game || !game->map.matrix)
 		return (0);
@@ -27,11 +27,12 @@ int ft_print_map(t_game *game)
 	return (1);
 }
 
-int ft_launch_game(t_game *game)
+int	ft_launch_game(t_game *game)
 {
 	if (!game || !game->render.mlx)
 		return (ft_cleanup(game), 0);
-	game->render.img = mlx_new_image(game->render.mlx, game->render.screen_width, game->render.screen_height);
+	game->render.img = mlx_new_image(game->render.mlx,
+			game->render.screen_width, game->render.screen_height);
 	if (!game->render.img)
 	{
 		ft_error("Error: Failed to create render image\n", 1);
@@ -45,7 +46,6 @@ int ft_launch_game(t_game *game)
 	return (1);
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -55,7 +55,6 @@ int	main(int argc, char **argv)
 	check_arg_cub(argv[1]);
 	if (!ft_setup(&game, argv[1]))
 		ft_error("Error: Failed to setup game\n", 1);
-	// ft_print_map(&game);
 	ft_successful("Game setup successful\n", 0);
 	if (!ft_launch_game(&game))
 		ft_error("Error: Failed to launch game\n", 1);

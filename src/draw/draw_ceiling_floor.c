@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ceiling_floor.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:42:06 by daniel            #+#    #+#             */
-/*   Updated: 2025/06/19 11:12:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:22:41 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 
 void	draw_ceiling(mlx_image_t *img, int x, t_screenline draw)
 {
-    int y;
+	int	y;
 
-    y = 0;
-    while (y < draw.start && y < screenHeight)
-    {
-        mlx_put_pixel(img, x, y, get_ceiling_color(&draw));
-        y++;
-    }
+	y = 0;
+	while (y < draw.start && y < SCRHEIGHT)
+	{
+		mlx_put_pixel(img, x, y, get_ceiling_color(&draw));
+		y++;
+	}
 }
 
 void	draw_floor(mlx_image_t *img, int x, t_screenline draw)
 {
-    int y;
-    
-    y = draw.end + 1;
-    while (y < screenHeight)
-    {
-        mlx_put_pixel(img, x, y, get_floor_color(&draw));
-        y++;
-    }
-}
+	int	y;
 
+	y = draw.end + 1;
+	while (y < SCRHEIGHT)
+	{
+		mlx_put_pixel(img, x, y, get_floor_color(&draw));
+		y++;
+	}
+}

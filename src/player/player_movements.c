@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 13:33:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 15:26:40 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:52:16 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	move_player_forward(t_game *game, double moveSpeed)
 {
 	double	new_x;
 	double	new_y;
-	
+
 	new_x = game->player.pos.x + game->player.dir.x * moveSpeed;
 	new_y = game->player.pos.y + game->player.dir.y * moveSpeed;
 	can_walk(game, new_x, new_y, game->player.dir);
@@ -33,7 +33,7 @@ void	move_player_backward(t_game *game, double moveSpeed)
 	double	new_x;
 	double	new_y;
 	t_vect2	back_dir;
-	
+
 	new_x = game->player.pos.x - game->player.dir.x * moveSpeed;
 	new_y = game->player.pos.y - game->player.dir.y * moveSpeed;
 	back_dir.x = -game->player.dir.x;
@@ -46,7 +46,7 @@ void	strafe_player_left(t_game *game, double moveSpeed)
 	double	new_x;
 	double	new_y;
 	t_vect2	left_dir;
-	
+
 	new_x = game->player.pos.x - game->player.plane.x * moveSpeed;
 	new_y = game->player.pos.y - game->player.plane.y * moveSpeed;
 	left_dir.x = -game->player.plane.x;

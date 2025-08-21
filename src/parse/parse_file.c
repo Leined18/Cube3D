@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:40:59 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 18:24:09 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:55:29 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	all_elem(t_textures *textures)
 {
-	if (textures[NO].path && textures[SO].path &&
-		textures[WE].path && textures[EA].path &&
-		textures[F].path && textures[C].path)
+	if (textures[NO].path && textures[SO].path
+		&& textures[WE].path && textures[EA].path
+		&& textures[F].path && textures[C].path)
 		return (1);
 	return (0);
 }
@@ -50,34 +50,34 @@ int	set_texture(char **tokens, t_game *g)
 
 int	is_map_line(char *line)
 {
-	int not_all_spaces;
+	int	not_all_spaces;
 
 	not_all_spaces = 0;
 	while (*line)
 	{
-		if (*line != ' ' && *line != '0' && *line != '1' &&
-			*line != 'N' && *line != 'S' && *line != 'E' && *line != 'W')
+		if (*line != ' ' && *line != '0' && *line != '1'
+			&& *line != 'N' && *line != 'S' && *line != 'E' && *line != 'W')
 			return (0);
 		if (*line != ' ')
 			not_all_spaces = 1;
 		line++;
 	}
-	return (not_all_spaces); // returns 1 if there is at least one non-space character
+	return (not_all_spaces);
 }
 
 int	is_player_inline(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' 
+		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
 			|| line[i] == 'W')
-			return (1); // found a player character
+			return (1);
 		i++;
 	}
-	return (0); // no player character found
+	return (0);
 }
 
 int	adding_map_line(char *line, t_game *g)
@@ -94,7 +94,7 @@ int	adding_map_line(char *line, t_game *g)
 	g->map.map_height++;
 	if (g->map.map_width < ft_strlen(line))
 		g->map.map_width = ft_strlen(line);
-	return (0); // valid map line, continue checking
+	return (0);
 }
 
 int	parse_line(char *line, t_game *g)
@@ -104,8 +104,8 @@ int	parse_line(char *line, t_game *g)
 
 	if (line[0] == '\n')
 	{
-		if (g->map.map_list == NULL) // empty line before map
-			return (0); // continue checking
+		if (g->map.map_list == NULL)
+			return (0);
 		return (free_all(g, NULL, "Empty line after map beginning"));
 	}
 	remove_newline(line);

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 10:00:24 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/18 18:52:04 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:31:55 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	print_game_map(char **map)
 	int	j;
 
 	i = 0;
-	
 	while (map[i])
 	{
 		j = 0;

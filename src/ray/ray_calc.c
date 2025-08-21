@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculate_ray.c                                    :+:      :+:    :+:   */
+/*   ray_calc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:54:21 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 10:59:15 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 17:02:01 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-double	calc_cameraX(int x)
+double	calc_camerax(int x)
 {
-	t_render render;
-	
+	t_render	render;
+
 	render = *(t_render *)ft_mtget("render")->data;
 	if (render.screen_width <= 0)
 		return (0);
@@ -31,16 +31,23 @@ t_vect2	calc_ray_dir(t_vect2 dir, t_vect2 plane, double cameraX)
 	return (normalize(ray_dir));
 }
 
+/*
+Deltadistx = distancia real (hipotenusa) que recorre el rayo para pasar de una 
+línea vertical a la siguiente (es decir, avanzar una unidad completa en X).
+
+Deltadisty = distancia real (hipotenusa) que recorre el rayo para pasar de una
+línea horizontal a la siguiente (es decir, avanzar una unidad completa en Y).
+*/
 void	calc_delta_dist(t_ray *ray)
 {
 	if (ray->dir.x == 0)
 		ray->delta_dist.x = INFINITY;
 	else
-		ray->delta_dist.x = fabs(1 / ray->dir.x); //distancia real (hipotenusa) que recorre el rayo para pasar de una línea vertical a la siguiente (es decir, avanzar una unidad completa en X).
+		ray->delta_dist.x = fabs(1 / ray->dir.x);
 	if (ray->dir.y == 0)
 		ray->delta_dist.y = INFINITY;
 	else
-		ray->delta_dist.y = fabs(1 / ray->dir.y); //distancia real (hipotenusa) que recorre el rayo para pasar de una línea horizontal a la siguiente (es decir, avanzar una unidad completa en Y).
+		ray->delta_dist.y = fabs(1 / ray->dir.y);
 }
 
 void	calc_step_dir(t_ray *ray)

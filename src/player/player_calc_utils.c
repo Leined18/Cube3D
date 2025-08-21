@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 10:07:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/25 15:29:35 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:51:40 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ t_vect2	ft_calc_plane(t_vect2 dir, double fov_factor)
 	plane.y = dir.x * fov_factor;
 	return (plane);
 }
-

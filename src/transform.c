@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 09:01:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/06/19 10:15:08 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:40:07 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ void	rotate_vector(t_vect2 *vect, double radians)
 t_vect2	normalize(t_vect2 vect)
 {
 	t_vect2	result;
-	double		length;
-	
-	length = sqrt(vect.x * vect.x + vect.y * vect.y);
+	double	length;
 
+	length = sqrt(vect.x * vect.x + vect.y * vect.y);
 	if (length == 0)
 	{
 		result.x = 0;
@@ -47,10 +46,10 @@ t_vect2	normalize(t_vect2 vect)
 }
 
 // Función para eliminar el '\n' al final de una línea
-void remove_newline(char *line)
+void	remove_newline(char *line)
 {
 	int	len;
-	
+
 	len = ft_strlen(line);
 	if (len > 0 && line[len - 1] == '\n')
 		line[len - 1] = '\0';
