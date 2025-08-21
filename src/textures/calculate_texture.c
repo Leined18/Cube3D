@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_texture.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 14:46:28 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/08/06 10:57:41 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 09:25:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	calc_wallx_and_texx(t_game *g, t_ray *ray)
 {
 	t_door	*door;
 
-	ray->tex_info.wallX = calc_wallx(g, ray);
-	ray->tex_info.tx.x = ray->tex_info.wallX * ray->tex_info.mlx_tx->width;
+	ray->tex_info.wallx = calc_wallx(g, ray);
+	ray->tex_info.tx.x = ray->tex_info.wallx * ray->tex_info.mlx_tx->width;
 	door = find_door(g, ray->pos.x, ray->pos.y);
 	if (door)
 	{

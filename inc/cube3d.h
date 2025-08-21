@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/08/06 10:10:06 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 10:35:33 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@
 # define TITLE "Cube3D"
 # define TILE_SIZE 64
 # define FPS 60
-
-// Macros
-# define TOGGLE(x) ((x) = !(x))
 
 // configuration
 # define TEXTURES true
@@ -44,7 +41,7 @@
 
 // Player configuration
 # define PLAYER_SPEED 3.0
-# define PLAYER_RUN_SPEED 2.0 * PLAYER_SPEED
+# define PLAYER_RUN_SPEED 6.0
 # define PLAYER_ROTATION_SPEED 1.5
 # define MOUSE_ROTATION_SPEED 0.05
 # define FOV_DEGREES 77.0
@@ -61,7 +58,7 @@
 // ratio máximo del minimapa respecto al tamaño del mapa
 # define MINIMAP_THICKNESS 1
 // Grosor de los rayos del minimapa
-# define MINIMAP_GRANULARITY_LINE 5 * MINIMAP_THICKNESS
+# define MINIMAP_GRANULARITY_LINE 5
 // Espacio entre líneas del minimapa
 # define MINIMAP_COLOR_LINE 0xE5E8E8FF
 // Color of the minimap lines
@@ -87,10 +84,5 @@
 // Raycasting configuration
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1080
-# define MAX_PITCH PI / 2
-# define MIN_PITCH -PI / 2
-
-// Macros
-# define TOGGLE(x) ((x) = !(x))
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:49:11 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/08/06 10:12:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 10:23:49 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	toggle_door(t_door *door)
 {
 	if (door)
-		TOGGLE(door->open);
+		ft_toggle(&door->open);
 }

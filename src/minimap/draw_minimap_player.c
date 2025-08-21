@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap_player.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:19:09 by danpalac          #+#    #+#             */
-/*   Updated: 2025/08/06 10:58:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 09:25:22 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static t_vect2	get_hit_point(t_game *g, t_ray *ray)
 {
 	t_vect2	hit;
 
-	hit.x = g->player.pos.x + ray->dir.x * ray->perpWallDist;
-	hit.y = g->player.pos.y + ray->dir.y * ray->perpWallDist;
+	hit.x = g->player.pos.x + ray->dir.x * ray->perpwalldist;
+	hit.y = g->player.pos.y + ray->dir.y * ray->perpwalldist;
 	return (hit);
 }
 

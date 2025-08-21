@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_dda.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:06:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/08/06 10:24:33 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 09:24:37 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ static int	reach_wall(t_ray *ray, t_game *g)
 		ray->hit = 1;
 	}
 	if (ray->side == 0)
-		ray->perpWallDist = ray->side_dist.x - ray->delta_dist.x;
+		ray->perpwalldist = ray->side_dist.x - ray->delta_dist.x;
 	else
-		ray->perpWallDist = ray->side_dist.y - ray->delta_dist.y;
+		ray->perpwalldist = ray->side_dist.y - ray->delta_dist.y;
 	return (ray->hit);
 }
 
@@ -82,7 +82,7 @@ int	ft_raycast_dda(t_ray *ray, t_game *g)
 {
 	if (!ray || !g || !g->map.matrix)
 		return (0);
-	if (ray->cameraX < -1 || ray->cameraX > 1)
+	if (ray->camerax < -1 || ray->camerax > 1)
 		return (0);
 	if (!setup_dda(ray, g))
 		return (0);

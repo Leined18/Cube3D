@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_process_key.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:53:12 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/08/06 10:15:46 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 10:24:22 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	process_e_key(t_game *g)
 
 void	process_m_key(t_minimap *minimap)
 {
-	TOGGLE(minimap->enabled);
+	ft_toggle(&minimap->enabled);
 	if (minimap->enabled)
 		minimap->img->instances[0].enabled = true;
 	else

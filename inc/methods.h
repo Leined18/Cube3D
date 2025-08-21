@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   methods.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/08/06 10:57:09 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 10:25:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,15 @@ void		ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player);
 
 // ==================== Doors Management ====================
 int			init_doors(t_map *map, t_doors *d_inf);
-int			is_door_symbol(char c);
-bool		is_door_open(t_game *g, int x, int y);
-t_door		*find_door(t_game *g, int x, int y);
 void		update_doors_touch_timer(t_game *g);
 void		update_doors_animation(t_game *g, double delta_time);
 void		toggle_door(t_door *door);
 
 // ========================== Doors ==========================
 t_door		*find_door(t_game *g, int x, int y);
-void		toggle_door(t_door *door);
 double		ft_get_time(void);
 int			is_door_symbol(char c);
+bool		is_door_open(t_game *g, int x, int y);
 
 // ==================== Player Movements ====================
 
@@ -185,9 +182,10 @@ int			ft_min(int a, int b);
 int			ft_max(int a, int b);
 int			ft_clamp(int value, int min, int max);
 double		ft_clamp_double(double value, double min, double max);
-float	ft_lerp(float a, float b, float t); // linear interpolation
+float		ft_lerp(float a, float b, float t);
 int			sign(double x);
 int			ft_pmatch_str(const char *s1, const char *s2, size_t n);
+void		ft_toggle(bool *x);
 
 // ======================MOUSE UTILS==================
 void		ft_set_cursor(t_game *g);

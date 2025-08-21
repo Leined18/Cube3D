@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/08/06 10:21:18 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/21 09:23:35 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_tex_inf
 {
 	int				tx_dir;
 	mlx_texture_t	*mlx_tx;
-	double			wallX;
+	double			wallx;
 	t_coord			tx;
 	double			tx_step;
 	double			tx_pos;
@@ -91,7 +91,7 @@ typedef struct s_tex_inf
 
 typedef struct s_ray
 {
-	double			cameraX;
+	double			camerax;
 	t_vect2			dir;
 	t_coord			pos;
 	t_vect2			delta_dist;
@@ -100,7 +100,7 @@ typedef struct s_ray
 	int				side;
 	int				hit;
 	int				hit_door;
-	double			perpWallDist;
+	double			perpwalldist;
 	t_screenline	draw;
 	t_tex_inf		tex_info;
 }					t_ray;
@@ -113,7 +113,8 @@ typedef struct s_button
 {
 	int				x;
 	int				y;
-	int width, height;
+	int				width;
+	int				height;
 	uint32_t		color;
 	char			*label;
 	void			(*on_click)(void *);
