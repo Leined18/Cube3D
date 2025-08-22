@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/08/21 16:13:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/22 15:25:48 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "MLX42.h"
 # include "mt.h"
 # include "types.h"
-# include "utils.h"
 
 # define TITLE "Cube3D"
 # define TILE_SIZE 64

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/08/22 11:32:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/22 15:27:49 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@ char		*remove_spaces(char *str);
 int			is_map_line(char *line);
 int			is_player_inline(char *line);
 
-// ==================== Render Management ====================
-
-void		ft_render_frame(void *param);
-void		ft_update_minimap(mlx_t *mlx, t_map *map, t_player *player);
-
-// ==================== Player Management ====================
-
 // ===================== Map Management ====================
 int			ft_set_map(t_map *map);
 void		wrong_map_exit(char *buffer, char *message, int need_free);
@@ -47,7 +40,6 @@ int			check_map(t_game *g);
 
 // ==================== Texture Management ====================
 int			ft_load_texture(t_textures *texture);
-void		ft_free_texture(t_textures *texture);
 int			ft_init_textures(t_map *map);
 int			get_texture_direction(int side, t_vect2 ray_dir);
 void		calc_wallx_and_texx(t_game *g, t_ray *ray);
@@ -55,7 +47,6 @@ void		calc_step_and_pos(double *step, double *pos, t_ray *r, int linehei);
 void		calc_tex_inf(t_game *g, t_ray *ray);
 
 // ==================== Hooks Management ====================
-void		ft_on_destroy(void *param);
 void		ft_on_keypress(mlx_key_data_t keydata, void *param);
 void		ft_on_game_loop(void *param);
 void		ft_handle_input(t_game *g, double moveSpeed, double rotSpeed);
@@ -69,6 +60,7 @@ void		strafe_player_right(t_game *game, double moveSpeed);
 
 // ==================== Raycasting ====================
 void		cast_all_rays(t_game *g);
+
 // ==================== Ray Management ====================
 int			ft_raycast_dda(t_ray *ray, t_game *g);
 int			ft_set_ray(t_ray *ray, int x, t_game *g);
