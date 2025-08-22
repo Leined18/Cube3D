@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:22:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/08/21 16:56:47 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/22 11:32:19 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void		ft_cleanup_map(t_map *map);
 int			parse_file(char *map_name, t_game *game);
 int			free_all(t_game *game, char **tokens, char *message);
 char		*remove_spaces(char *str);
+int			is_map_line(char *line);
+int			is_player_inline(char *line);
 
 // ==================== Render Management ====================
 
@@ -57,12 +59,6 @@ void		ft_on_destroy(void *param);
 void		ft_on_keypress(mlx_key_data_t keydata, void *param);
 void		ft_on_game_loop(void *param);
 void		ft_handle_input(t_game *g, double moveSpeed, double rotSpeed);
-// ==================== Game Management ====================
-
-// ==================== Minimap Management ====================
-
-char		ft_get_map_tile(int x, int y);
-void		ft_set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
 
 // ==================== Player Movements ====================
 void		rotate_player(t_game *game, double angle);

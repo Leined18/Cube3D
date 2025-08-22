@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:54:21 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/08/21 17:02:01 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/22 11:39:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ void	calc_step_dir(t_ray *ray)
 		ray->step.y = 1;
 }
 
-void	calc_side_dist(t_ray *ray, t_vect2 *player_pos)
+void	calc_side_dist(t_ray *ray, t_vect2 *play_pos)
 {
 	if (ray->step.x < 0)
-		ray->side_dist.x = (player_pos->x - ray->pos.x) * ray->delta_dist.x;
+		ray->side_dist.x = (play_pos->x - ray->pos.x) * ray->delta_dist.x;
 	else if (ray->step.x > 0)
-		ray->side_dist.x = (ray->pos.x + 1.0 - player_pos->x) * ray->delta_dist.x;
+		ray->side_dist.x = (ray->pos.x + 1.0 - play_pos->x) * ray->delta_dist.x;
 	else
 		ray->side_dist.x = INFINITY;
 	if (ray->step.y < 0)
-		ray->side_dist.y = (player_pos->y - ray->pos.y) * ray->delta_dist.y;
+		ray->side_dist.y = (play_pos->y - ray->pos.y) * ray->delta_dist.y;
 	else if (ray->step.y > 0)
-		ray->side_dist.y = (ray->pos.y + 1.0 - player_pos->y) * ray->delta_dist.y;
+		ray->side_dist.y = (ray->pos.y + 1.0 - play_pos->y) * ray->delta_dist.y;
 	else
 		ray->side_dist.y = INFINITY;
 }

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:40:59 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/08/21 16:55:29 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/22 11:30:48 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,38 +46,6 @@ int	set_texture(char **tokens, t_game *g)
 	else
 		return (free_all(g, tokens, "Invalid texture or color format"));
 	return (free_2d(tokens), 0);
-}
-
-int	is_map_line(char *line)
-{
-	int	not_all_spaces;
-
-	not_all_spaces = 0;
-	while (*line)
-	{
-		if (*line != ' ' && *line != '0' && *line != '1'
-			&& *line != 'N' && *line != 'S' && *line != 'E' && *line != 'W')
-			return (0);
-		if (*line != ' ')
-			not_all_spaces = 1;
-		line++;
-	}
-	return (not_all_spaces);
-}
-
-int	is_player_inline(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
-			|| line[i] == 'W')
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 int	adding_map_line(char *line, t_game *g)
