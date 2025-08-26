@@ -43,53 +43,48 @@ CLEAR_LINE  = \033[2K
 MOVE_UP     = \033[1A
 
 # Variables básicas
-NAME		:= cube3d
+NAME		:= cub3d
+BONUS		:= cub3d_bonus
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror -g3 -fsanitize=address -O3
 RM			:= rm -rf
 MKDIR		:= mkdir -p
 
-SUBMODULES	:= submodules/
-LIB			:= submodules/lib
-SRC_DIR 	:= src/
-OBJ_DIR 	:= obj/
-INC_DIR		:= inc/
+BONUS_DIR	:= bonus/
+DEFAULT_DIR := default/
 
-IFLAGS		:= -I$(INC_DIR) -I$(LIB)/$(INC_DIR)
-LDFLAGS 	= -L$(LIB) -lmt -lft -lmlx42 -lX11 -lXext -ldl -lglfw -pthread -lm -lbsd
-
-# Variables de fuentes y objetos
-SRCS		:= $(shell find $(SRC_DIR) -type f -name "*.c")
-OBJS		:= $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
-
+NAME_PROGRAM := $(DEFAULT_DIR)$(NAME)
+BONUS_PROGRAM := $(BONUS_DIR)$(BONUS)
 
 # Regla principal
-all: $(NAME)
-
-# Compilación de objetos
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
-	@$(MKDIR) $(dir $@)
-	@$(CC) $(CFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@
-
-$(LIB):
-	@make -sC $(SUBMODULES)
+all: $(NAME_PROGRAM) 
 
 # Compilación final del ejecutable
-$(NAME): $(LIB) $(OBJS) 
-	@$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
-	@echo "$(BOLD_BLUE)[$(BOLD_MAGENTA)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] ready!$(DEF_COLOR)"
-	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
+$(NAME_PROGRAM):
+	@make -sC $(DEFAULT_DIR)
+	@cp $(NAME_PROGRAM) .
+
+$(BONUS_PROGRAM):
+	@make -sC $(BONUS_DIR)
+	@cp $(BONUS_PROGRAM) .
+
+bonus: $(BONUS_PROGRAM)
+	
+bmap: $(BONUS_PROGRAM)
+	@./$(BONUS) ./bonus/assets/maps/scene_1.cub
+
+dmap: $(NAME_PROGRAM)
+	@./$(NAME) ./default/assets/maps/scene_1.cub
 
 # Limpieza
 clean:
-	@if [ -d "$(OBJ_DIR)" ]; then \
-		$(RM) $(OBJ_DIR); \
-		echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"; \
-	fi
-	@make fclean -sC $(SUBMODULES)
+	@make fclean -sC $(DEFAULT_DIR)
+	@make fclean -sC $(BONUS_DIR)
 
 fclean: clean
-	@$(RM) $(NAME)
+	@rm -f $(NAME)
+	@rm -f $(BONUS)
+
 
 re: fclean all
 

@@ -1,0 +1,121 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/10 16:40:59 by mvidal-h          #+#    #+#             */
+/*   Updated: 2025/08/22 11:30:48 by mvidal-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cube3d.h"
+
+int	all_elem(t_textures *textures)
+{
+	if (textures[NO].path && textures[SO].path
+		&& textures[WE].path && textures[EA].path
+		&& textures[F].path && textures[C].path)
+		return (1);
+	return (0);
+}
+
+int	set_texture(char **tokens, t_game *g)
+{
+	if (!tokens || !tokens[0] || !tokens[1] || tokens[2])
+		return (free_all(g, tokens, "bad format in texture"));
+	if (strncmp(tokens[0], "NO", 2) == 0 && !g->map.textures[NO].path)
+		g->map.textures[NO].path = ft_strdup(tokens[1]);
+	else if (strncmp(tokens[0], "SO", 2) == 0 && !g->map.textures[SO].path)
+		g->map.textures[SO].path = ft_strdup(tokens[1]);
+	else if (strncmp(tokens[0], "WE", 2) == 0 && !g->map.textures[WE].path)
+		g->map.textures[WE].path = ft_strdup(tokens[1]);
+	else if (strncmp(tokens[0], "EA", 2) == 0 && !g->map.textures[EA].path)
+		g->map.textures[EA].path = ft_strdup(tokens[1]);
+	else if (strncmp(tokens[0], "F", 1) == 0 && !g->map.textures[F].path)
+	{
+		g->map.textures[F].path = ft_strdup(tokens[1]);
+		return (free_2d(tokens), set_surface_color(g, 'F'));
+	}
+	else if (strncmp(tokens[0], "C", 1) == 0 && !g->map.textures[C].path)
+	{
+		g->map.textures[C].path = ft_strdup(tokens[1]);
+		return (free_2d(tokens), set_surface_color(g, 'C'));
+	}
+	else
+		return (free_all(g, tokens, "Invalid texture or color format"));
+	return (free_2d(tokens), 0);
+}
+
+int	adding_map_line(char *line, t_game *g)
+{
+	t_list	*new_node;
+
+	g->map.player_count += is_player_inline(line);
+	if (g->map.player_count > 1)
+		return (free_all(g, NULL, "Too many players in the map"));
+	new_node = ft_lstnew(ft_strdup(line));
+	if (!new_node)
+		return (free_all(g, NULL, "Adding map line"));
+	ft_lstadd_back(&g->map.map_list, new_node);
+	g->map.map_height++;
+	if (g->map.map_width < ft_strlen(line))
+		g->map.map_width = ft_strlen(line);
+	return (0);
+}
+
+int	parse_line(char *line, t_game *g)
+{
+	char	**tokens;
+	char	*cleaned;
+
+	if (line[0] == '\n')
+	{
+		if (g->map.map_list == NULL)
+			return (0);
+		return (free_all(g, NULL, "Empty line after map beginning"));
+	}
+	remove_newline(line);
+	if (is_map_line(line))
+	{
+		if (!all_elem(g->map.textures))
+			return (free_all(g, NULL, "Map is not the last element"));
+		return (adding_map_line(line, g));
+	}
+	if (g->map.map_list != NULL)
+		return (free_all(g, NULL, "Bad elements in map"));
+	cleaned = remove_spaces(line);
+	if (!cleaned)
+		return (free_all(g, NULL, "Removing spaces from line"));
+	tokens = ft_split(cleaned, ' ');
+	if (tokens == NULL)
+		return (free(cleaned), free_all(g, NULL, "Checking texture or color"));
+	return (free(cleaned), set_texture(tokens, g));
+}
+
+int	parse_file(char *map_name, t_game *game)
+{
+	int		fd;
+	int		error;
+	char	*buffer;
+
+	error = 0;
+	fd = secure_open(map_name);
+	buffer = get_next_line(fd);
+	if (buffer == NULL)
+		wrong_map_exit(buffer, "Error\nReading line from file", -1);
+	while (buffer && !error)
+	{
+		error = parse_line(buffer, game);
+		free(buffer);
+		if (!error)
+			buffer = get_next_line(fd);
+	}
+	secure_close(fd);
+	if (error)
+		return (error);
+	if (!all_elem(game->map.textures) && game->map.map_list == NULL)
+		return (free_all(game, NULL, "All elemensts are needed"));
+	return (check_map(game));
+}

@@ -34,7 +34,9 @@ Clona este repositorio **recursivamente** para incluir los submódulos necesario
 ```bash
 git clone --recurse-submodules git@github.com:Leined18/Cube3D.git
 cd Cube3D
-make
+make or make bonus
+or
+make dmap or make bmap -> para compilar y ejecutar el primer mapa; dmap -> default; bmap -> bonus
 ```
 
 > Si ya habías clonado el repositorio sin `--recurse-submodules`, puedes correr esto para arreglarlo:
@@ -50,7 +52,9 @@ make
 Una vez compilado, ejecuta el juego así:
 
 ```bash
-./cube3d assets/maps/scene_1.cub
+./cub3d ./default/assets/maps/scene_1.cub
+or
+./cub3d_bonus ./bonus/assets/maps/scene_1.cub
 ```
 
 Usa las teclas para moverte por el mapa renderizado en 3D.
