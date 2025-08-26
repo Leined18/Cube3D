@@ -3,47 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/08/21 16:31:33 by mvidal-h         ###   ########.fr       */
+=======
+/*   Updated: 2025/08/06 10:26:37 by danpalac         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
+<<<<<<< HEAD
 int	ft_print_map(t_game *game)
 {
 	size_t	i;
+=======
+/*Check if the map file extension is ".cub". Error and exit if not*/
+void	check_arg_cub(char *name)
+{
+	int	len_total;
+	int	len_name;
+>>>>>>> main
 
-	if (!game || !game->map.matrix)
-		return (0);
-	i = 0;
-	while (i < game->map.map_height)
+	len_total = ft_strlen(name);
+	len_name = len_total - 4;
+	if (!(len_total > 4 && ft_strncmp(name + len_name, ".cub", 4) == 0
+			&& name[len_total - 5] != '/'))
 	{
-		ft_printf("%s\n", game->map.matrix[i]);
-		i++;
+		ft_printf("Error: Invalid map file extension. Expected '.cub'\n");
+		exit(EXIT_FAILURE);
 	}
-	return (1);
 }
 
 int	ft_launch_game(t_game *game)
 {
 	if (!game || !game->render.mlx)
+<<<<<<< HEAD
 		return (ft_cleanup(game), 0);
+=======
+		return (ft_cleanup(game), 1);
+>>>>>>> main
 	game->render.img = mlx_new_image(game->render.mlx,
 			game->render.screen_width, game->render.screen_height);
 	if (!game->render.img)
-	{
-		ft_error("Error: Failed to create render image\n", 1);
-		return (ft_cleanup(game), 0);
-	}
-	mlx_image_to_window(game->render.mlx, game->render.img, 0, 0);
-	cast_all_rays(game);
+		return (ft_cleanup(game), 1);
+	game->render.instance = mlx_image_to_window(game->render.mlx,
+			game->render.img, 0, 0);
+	ft_set_cursor(game);
+	ft_draw_buttons(game);
 	mlx_key_hook(game->render.mlx, ft_on_keypress, game);
-	mlx_loop_hook(game->render.mlx, ft_on_game_loop, game);
+	mlx_mouse_hook(game->render.mlx, ft_mouse_button, game);
 	mlx_loop(game->render.mlx);
-	return (1);
+	return (ft_cleanup(game), 0);
 }
 
 int	main(int argc, char **argv)
@@ -56,7 +70,6 @@ int	main(int argc, char **argv)
 	if (!ft_setup(&game, argv[1]))
 		ft_error("Error: Failed to setup game\n", 1);
 	ft_successful("Game setup successful\n", 0);
-	if (!ft_launch_game(&game))
-		ft_error("Error: Failed to launch game\n", 1);
+	ft_launch_game(&game);
 	return (ft_cleanup(&game), 0);
 }

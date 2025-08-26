@@ -3,25 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:42:28 by daniel            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/08/21 15:39:20 by mvidal-h         ###   ########.fr       */
+=======
+/*   Updated: 2025/08/06 10:13:57 by danpalac         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
+<<<<<<< HEAD
 void	draw_wall(mlx_image_t *img, int x, t_screenline *d, t_tex_inf *ti)
 {
 	int	index;
 
 	index = d->start;
 	while (index <= d->end)
+=======
+void	draw_wall(mlx_image_t *img, int x, t_ray *r, t_tex_inf *ti)
+{
+	int	index;
+
+	index = r->draw.start;
+	while (index <= r->draw.end)
+>>>>>>> main
 	{
 		if (TEXTURES)
-			set_color_texture(d, ti);
-		mlx_put_pixel(img, x, index, d->color_wall);
+			set_color_texture(&r->draw, r->side, ti);
+		mlx_put_pixel(img, x, index, r->draw.color_wall);
 		index++;
 	}
 }

@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   printer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 10:00:24 by mvidal-h          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/08/21 16:31:55 by mvidal-h         ###   ########.fr       */
+=======
+/*   Updated: 2025/08/06 10:26:44 by danpalac         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +44,21 @@ void	print_game_map(char **map)
 	}
 	ft_printf("\n");
 }
+<<<<<<< HEAD
+=======
+
+int	ft_print_map(t_game *game)
+{
+	size_t	i;
+
+	if (!game || !game->map.matrix)
+		return (0);
+	i = 0;
+	while (i < game->map.map_height)
+	{
+		ft_printf("%s\n", game->map.matrix[i]);
+		i++;
+	}
+	return (1);
+}
+>>>>>>> main

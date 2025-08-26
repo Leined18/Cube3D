@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build", // Nombre de la tarea
+      "type": "shell", // Tipo de tarea
+      "command": "make", // Comando a ejecutar
+      "args": [
+        "p" // Argumento para el comando, en este caso la regla "p"
+      ],
+      "group": {
+        "kind": "build", // Grupo de tareas
+        "isDefault": true // Tarea por defecto
+      },
+      "problemMatcher": ["$gcc"], // Coincide con los problemas del compilador GCC
+      "detail": "Generada por el depurador." // Detalles sobre la tarea
+    }
+  ]
+}

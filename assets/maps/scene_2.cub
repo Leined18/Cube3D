@@ -1,17 +1,31 @@
+<<<<<<< HEAD
 SO        ./assets/textures/bluestone.png
+=======
+
+T3        ./assets/textures/wood.png
+T r ./assets/textures/bluestone.png
+>>>>>>> main
 
 
+T m ./assets/textures/eagle.png
 
-NO ./assets/textures/eagle.png
+T9 ./assets/textures/wood.png
+T                     T                                ./assets/textures/colorstone.png
 
 
-WE ./assets/textures/redbrick.png
+Te./assets/textures/mossy.png
 
+Ty./assets/textures/purplestone.png
 
+<<<<<<< HEAD
 EA ./assets/textures/mossy.png
+=======
+TQ./assets/textures/redbrick.png
+T1./assets/textures/greystone.png
+>>>>>>> main
 
-F     1,     200,     245
-C     90    ,   14     ,49
+F     1,     10,     245
+C     100    ,   14     ,49
 
      11111111111111111111111111
      10000000000000000010000001

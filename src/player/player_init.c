@@ -6,7 +6,11 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 10:49:17 by danpalac          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/08/21 16:55:37 by mvidal-h         ###   ########.fr       */
+=======
+/*   Updated: 2025/08/06 10:23:19 by danpalac         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +18,9 @@
 
 void	ft_init_player(t_player *player, t_map *map)
 {
-	int		y;
-	int		x;
-	int		found;
+	int	y;
+	int	x;
+	int	found;
 
 	y = 0;
 	found = 0;

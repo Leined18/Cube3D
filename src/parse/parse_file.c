@@ -3,49 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:40:59 by mvidal-h          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/08/22 11:30:48 by mvidal-h         ###   ########.fr       */
+=======
+/*   Updated: 2025/08/06 10:22:49 by danpalac         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	all_elem(t_textures *textures)
+int	elems_required_loaded(t_textures *textures)
 {
+<<<<<<< HEAD
 	if (textures[NO].path && textures[SO].path
 		&& textures[WE].path && textures[EA].path
 		&& textures[F].path && textures[C].path)
 		return (1);
+=======
+	int	i;
+
+	i = 0;
+	if (!textures['F'].path || !textures['C'].path)
+		return (0);
+	while (i < MAX_TEXTURES)
+	{
+		if (i != 'F' && i != 'C' && textures[i].path)
+			return (1);
+		i++;
+	}
+>>>>>>> main
 	return (0);
 }
 
-int	set_texture(char **tokens, t_game *g)
+int	set_texture(char **tks, t_game *g)
 {
-	if (!tokens || !tokens[0] || !tokens[1] || tokens[2])
-		return (free_all(g, tokens, "bad format in texture"));
-	if (strncmp(tokens[0], "NO", 2) == 0 && !g->map.textures[NO].path)
-		g->map.textures[NO].path = ft_strdup(tokens[1]);
-	else if (strncmp(tokens[0], "SO", 2) == 0 && !g->map.textures[SO].path)
-		g->map.textures[SO].path = ft_strdup(tokens[1]);
-	else if (strncmp(tokens[0], "WE", 2) == 0 && !g->map.textures[WE].path)
-		g->map.textures[WE].path = ft_strdup(tokens[1]);
-	else if (strncmp(tokens[0], "EA", 2) == 0 && !g->map.textures[EA].path)
-		g->map.textures[EA].path = ft_strdup(tokens[1]);
-	else if (strncmp(tokens[0], "F", 1) == 0 && !g->map.textures[F].path)
+	int	result;
+
+	if (ft_pmatch_str(tks[0], "F", 1) || ft_pmatch_str(tks[0], "C", 1))
 	{
-		g->map.textures[F].path = ft_strdup(tokens[1]);
-		return (free_2d(tokens), set_surface_color(g, 'F'));
+		if (!tks[1] || tks[2])
+			return (free_all(g, tks, "Bad format for color"));
+		if (g->map.textures[(int)tks[0][0]].path)
+			return (free_all(g, tks, "Duplicate floor/ceiling"));
+		g->map.textures[(int)tks[0][0]].path = ft_strdup(tks[1]);
+		result = set_surface_color(g, tks[0][0]);
 	}
-	else if (strncmp(tokens[0], "C", 1) == 0 && !g->map.textures[C].path)
+	else if (ft_pmatch_str(tks[0], "T", 1) && tks[1] && tks[2] && !tks[3])
 	{
-		g->map.textures[C].path = ft_strdup(tokens[1]);
-		return (free_2d(tokens), set_surface_color(g, 'C'));
+		if (is_reserved_symbol(tks[1][0]))
+			return (free_all(g, tks, "Cannot redefine reserved symbol"));
+		if (g->map.textures[(int)tks[1][0]].path)
+			return (free_all(g, tks, "Duplicate texture"));
+		g->map.textures[(int)tks[1][0]].symbol = tks[1][0];
+		g->map.textures[(int)tks[1][0]].path = ft_strdup(tks[2]);
+		result = ft_load_texture(g, &g->map.textures[(int)tks[1][0]]);
 	}
 	else
+<<<<<<< HEAD
 		return (free_all(g, tokens, "Invalid texture or color format"));
 	return (free_2d(tokens), 0);
+=======
+		return (free_all(g, tks, "Unknown config line. Expected F, C or T"));
+	return (free_2d(tks), result);
+>>>>>>> main
 }
 
 int	adding_map_line(char *line, t_game *g)
@@ -77,10 +101,10 @@ int	parse_line(char *line, t_game *g)
 		return (free_all(g, NULL, "Empty line after map beginning"));
 	}
 	remove_newline(line);
-	if (is_map_line(line))
+	if (is_map_line(g->map.textures, line))
 	{
-		if (!all_elem(g->map.textures))
-			return (free_all(g, NULL, "Map is not the last element"));
+		if (!elems_required_loaded(g->map.textures))
+			return (free_all(g, NULL, "Missing required elem or is after map"));
 		return (adding_map_line(line, g));
 	}
 	if (g->map.map_list != NULL)
@@ -89,8 +113,8 @@ int	parse_line(char *line, t_game *g)
 	if (!cleaned)
 		return (free_all(g, NULL, "Removing spaces from line"));
 	tokens = ft_split(cleaned, ' ');
-	if (tokens == NULL)
-		return (free(cleaned), free_all(g, NULL, "Checking texture or color"));
+	if (!tokens || !tokens[0])
+		return (free(cleaned), free_all(g, NULL, "Invalid texture or color"));
 	return (free(cleaned), set_texture(tokens, g));
 }
 
@@ -104,7 +128,7 @@ int	parse_file(char *map_name, t_game *game)
 	fd = secure_open(map_name);
 	buffer = get_next_line(fd);
 	if (buffer == NULL)
-		wrong_map_exit(buffer, "Error\nReading line from file", -1);
+		return (free_all(game, NULL, "Reading line from file"));
 	while (buffer && !error)
 	{
 		error = parse_line(buffer, game);
@@ -115,7 +139,7 @@ int	parse_file(char *map_name, t_game *game)
 	secure_close(fd);
 	if (error)
 		return (error);
-	if (!all_elem(game->map.textures) && game->map.map_list == NULL)
-		return (free_all(game, NULL, "All elemensts are needed"));
+	if (!elems_required_loaded(game->map.textures) || !game->map.map_list)
+		return (free_all(game, NULL, "Required elems and map are needed"));
 	return (check_map(game));
 }

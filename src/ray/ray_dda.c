@@ -6,7 +6,11 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:06:54 by mvidal-h          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/08/21 17:02:34 by mvidal-h         ###   ########.fr       */
+=======
+/*   Updated: 2025/08/21 09:24:37 by mvidal-h         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +23,66 @@ static int	setup_dda(t_ray *ray, t_game *game)
 	calc_step_dir(ray);
 	calc_side_dist(ray, &game->player.pos);
 	return (1);
+<<<<<<< HEAD
+=======
+}
+
+int	is_hit_elem(t_game *g, int y, int x)
+{
+	char	c;
+
+	c = g->map.matrix[y][x];
+	if (!g->map.textures[(int)c].texture)
+		return (0);
+	if (is_door_symbol(c) && is_door_open(g, x, y))
+		return (0);
+	return (1);
+}
+
+void	calc_step_dda(t_ray *ray)
+{
+	if (ray->side_dist.x < ray->side_dist.y)
+	{
+		ray->side_dist.x += ray->delta_dist.x;
+		ray->pos.x += ray->step.x;
+		ray->side = 0;
+	}
+	else
+	{
+		ray->side_dist.y += ray->delta_dist.y;
+		ray->pos.y += ray->step.y;
+		ray->side = 1;
+	}
+>>>>>>> main
 }
 
 static int	reach_wall(t_ray *ray, t_game *g)
 {
+	double	temp_wallx;
+	t_door	*door;
+
 	ray->hit = 0;
+	ray->hit_door = 0;
 	while (!ray->hit)
 	{
+<<<<<<< HEAD
 		if (!g->map.matrix[(int)ray->pos.y][(int)ray->pos.x])
 			return (0);
 		if (ray->side_dist.x < ray->side_dist.y)
+=======
+		calc_step_dda(ray);
+		if (!is_hit_elem(g, ray->pos.y, ray->pos.x))
+			continue ;
+		door = find_door(g, ray->pos.x, ray->pos.y);
+		if (door)
+>>>>>>> main
 		{
-			ray->side_dist.x += ray->delta_dist.x;
-			ray->pos.x += ray->step.x;
-			ray->side = 0;
+			temp_wallx = calc_wallx(g, ray);
+			if (temp_wallx < door->anim_state)
+				continue ;
+			ray->hit_door = 1;
 		}
-		else
-		{
-			ray->side_dist.y += ray->delta_dist.y;
-			ray->pos.y += ray->step.y;
-			ray->side = 1;
-		}
-		if (g->map.matrix[(int)ray->pos.y][(int)ray->pos.x] > '0')
-			ray->hit = 1;
+		ray->hit = 1;
 	}
 	if (ray->side == 0)
 		ray->perpwalldist = ray->side_dist.x - ray->delta_dist.x;

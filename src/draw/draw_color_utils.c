@@ -6,7 +6,11 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:50:11 by mvidal-h          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/08/21 16:22:16 by mvidal-h         ###   ########.fr       */
+=======
+/*   Updated: 2025/08/06 11:00:21 by danpalac         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +38,9 @@ int	color_to_hex(t_game *game, char *color_text, uint32_t *color)
 	return (0);
 }
 
-int	set_surface_color(t_game *g, char surface)
+int	set_surface_color(t_game *g, int s)
 {
+<<<<<<< HEAD
 	int	c;
 
 	if (surface == 'F')
@@ -45,13 +50,27 @@ int	set_surface_color(t_game *g, char surface)
 	else
 		return (free_all(g, NULL, "Invalid surface type"));
 	return (c);
+=======
+	char		*path;
+	uint32_t	*color;
+
+	path = g->map.textures[s].path;
+	color = &g->map.textures[s].color;
+	if (s == 'F' || s == 'C')
+		return (color_to_hex(g, path, color));
+	return (free_all(g, NULL, "Invalid surface type"));
+>>>>>>> main
 }
 
-static uint32_t	get_def_wall_color(t_game *g, t_vect2 map)
+static uint32_t	get_def_wall_color(t_game *g, t_coord map)
 {
 	char	pos;
 
+<<<<<<< HEAD
 	pos = g->map.matrix[(int)map.y][(int)map.x];
+=======
+	pos = g->map.matrix[map.y][map.x];
+>>>>>>> main
 	if (pos == '1')
 		return (0xFF0000FF);
 	if (pos == '2')
@@ -63,12 +82,16 @@ static uint32_t	get_def_wall_color(t_game *g, t_vect2 map)
 	return (0xFFA500FF);
 }
 
-uint32_t	set_color_line(t_game *g, t_vect2 map, int wall_side)
+uint32_t	set_color_line(t_game *g, t_coord map, int wall_side)
 {
 	uint32_t	color;
 
 	color = get_def_wall_color(g, map);
+<<<<<<< HEAD
 	if (wall_side)
+=======
+	if (wall_side == 0)
+>>>>>>> main
 		color = darken_color(color);
 	return (color);
 }
