@@ -1,17 +1,17 @@
 
 
 
-SO        ./assets/textures/wood.png
+SO        ./default/assets/textures/wood.png
 
 
 
-NO ./assets/textures/pillar.png
+NO ./default/assets/textures/pillar.png
 
 
-WE ./assets/textures/mossy.png
+WE ./default/assets/textures/mossy.png
 
 
-EA ./assets/textures/pillar.png
+EA ./default/assets/textures/pillar.png
 
 F     90,     20,     245
 

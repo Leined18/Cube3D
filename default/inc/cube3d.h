@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:48:59 by danpalac          #+#    #+#             */
-/*   Updated: 2025/08/22 15:25:48 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/26 13:12:35 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
 # define SCRWIDTH 1920
 # define SCRHEIGHT 1080
 
-# define TEXTURE_NO "./assets/textures/no.png"
-# define TEXTURE_SE "./assets/textures/se.png"
-# define TEXTURE_WE "./assets/textures/we.png"
-# define TEXTURE_EA "./assets/textures/ea.png"
-# define TEXTURE_F "./assets/textures/f.png"
-# define TEXTURE_C "./assets/textures/c.png"
+# define TEXTURE_NO "./default/assets/textures/no.png"
+# define TEXTURE_SE "./default/assets/textures/se.png"
+# define TEXTURE_WE "./default/assets/textures/we.png"
+# define TEXTURE_EA "./default/assets/textures/ea.png"
+# define TEXTURE_F "./default/assets/textures/f.png"
+# define TEXTURE_C "./default/assets/textures/c.png"
 
 #endif

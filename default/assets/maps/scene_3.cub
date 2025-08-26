@@ -1,15 +1,15 @@
 
-SO        ./assets/textures/mossy.png
+SO        ./default/assets/textures/mossy.png
 
 
 
-NO ./assets/textures/greystone.png
+NO ./default/assets/textures/greystone.png
 
 
-WE ./assets/textures/mossy.png
+WE ./default/assets/textures/mossy.png
 
 
-EA ./assets/textures/greystone.png
+EA ./default/assets/textures/greystone.png
 
 F     90,     20,     245
 

@@ -1,0 +1,9 @@
+[submodule "submodules/memtrack"]
+	path = submodules/memtrack
+	url = git@github.com:Leined18/memtrack.git
+[submodule "submodules/libft"]
+	path = submodules/libft
+	url = git@github.com:Leined18/Libft.git
+[submodule "submodules/MLX42"]
+	path = submodules/MLX42
+	url = https://github.com/codam-coding-college/MLX42.git

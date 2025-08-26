@@ -43,14 +43,14 @@ CLEAR_LINE  = \033[2K
 MOVE_UP     = \033[1A
 
 # Variables básicas
-NAME		:= cube3d
+NAME		:= cub3d
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror -g3 -fsanitize=address -O3
 RM			:= rm -rf
 MKDIR		:= mkdir -p
 
-SUBMODULES	:= submodules/
-LIB			:= submodules/lib
+SUBMODULES	:= ../submodules/
+LIB			:= $(SUBMODULES)lib
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
 INC_DIR		:= inc/
