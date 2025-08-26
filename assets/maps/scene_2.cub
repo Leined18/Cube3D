@@ -1,4 +1,4 @@
-SO        ./assets/textures/f.png
+SO        ./assets/textures/bluestone.png
 
 
 
@@ -8,7 +8,7 @@ NO ./assets/textures/eagle.png
 WE ./assets/textures/redbrick.png
 
 
-EA ./assets/textures/redbrick.png
+EA ./assets/textures/mossy.png
 
 F     1,     200,     245
 C     90    ,   14     ,49

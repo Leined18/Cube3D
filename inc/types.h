@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/08/21 12:50:48 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/08/26 11:01:05 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "MLX42.h"
 # include "libft.h"
 # include "mt.h"
-# include "utils.h"
 
 typedef enum e_texture
 {
